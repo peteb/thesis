@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -classpath $0/../../classes:$0/../../lib/antlrworks.jar:$0/../../lib/json.jar anita.Main $*
+java -classpath $0/../../classes:$0/../../lib/antlr-3.5.2-complete-no-st3.jar:$0/../../lib/json.jar anita.Main $*
