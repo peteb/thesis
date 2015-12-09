@@ -1,0 +1,20 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_simple)
+	var foo = fun() => {
+		assert_reachable();		# fails because _assertions is a r/o upval
+	 	return true;
+		assert_unreachable();
+		return null;
+		"foo";
+	};
+
+	assert_reachable();
+	assert(foo() == true);
+	assert_reachable();
+END_TEST(4)
+
+BEGIN_TEST(main)
+	this.test_simple();
+END_TEST(0)
+

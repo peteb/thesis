@@ -1,0 +1,16 @@
+val Socket = object {
+	val new = fun() => {
+		"New socket!".puts;
+	};
+};
+
+val cool_fun = fun() => {
+	"yo yo".puts;
+};
+
+# tlc sockets.anita --as-lib
+# tlc myapp.anita --libs=sockets
+#     kallar på sockets_init
+#     vilket skapar alla objekt
+
+ld myapp.bc sockets.bc

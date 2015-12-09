@@ -1,0 +1,31 @@
+val main = fun() => {
+	val obj = object {
+		val fun1 = fun() => true;
+		val fun2 = fun() => false;
+		val fun3 = fun() => true;
+		val fun4 = fun() => false;
+		val fun5 = fun() => true;
+		val fun6 = fun() => false;
+		val fun7 = fun() => true;
+		val fun8 = fun() => false;
+		val fun9 = fun() => true;
+		val fun10 = fun() => false;
+	}
+	
+	var i = 0;
+	val cached_max = 10000000;
+	while (i < cached_max) {
+		obj.fun10();
+		obj.fun1();
+		obj.fun9();
+		obj.fun2();
+		obj.fun8();
+		obj.fun3();
+		obj.fun7();
+		obj.fun4();
+		obj.fun6();
+		obj.fun5();
+		
+		i = i + 1;   # callsite will get invalidated
+	}
+}

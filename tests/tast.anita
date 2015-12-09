@@ -1,0 +1,12 @@
+val main = fun() => {
+	var katt = null;
+	
+	val foo = fun() => {
+		var boo = 444;
+		boo = 4444;
+		katt = 123;
+	}
+	
+	foo();
+	katt.to_s.puts;
+}

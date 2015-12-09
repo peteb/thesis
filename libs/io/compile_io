@@ -1,0 +1,6 @@
+#!/bin/bash
+../../src/ctclib io.anita
+/Developer/usr/bin/clang -c io.c -o io.c.bc -emit-llvm -I ../../src/
+/Developer/usr/bin/clang -c file.c -o file.c.bc -emit-llvm -I ../../src/
+llvm-ld io.bc io.c.bc file.c.bc -o libio.bc
+mv libio.bc.bc io.bc

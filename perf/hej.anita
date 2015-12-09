@@ -1,0 +1,16 @@
+val main = fun() => {
+	val obj = object {
+		val ba = fun() => "hej".puts;
+	}
+	
+	var i = 0;
+	i < 10;	
+	i = i + 1;
+	i < 10;	
+	i = i + 1;
+	i < 10;	
+	i = i + 1;
+	i < 10;	
+	i = i + 1;
+	
+}

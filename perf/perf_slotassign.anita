@@ -1,0 +1,71 @@
+ #
+ # $Id: perf_slotassign.anita 1194 2010-04-26 08:59:28Z ptr $
+ # thorn-llvm
+ # 
+ # Benchmark for slot assignments, measures ASSIGN 
+ # between slots and local vars.
+ # 
+ # Side measures:
+ # 
+ # History:
+ # 
+ # (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ #
+
+val main = fun() => {
+	val obj1 = object {
+		var field1 = 0;
+		var field2 = 1;
+		var field3 = 2;
+		var field4 = 3;
+		var field5 = 4;
+		var field6 = 5;
+	}
+	
+	val obj2 = object {
+		var field1 = 5;
+		var field2 = 4;
+		var field3 = 3;
+		var field4 = 2;
+		var field5 = 1;
+		var field6 = 0;
+	}
+
+	val swap_temporary = object {
+		var field1 = 0;
+		var field2 = 0;
+		var field3 = 0;
+		var field4 = 0;
+		var field5 = 0;
+		var field6 = 0;
+	}
+	
+	var i = 0;
+	val cached_1 = 1;
+	val cached_max = 2500000;
+	
+	while (i < cached_max) {
+		swap_temporary.field1 = obj2.field1;
+		swap_temporary.field2 = obj2.field2;
+		swap_temporary.field3 = obj2.field3;
+		swap_temporary.field4 = obj2.field4;
+		swap_temporary.field5 = obj2.field5;
+		swap_temporary.field6 = obj2.field6;
+		
+		obj2.field1 = obj1.field1;
+		obj2.field2 = obj1.field2;
+		obj2.field3 = obj1.field3;
+		obj2.field4 = obj1.field4;
+		obj2.field5 = obj1.field5;
+		obj2.field6 = obj1.field6;
+		
+		obj1.field1 = swap_temporary.field1;
+		obj1.field2 = swap_temporary.field2;
+		obj1.field3 = swap_temporary.field3;
+		obj1.field4 = swap_temporary.field4;
+		obj1.field5 = swap_temporary.field5;
+		obj1.field6 = swap_temporary.field6;
+		
+		i = i + cached_1;
+	}
+}

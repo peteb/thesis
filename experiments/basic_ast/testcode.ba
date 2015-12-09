@@ -1,0 +1,48 @@
+/*LAST {
+	{DEF int add int ett int tva {
+		+ {
+			{$ett};
+			{$tva};
+			{VAL int {3}};
+			{VAL int {8}};
+			{VAL int {-2}};
+		}
+	}}
+	{DEF int main {
+		LAST {
+			{add {
+				VAL int {3}
+				VAL int {12}
+			}}
+		}
+	}}
+}*/
+
+DEF int add int ett int tva {
+	+ {
+/*		{$ett};
+		{$tva};
+*/		{VAL int {3}};
+		{VAL int {8}};
+		{VAL int {-2}};
+	}
+}
+
+/* 
+DEF void main int param1 {
+	VAL int op1 {3}
+	VAL int op2 {4}
+	
+	CALL add {GET op1{} GET op2{} }
+}
+
+DEF void main int param1 {
+	+ {
+		VAL int {4}
+		VAL int {8}	
+	}
+
+}
+
+*/
+

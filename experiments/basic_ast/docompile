@@ -1,0 +1,1 @@
+./compile config/propertynode.cpp config/propertytreeparser.cpp config/propertytreeprinter.cpp config/simpletokenizer.cpp namespace.cpp ast_corefuncs.cpp ast_math.cpp ast_val.cpp ast_primitives.cpp ast_def.cpp ast_parser.cpp ast_expression.cpp main.cpp

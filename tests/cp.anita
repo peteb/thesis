@@ -1,0 +1,9 @@
+val foo = fun(ett, tva, tre) => {
+	
+};
+
+val main = fun() => {
+	val x;
+	
+	this.foo(1, 2, x);
+}

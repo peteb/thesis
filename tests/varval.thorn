@@ -1,0 +1,31 @@
+# reassigning a val should be an error
+
+var main = fun() => {
+	var testfun = fun(var mutable, val immutable) => {
+		mutable.to_s.print;
+		immutable.to_s.print;
+		mutable = "hej";
+		immutable = "SKA INTE FUNKA";
+
+		
+		mutable.to_s.print;
+		immutable.to_s.print;
+
+		("Alla args: " + ARGS.to_s).print;
+	#	ARGS = null;
+	#	ARGS.to_s.print;
+	};
+	
+	var testobj = {	
+		#var foo = 45;
+		#foo = "katt";
+		#val bar = "hej";
+		#bar = "hund";
+		
+		var hej = 1;
+		var hu = 2;
+		
+		testfun(hej, hu);
+	}
+	
+}

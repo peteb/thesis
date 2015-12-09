@@ -1,0 +1,5 @@
+size of long: 8
+[tool entry: 0x10001b43c]
+test_simple: 10 assertion(-s)
+[tool return: 0x0 exception: 0x1000e0b80]
+[tool error: method not found]

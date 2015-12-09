@@ -1,0 +1,9 @@
+val main = fun() => {
+	val upvalue = "hej";
+	
+	val foo = fun() => {
+		upvalue.puts;
+	}
+	
+	foo();
+}

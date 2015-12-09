@@ -1,0 +1,36 @@
+ # AST::Unit
+ #    AST::Vardef(main)
+ #       AST::Closure
+ #          Formals:
+ #          Body:
+ #             AST::Block
+ #                AST::Vardef(i)
+ #                   AST::Literal(0)
+ #                AST::While
+ #                   Condition:
+ #                      AST::MethodCall(lt)
+ #                         Target:
+ #                            AST::Var(i)
+ #                         Arguments:
+ #                            AST::Literal(10)
+ #                   Body:
+ #                      AST::Block
+ #                         AST::Assignment(i)
+ #                            Target:
+ #                               null
+ #                            Value:
+ #                               AST::MethodCall(add)
+ #                                  Target:
+ #                                     AST::Var(i)
+ #                                  Arguments:
+ #                                     AST::Literal(1)
+
+
+val main = fun() => {
+	
+	var i = 0;	
+	while (false) {		# AST::While
+		1;
+		# val hej = 1;
+	}
+}

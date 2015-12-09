@@ -1,0 +1,17 @@
+
+var main = fun() => {
+	#(object {var x = fun() => 34}).x.to_s.print;
+	
+	# var person = object {
+	# 	var first_name = "Scrooge";
+	# 	var last_name = "McDuck";
+	# 	var worth = 18482;
+	# 	
+	# 	var to_s = fun() => first_name + " " + last_name;
+	# }
+
+	("hej " + "då").print;
+	
+	# person.to_s.print;
+};
+

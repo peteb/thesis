@@ -1,0 +1,32 @@
+#include "tunit.anita"
+
+var a;
+var b = null;
+var c = true;
+var d = "foo";
+var e = 0;
+val aa;
+val ba = null;
+val ca = true;
+val da = "foo";
+var ea = 0;
+
+BEGIN_TEST(test_varval)
+	assert(this.a == null);
+	assert(this.b == null);
+	assert(this.c == true);
+	assert(this.d == "foo");
+	assert(this.e == 0);
+	assert(this.aa == null);
+	assert(this.ba == null);
+	assert(this.ca == true);
+	assert(this.da == "foo");
+	assert(this.ea == 0);
+	this.ea = this.ea + 1;
+	assert(this.ea == 1);
+	assert(exc_val(this.katt == "foo", null) != null);	#< fails, dunno why. TODO
+END_TEST(12)
+
+val main = fun() => {
+	this.test_varval();
+};

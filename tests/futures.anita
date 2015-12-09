@@ -1,0 +1,26 @@
+val main = fun() => {
+	val proc = spawn fun() => {
+		val message = this.consume_message;
+		("1-->" + message.to_s).puts;
+		message.return_value("well hello to you good sir!");
+
+	#	"bye".puts;
+	};
+	
+	val future = (proc ! "Welcome");
+
+	var x = 0;
+	
+	while (!future.ready?) {
+		x = x + 1;
+	}
+	
+	("Waited " + x.to_s + " iterations").puts;
+
+	val ret = future.wait;
+	("Retval: " + ret.to_s).puts;
+	
+	#("Future class: " + future.class).puts;
+	#"Future in caller inspect:".puts;
+	#future.inspect;
+};

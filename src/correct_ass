@@ -1,0 +1,78 @@
+{
+  "kind": "unit",
+  "members": [
+    {
+      "name": "main",
+      "kind": "vardef",
+      "isval": true,
+      "init": {
+        "kind": "closure",
+        "body": {
+          "kind": "block",
+          "members": [
+            {
+              "name": "x",
+              "kind": "vardef",
+              "isval": false,
+              "init": {
+                "kind": "int",
+                "value": 5
+              }
+            },
+            {
+              "args": [
+
+              ],
+              "name": "print",
+              "kind": "mcall",
+              "target": {
+                "args": [
+
+                ],
+                "name": "to_s",
+                "kind": "mcall",
+                "target": {
+                  "name": "x",
+                  "kind": "var"
+                }
+              }
+            },
+            {
+              "name": "x",
+              "kind": "assign",
+              "value": {
+                "kind": "int",
+                "value": 10
+              },
+              "target": {
+                "name": "THIS",
+                "kind": "var"
+              }
+            },
+            {
+              "args": [
+
+              ],
+              "name": "print",
+              "kind": "mcall",
+              "target": {
+                "args": [
+
+                ],
+                "name": "to_s",
+                "kind": "mcall",
+                "target": {
+                  "name": "x",
+                  "kind": "var"
+                }
+              }
+            }
+          ]
+        },
+        "formals": [
+
+        ]
+      }
+    }
+  ]
+}

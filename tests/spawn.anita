@@ -1,0 +1,52 @@
+val main = fun() => {
+	
+	val proc = spawn fun() => {
+		var x = 0;
+		while (x < 10) {
+			x.to_s.print;
+			x = x + 1;
+		}
+	};
+	
+	val retval = proc.wait;
+	("Ret from proc: " + retval.to_s).puts;
+
+	
+	val receiver = spawn fun() => {
+		this.class.print;
+		("1--> " + this.consume_message).puts;
+		("2--> " + this.consume_message).puts;
+		("3--> " + this.consume_message).puts;
+	
+		"bye".puts;
+		this.inspect;
+	};
+	
+	receiver ! "Welcome!";
+	receiver ! "Katt..";
+	receiver ! "MUUUUU";
+	receiver.wait;
+
+	# TODO: metadata slots, value = unspecified, not modifyable with set/get_slot
+	
+	# val proc = spawn fun() => {
+	# 	val message = this.consume_message;
+	# 	message.value.to_s.print;
+	# 	message.return("TJA");
+	# }
+		
+	
+	# val proc = spawn fun() => {
+	# 	val message = this.consume_message;
+	#  message.value
+	# 	message.return("TJA");
+	# }
+	# 
+	# var future = (proc ! "hej");
+	# var future2 = (proc ! "hej");
+	# 
+	# if (future.result_available?) {
+	# 	future.get_result.to_s.puts;		
+	# }
+}
+

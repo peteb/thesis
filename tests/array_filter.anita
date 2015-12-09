@@ -1,0 +1,8 @@
+val main = fun() => {
+	val array = [1, 2, 3, 4, 5, 6, 7, 8];
+	val filtered = array.filter(fun(x) => x > 2);
+	filtered.to_s.puts;
+	
+	val mapped = array.map(fun(x) => (x - 2) * 2);
+	mapped.to_s.puts;
+}

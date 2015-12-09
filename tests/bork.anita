@@ -1,0 +1,5 @@
+val main = fun() => {
+	var sum = 0;
+	
+	fun() => sum = 4;
+}

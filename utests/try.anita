@@ -1,0 +1,57 @@
+#include "tunit.anita"
+
+val main = fun() => {
+	this.basic_tests();
+	this.test_nested();	
+};
+
+val bar = fun(x) => throw x;
+val foo = fun(x) => this.bar(x);
+
+BEGIN_TEST(basic_tests)
+	assert((try {throw "error"} catch (e) {e}) == "error");
+	assert((try {12345} catch (e) {e}) == 12345);
+	assert(try {throw true} catch (e) {e});
+	assert_not(try {this.foo(false)} catch (e) {e});	
+END_TEST(4)
+
+BEGIN_TEST(test_nested)	
+	var try_ret = (try {
+		assert_reachable();
+		
+		try {
+			assert_reachable();
+			throw 444;
+			assert_unreachable();
+		}
+		catch (err) {
+			assert(err == 444);
+			throw err;
+			assert_unreachable();
+		}
+		
+		assert_unreachable();
+	}
+	catch (e) {
+		assert(e == 444);
+		
+		var ret = (try {
+			assert_reachable();
+			throw "foo";
+			assert_unreachable();
+		}
+		catch(e) {
+			assert_reachable();
+			assert(e == "foo");
+			assert_reachable();
+			444;
+		});
+		
+		assert_reachable();
+		ret;
+	});
+	
+	assert(try_ret == 444);
+	assert(exc_val(throw null, "default") == null);
+END_TEST(11)
+

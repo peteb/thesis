@@ -1,0 +1,12 @@
+val main = fun() => {
+	var i = 0;
+	
+	val foo = fun() => i = 23;
+	foo();
+}
+
+# TODO: kolla om variabler i en closure används som upvals i en annan closure
+# eller, de kan användas om de är 'val', inte om de är 'var'.
+# dvs. en null-closure får inte ha 'var'-variabler som används som upvals
+# i en undre closure
+# isf är det inte en null-closure.

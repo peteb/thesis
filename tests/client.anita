@@ -1,0 +1,3 @@
+val main = fun() => {
+	TEST.class;
+}

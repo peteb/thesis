@@ -1,0 +1,8 @@
+val main = fun() => {
+	var x = "hello";
+	
+	while (true) {
+		val y = "bo";
+		x.print;
+	}
+}

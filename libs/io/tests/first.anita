@@ -1,0 +1,21 @@
+#include "tunit.anita"
+
+BEGIN_TEST(read_file)
+	val file = IO.open_file("test.txt", "r");
+	assert(null != file);
+
+	# TODO: det matchar inte pga endline.
+	# definiera IO.endl
+	
+	assert(file.gets == "One" + IO.lf);
+	assert(file.gets == "Two -" + IO.lf);
+	assert(file.gets == "- Three");
+	
+END_TEST(4)
+
+BEGIN_TEST(main)
+	this.read_file();
+END_TEST(0)
+
+# TODO: libdir for ctc
+# TODO: ctc till ruby.....

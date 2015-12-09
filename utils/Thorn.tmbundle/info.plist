@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Thorn</string>
+	<key>ordering</key>
+	<array>
+		<string>B7224231-2CF3-44C2-B631-50F83F03F5B3</string>
+		<string>C437C621-6165-4B3D-B1B2-6D5A3A92657A</string>
+		<string>31468DCA-84DA-4271-B74A-92257D920320</string>
+	</array>
+	<key>uuid</key>
+	<string>E971B73A-C2FE-4FA4-B0A5-79751C9C3758</string>
+</dict>
+</plist>

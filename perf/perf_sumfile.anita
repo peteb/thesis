@@ -1,0 +1,17 @@
+val main = fun() => {
+	var line;
+	var sum = 0;
+	val stream = IO.open_file("input_list_vs_gen.txt", "r");
+	
+	while (line = stream.gets) {
+		val tokens = line.split(" ");
+		var i = 0;
+		
+		while (i < tokens.size) {
+			sum = sum + tokens(i).to_i;
+			i = i + 1;
+		}
+	}
+	
+	("Grand total: " + sum.to_s).puts;
+}

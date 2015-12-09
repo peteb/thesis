@@ -1,0 +1,38 @@
+
+var main = fun() => {
+	try {
+		throw "hej";
+	}
+	catch (err) {
+		err.to_s.print;
+	}
+	# var foo = fun(x) => {
+	# 		throw x;
+	# 	}
+	# 	
+	# 	var bar = fun() => {
+	# 		"Doing stuff".print;
+	# 		foo("KATT!");
+	# 		return "katt";
+	# 		#"This is unreachable".print;
+	# 	}
+	# 
+	# 	# try {
+	# 	#  	throw null;
+	# 	# }
+	# 	# catch {
+	# 	# 	("Caught " + e.to_s).print;
+	# 	# }
+	# 	
+	# 	var y = try {
+	# 		bar();
+	# 		"unreach";
+	# 	}
+	# 	catch {
+	# 		"caught " + e.to_s;
+	# 	};
+	# 	
+	# 	("After try-catch: " + y.to_s).print;
+#	y.to_s.print;
+};
+

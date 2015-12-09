@@ -1,0 +1,54 @@
+val class = fun() => "io";
+
+val each_line = fun(istream, block, var buf_size) => {
+	var buffer = "";
+	var last_recv;
+	
+	if (buf_size == null) {
+		buf_size = 512;
+	}
+	
+	var ret;
+	
+	try {
+		while (last_recv = istream.read(buf_size, last_recv)) {
+			buffer = buffer + last_recv.to_s;		
+			
+			val splitted = buffer.split;
+			val body = splitted(0..-2);
+			val head = splitted(-1);
+		
+			# ("Body: " + body.to_s).puts;
+			# ("Head: " + head.to_s).puts;
+		
+			body.each(fun(line) => block(line));
+			buffer = head;
+		}
+	}
+	catch(e) {
+		ret = e;
+	}
+	
+	block(buffer);
+	
+	return ret;
+};
+
+val write_buffered = fun(source, receiver, var buf_size) => {
+	if (buf_size == null) {
+		buf_size = 4096;
+	}
+	
+	try {
+		var buffer;
+		# var i = 0;
+		while (buffer = source.read(buf_size, buffer)) {
+			# will create new buffer if not enough
+			# i = i + 1;
+			receiver.write(buffer);
+		}
+	}
+	catch (e) {
+		e;
+	}
+}

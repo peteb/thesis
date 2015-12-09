@@ -1,0 +1,19 @@
+val main = fun() => {
+	val obj = object {
+		var name = "Peter";
+	}
+	
+	"Original:".puts;
+	obj.inspect;
+	
+	val cloned = obj.clone;
+	"Original:".puts;
+	obj.inspect;
+	"Cloned:".puts;
+	cloned.inspect;
+	cloned.name.puts;
+	cloned.name = "Katt";
+	cloned.name.puts;
+	cloned.inspect;
+	# cloned.name.puts;
+}

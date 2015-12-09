@@ -1,0 +1,3 @@
+#!/bin/bash
+DIRNAME=`dirname $0`
+cat $1 | gcc -w -E -I $DIRNAME/ -D__FILE__=\"$1\" - 2>/dev/null | $DIRNAME/../src/ctc  - --mname $@

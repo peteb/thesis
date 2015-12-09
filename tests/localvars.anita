@@ -1,0 +1,7 @@
+val main = fun() => {
+
+	while (true) {
+		val x = 0;
+		x.to_s.puts;
+	}
+}

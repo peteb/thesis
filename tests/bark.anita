@@ -1,0 +1,17 @@
+val main = fun() => {
+	var sum = 5;
+	var foo = fun() => null;
+	val add = 20;
+	
+	if (true) {
+		foo = fun() => sum = sum +add;
+	}
+	foo();
+	
+	
+	("Sum: " + sum.to_s).puts;
+}
+
+# TOOD: statisk analys här ändå.. det räcker inte såhär.
+#       måste kunna se vid en vardef huruvida den kommer användas
+#       som en upval och sen göra korrekta saker

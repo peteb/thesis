@@ -1,0 +1,8 @@
+
+val main = fun() => {
+	val obj = object {
+		var field = 0;
+	}
+	
+	obj.field = obj.field + 1;
+}

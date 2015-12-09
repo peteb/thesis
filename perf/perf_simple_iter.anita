@@ -1,0 +1,7 @@
+val main = fun() => {
+	var i = 0;
+	
+	while (i < 20000000) {
+		i = i + 1;
+	}
+}

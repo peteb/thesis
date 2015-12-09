@@ -1,0 +1,14 @@
+val main = fun() => {
+	var obj1 = object {
+		var name = "Peter";
+	};
+	
+	var obj2 = object {
+		var delegate = obj1;
+	};
+	
+	
+	(obj1.name + " - " + obj2.name).puts;
+	obj2.name = "KATT";
+	(obj1.name + " - " + obj2.name).puts;
+}

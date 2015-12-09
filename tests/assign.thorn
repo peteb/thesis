@@ -1,0 +1,10 @@
+
+
+val main = fun() => {
+	var x = 5;
+	
+	x.to_s.print;
+	x = 10;
+	x.to_s.print;
+	
+}

@@ -1,0 +1,42 @@
+#include "tunit.anita"
+
+BEGIN_TEST(first_test)
+	val person_address = object {
+		val street = "First st.";
+		val city = "City of Angels";
+		
+		val eq = fun(other) => {
+			try {
+				(this.street == other.street && this.city == other.city);
+			}
+			catch (e) {
+				false;
+			}
+		};
+	};
+
+	val person = object {
+		val name = "Mr F";
+		val age = 22;
+		val address = person_address;
+	};
+
+	assert(person.name == "Mr F");
+	assert(person.age == 22);
+	assert(person_address.street == "First st.");
+	assert(person_address.city == "City of Angels");
+	assert(person.address.street == "First st.");
+	assert(person.address.city == "City of Angels");
+	assert(exc_val(person.telephone == 12345, null) != null);
+	assert(person.address == person_address);
+	assert(person.address == (
+		object {val street = "First st."; val city = "City of Angels"}
+	));
+	
+END_TEST(9)
+
+val main = fun() => {
+	this.first_test();
+};
+
+

@@ -1,0 +1,30 @@
+
+var main = fun() => {
+	# var foo = fun() => {
+	# 	ARGS.to_s.print;
+	# 	
+	# 	"args:".print;
+	# 	
+	# 	var i = 0;
+	# 	while (i < ARGS.size) {
+	# 		ARGS(i).to_s.print;
+	# 		i = i + 1;
+	# 	};
+	# };
+	# 
+	var MyCoolFunction = fun(first_param, second_param) => {
+		("First param: " + first_param.to_s).print;
+		("Second param: " + second_param.to_s).print;
+
+		("Params in list: " + ARGS.size.to_s).print;
+		
+		var i = 0;
+		while (i < ARGS.size) {
+			("Arg " + i.to_s + ": " + ARGS(i).to_s).print;
+			i = i + 1;
+		}
+	}
+	
+	MyCoolFunction(1, 3, null, true);
+};
+

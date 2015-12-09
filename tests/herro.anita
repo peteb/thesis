@@ -1,0 +1,7 @@
+val main = fun() => {
+	val iter = 0;
+	
+	val sum = fun(x, y) => {x + y + iter};
+	
+	
+}

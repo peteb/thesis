@@ -1,0 +1,172 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_int)
+	
+	# (0,0) (-1, 0) (0, -1) (1, 0) (0, 1) (1, 2) 
+	# (-1, -2) (1, -2) (-1, 2) (2, -1) (-2, 1) 
+	# (min, min) (min, min+1) (min, min-1) (max, max) (max, max-1) (max, max+1)
+	
+	# operators: ==, !=, >, <, >=, <=, .class, .to_s
+	#				 +, -, *, /, %
+
+	# .to_s
+	assert((0).to_s == "0");
+	assert((1337).to_s == "1337");
+	assert((-1337).to_s == "-1337");
+
+
+	# .class
+	assert((4).class == "int");
+	
+	# <=
+	assert(0 <= 0);
+	assert(-1 <= 0);
+	assert_not(0 <= -1);
+	assert_not(1 <= 0);
+	assert(0 <= 1);
+	assert(1 <= 2);
+	assert_not(-1 <= -2);
+	assert_not(1 <= -2);
+	assert(-1 <= 2);
+	assert_not(2 <= -1);
+	assert(-2 <= 1);
+	
+	# >=
+	assert(0 >= 0);
+	assert_not(-1 > 0);
+	assert(0 >= -1);
+	assert(1 >= 0);
+	assert_not(0 >= 1);
+	assert_not(1 >= 2);
+	assert(-1 >= -2);
+	assert(1 >= -2);
+	assert_not(-1 >= 2);
+	assert(2 >= -1);
+	assert_not(-2 >= 1);
+	
+	# <
+	assert_not(0 < 0);
+	assert(-1 < 0);
+	assert_not(0 < -1);
+	assert_not(1 < 0);
+	assert(0 < 1);
+	assert(1 < 2);
+	assert_not(-1 < -2);
+	assert_not(1 < -2);
+	assert(-1 < 2);
+	assert_not(2 < -1);
+	assert(-2 < 1);
+
+	# >
+	assert_not(0 > 0);
+	assert_not(-1 > 0);
+	assert(0 > -1);
+	assert(1 > 0);
+	assert_not(0 > 1);
+	assert_not(1 > 2);
+	assert(-1 > -2);
+	assert(1 > -2);
+	assert_not(-1 > 2);
+	assert(2 > -1);
+	assert_not(-2 > 1);
+
+	# !=
+	assert_not(0 != 0);
+	assert(-1 != 0);
+	assert(0 != -1);
+	assert(1 != 0);
+	assert(0 != 1);
+	assert(1 != 2);
+	assert(-1 != -2);
+	assert(-1 != -2);
+	assert(1 != -2);
+	assert(-1 != 2);
+	assert(2 != -1);
+	assert(-2 != 1);
+	
+	# ==
+	assert(0 == 0);
+	assert_not(-1 == 0);
+	assert_not(0 == -1);
+	assert_not(1 == 0);
+	assert_not(0 == 1);
+	assert_not(1 == 2);
+	assert_not(-1 == -2);
+	assert_not(1 == -2);
+	assert_not(-1 == 2);
+	assert_not(2 == -1);
+	assert_not(-2 == 1);
+END_TEST(71)
+
+BEGIN_TEST(test_bool)
+	# operators: &&, ||, ==, !=, .class, .to_s
+	assert_not(true && false);
+	assert(true || false);
+	assert_not(false || false);
+	assert_not(false && false);
+	assert(false == false);
+	assert(true == true);
+	assert(false != true);
+	assert(true != false);
+	assert_not(true == false);
+	assert_not(false == true);
+	assert((true).class == "bool");
+	assert((true).to_s == "true");
+	assert((false).to_s == "false");
+END_TEST(13)
+
+BEGIN_TEST(test_null)
+	assert(null == null);
+	assert_not(null != null);
+	# TODO: it's not possible to reverse a symbol, ie address -> name. should it?
+	# assert(exc_val(null > null, null) == "method not found: null.gt");
+	# assert(exc_val(null < null, null) == "method not found: null.lt");
+	assert((null).to_s == "null");
+	assert((null).class == "null");
+END_TEST(4)
+
+BEGIN_TEST(test_string)
+	assert("foo" == "foo");
+	assert("" == "");
+	assert_not("foo" == "bar");
+	assert("foo" != "bar");
+	assert_not("foo" != "foo");
+	assert(("foo").to_s == "foo");
+	assert(("foo").class == "string");
+
+	val str = "";
+	assert(str(0..0) == "");
+	assert(str(0..100) == "");
+	assert(str(-1..-1) == "");
+	
+	val str2 = "abcdef";
+	assert(str2(0..-1) == "abcdef");
+	assert(str2(0..0) == "a");
+	assert(str2(0..5) == "abcdef");
+	assert(str2(1..5) == "bcdef");
+	assert(str2(1..4) == "bcde");
+	assert(str2(2..-2) == "cde");
+	
+END_TEST(16)
+
+BEGIN_TEST(test_float)
+
+END_TEST(0)
+
+BEGIN_TEST(test_cross)
+	assert_not(null == false);
+	assert_not("false" == false);
+	assert_not(0 == false);	# how about this
+	assert(null != false);
+	assert("false" != false);
+	#assert(0 != false);		# not specified yet..
+END_TEST(5)
+
+BEGIN_TEST(main)
+	this.test_null();
+	this.test_bool();
+	this.test_int();
+	this.test_string();
+	this.test_float();
+	this.test_cross();
+END_TEST(0)

@@ -1,0 +1,11 @@
+val main = fun() => {
+	val pid = spawn fun() => {
+		"HEEEEEEEEEEEEEEEJ".puts;
+		val msg = this.read;
+		msg.to_s.puts;
+	}
+	
+	val arr = [1, 2];
+	(pid ! arr).wait;
+	
+}

@@ -1,0 +1,1 @@
+{"members":[{"name":"main","init":{"body":{"members":[{"args":[{"value":"h","kind":"string"}],"name":"add","target":{"value":"hej ","kind":"string"},"kind":"mcall"},{"args":[{"value":"h","kind":"string"}],"name":"add","target":{"value":"hej ","kind":"string"},"kind":"mcall"}],"kind":"block"},"formals":[],"kind":"closure"},"isval":true,"kind":"vardef"}],"kind":"unit"}

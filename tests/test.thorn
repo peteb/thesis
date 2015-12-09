@@ -1,0 +1,40 @@
+
+var main = fun() => {
+#	(object {var x = fun() => 34}).x.as_string.print;
+	
+	var Person = object {
+		var to_s = fun() => {
+			first_name + " " + last_name;
+		};
+	};
+	
+	var peter = object {
+		var first_name = "Peter";
+		var last_name = "Backman";
+		var x = nil;
+		var bo = nil;
+		
+		# var delegate = Person;		# funkar inte
+		
+		var delegate = object {
+			var to_s = fun() => {
+				first_name + " " + last_name;
+			};
+		};
+		
+		# var first_name = "Scrooge";
+		# 
+		# var as_string = fun() => {
+		# 	first_name + " " + last_name + " aged: " + age;
+		# };
+	}
+	
+	var testfun = fun() => "hejsan";
+
+	testfun().print;
+
+
+
+	#peter.as_string.print;
+};
+

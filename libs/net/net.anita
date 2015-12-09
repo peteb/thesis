@@ -1,0 +1,26 @@
+var class = fun() => "net";
+
+val SOCK_STREAM = 1;
+val SOCK_DGRAM = 2;
+val SOCK_RAW = 3;
+val SOCK_RDM = 4;
+val SOCK_SEQPACKET = 5;
+
+val AF_LOCAL = 1;
+val AF_UNIX = 1;
+val AF_INET = 2;
+val AF_ROUTE = 17;
+val AF_KEY = 29;
+val AF_INET6 = 30;
+val AF_SYSTEM = 32;
+val AF_NDRV = 27;
+
+val tcp_socket = fun() => NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+val udp_socket = fun() => NET.socket(NET.AF_INET, NET.SOCK_DGRAM, 0);
+
+val tcp_server = fun(address) => {
+	val server = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+	server.listen(address);
+	
+	return server;
+}

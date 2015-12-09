@@ -1,0 +1,73 @@
+#ifndef _TUNIT_ANITA
+#define _TUNIT_ANITA
+
+#define _assert_info(desc, file, line, num_ass)       \
+"'" + desc + "', file " + file + ", line " + (line).to_s + ", #assert: " + ((num_ass) + 1).to_s
+
+val AssertionFailure = fun(expr, file, line, num_ass) => {
+	if (expr != null) {
+		throw _assert_info(expr, file, line, num_ass);
+	}
+};
+
+val AssertionFailureExpected = fun(expr, value, expected, file, line, num_ass) => {
+	if (!(value == expected)) {
+		throw _assert_info(expr + " was: " + value.to_s + " expected: " + expected.to_s, file, line, num_ass);
+	}	
+};
+
+#define assert(x) 																				\
+this.AssertionFailure(																			\
+	(try {if (!(x)) {#x}} catch (e) {e.to_s})												\
+	, __FILE__, __LINE__, _assertions)																		\
+;																										\
+_assertions = _assertions + 1
+
+#define assert_eq(x, y) 																				\
+this.AssertionFailureExpected(																			\
+	(try {if (!(x == y)) {#x}} catch (e) {e.to_s})												\
+	, x, y, __FILE__, __LINE__, _assertions)																		\
+;																										\
+_assertions = _assertions + 1
+
+
+#define exc_val(x, def)																			\
+(try {																								\
+	(x);																								\
+	def;																								\
+} catch (e) {																						\
+	e;																									\
+})
+
+#define exc_val_re(x, def)																			\
+(try {																								\
+	(x);																								\
+	def;																								\
+} catch (e) {																						\
+	throw e;																									\
+})
+
+#define assert_exc(x, v)																		\
+assert(exc_val(x, null) == v)
+
+#define assert_noexc(x) assert(exc_val_re(x, null) == null)
+
+#define unreachable false
+#define reachable true
+
+#define assert_not(x) assert(!(x))
+#define assert_reachable() assert(reachable)
+#define assert_unreachable() assert(unreachable)
+
+#define BEGIN_TEST_ARGS(x, ...) 																\
+val x = fun(__VA_ARGS__) => {var _assertions = 0; val _fun_name = #x;
+
+#define BEGIN_TEST(x) 																			\
+val x = fun() => {var _assertions = 0; val _fun_name = #x;
+
+#define END_TEST(num) 																			\
+(_fun_name + ": " + _assertions.to_s + " assertion(-s)").puts;						\
+assert_eq(_assertions, (num))};
+
+
+#endif // !_TUNIT_ANITA

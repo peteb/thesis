@@ -1,0 +1,55 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_simple)
+	assert_reachable();
+	if (true) {
+		assert_reachable();
+	}
+	
+	assert_reachable();
+	
+	if (false) {
+		assert_unreachable();
+	}
+	
+	assert_reachable();
+	
+	if (3 == 3) {
+		assert_reachable();
+	}
+	
+	assert_reachable();
+	
+	if (3 != 3) {
+		assert_unreachable();
+	}
+	
+	assert_reachable();
+	
+END_TEST(7)
+
+BEGIN_TEST(test_nested)
+	assert_reachable();
+	
+	if (true) {
+		assert_reachable();
+		
+		if (false) {
+			assert_unreachable();
+		}
+		
+		assert_reachable();
+		
+		if (true) {
+			assert_reachable();
+		}
+		
+		assert_reachable();
+	}
+
+END_TEST(5)
+
+BEGIN_TEST(main)
+	this.test_simple();
+	this.test_nested();
+END_TEST(0)

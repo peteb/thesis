@@ -1,0 +1,10 @@
+#include "tunit.anita"
+
+BEGIN_TEST(main)
+	#assert(NET.address("127.0.0.1:12345").to_s == "127.0.0.1:12345");
+	val address = NET.address("127.0.0.1:12342");
+	assert(address.to_s == "127.0.0.1:12342");
+
+	("Google: " + NET.address("www.google.com").to_s).puts;
+	
+END_TEST(1)

@@ -1,0 +1,38 @@
+#include "tunit.anita"
+
+var mutable = "foo";
+val immutable = 4545;
+
+BEGIN_TEST(test_slots)
+	assert(this.mutable == "foo");
+	this.mutable = 555;
+	assert(this.mutable == 555);
+
+	#this.mutable = "katt";
+	#assert(this.mutable == "katt");
+	
+END_TEST(2)
+
+BEGIN_TEST(test_locals)
+	var mu = 555;
+	val imm = "foo";
+	
+	assert(mu == 555);
+	assert(imm == "foo");
+	
+	mu = "katt";
+	assert(mu == "katt");
+	
+	mu = imm;
+	assert(mu == "foo");
+	assert(imm == "foo");
+	
+	#imm = false;		# will cause compile error, hard to test..
+	#assert(imm == "foo");	
+	
+END_TEST(5)
+
+val main = fun() => {
+	this.test_locals();
+	this.test_slots();
+}

@@ -1,0 +1,12 @@
+val main = fun() => {
+	val assert = fun(x) => null;
+	
+	val upvalue = 42;
+	
+	val foo = fun() => {
+		upvalue;
+	}
+	
+	assert(upvalue == 42);
+	assert(foo() == 42);
+}

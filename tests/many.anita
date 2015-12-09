@@ -1,0 +1,30 @@
+
+val main = fun() => {
+	var x = 0;
+	
+	# while (x < 4095) {
+	# 	spawn fun() => {
+	# 		var y = 0;
+	# 		while (y < 10) {
+	# 			(x.to_s + ": " + y.to_s).puts;
+	# 			y = y + 1;
+	# 		}
+	# 	}
+	# 	x = x + 1;
+	# }
+
+
+	while (x < 40000) {
+		val proc = spawn fun() => {
+			("hej " + x.to_s).puts;
+		}
+		proc.wait;
+		x = x + 1;
+	}
+	# while (true) {
+	# 	
+	# }
+}
+
+# den här koden kraschade med empty finalizer
+# den som snurrar nu. men nu har jag tagit bort mem_set_initializer

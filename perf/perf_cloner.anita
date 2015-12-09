@@ -1,0 +1,29 @@
+val person_prototype = object {
+	var age;
+	var score;
+	val get_sum = fun() => this.age + this.score;
+};
+
+val create_person = fun(age, score) => {
+	val new_obj = this.person_prototype.clone;
+	new_obj.age = age;
+	new_obj.score = score;
+	
+	return new_obj;
+};
+
+val main = fun() => {
+	var i = 0;
+	
+	while (i < 6000000) {
+		val person = this.create_person(i, i);
+		person.get_sum;
+		person.age;
+		person.score;
+		person.get_sum;
+		person.age;
+		person.score;
+		
+		i = i + 1;
+	}
+};

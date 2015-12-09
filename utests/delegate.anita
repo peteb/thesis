@@ -1,0 +1,32 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_simple)
+	val base = object {
+		var class = "hund";
+	};
+	
+	val sub = object {
+		val delegate = base;
+	};
+	
+	val inst = object {
+		var delegate = sub;
+	};
+	
+	assert(inst.class == "hund");
+	base.class = "katt";
+	assert(inst.class == "katt");
+	
+	val newsub = object {
+		val class = "subkatt";
+	};
+	
+	inst.delegate = newsub;
+	assert(inst.class == "subkatt");
+	
+END_TEST(3)
+
+
+BEGIN_TEST(main)
+	this.test_simple();
+END_TEST(0)

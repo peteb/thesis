@@ -1,0 +1,5 @@
+* Remove boost!
+* solve segfaults when using finalizers
+* restore "method missing" exception
+* use managed memory (shared_ptr/weak_ptr)
+* &&, ||, should be short-circuit

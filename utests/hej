@@ -1,0 +1,5 @@
+
+val main = fun() => { 
+ this._assert((try {b() == "hej"} catch (e) {throw e.to_s + " in " + "fun.anita" + " at line " + (9).to_s}), "b()==hej", "fun.anita", 9);
+
+};

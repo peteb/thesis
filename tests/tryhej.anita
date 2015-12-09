@@ -1,0 +1,9 @@
+val main = fun() => {
+	try {
+		"try".puts;
+	}
+	catch (e) {
+		"catch".puts;
+	}
+	"bark".puts;
+}

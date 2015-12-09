@@ -1,0 +1,15 @@
+val main = fun() => {
+	var x = 3;
+	
+	val foo = fun() => {
+		# x;
+		# self.inspect;
+		x.to_s.puts;
+		x = 1;
+		x.to_s.puts;
+		# x = x + 1;
+	}
+	
+	foo();
+	# foo().to_s.puts;
+}

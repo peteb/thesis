@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby -wKU
+
+
+
+def header(caption)
+	"-- " + caption + " " + (caption.size..75).collect {"-"}.to_s
+end
+
+def redirect_output(to)
+	old_stdout = $stdout.dup
+	old_stderr = $stderr.dup
+	
+	$stdout.reopen(File.new(to, "w"))
+	$stderr.reopen($stdout)
+	
+	ret = yield
+	
+	$stdout.reopen(old_stdout)
+	$stderr.reopen(old_stderr)
+
+	ret
+end
+
+
+log_name = "temp.time"
+
+(1..3).each do |run|
+	# exit_failure = 0
+	# 
+	exit 1 unless redirect_output(log_name) {`time -p ./a.out`}
+
+	contents = File.open(log_name).read	
+	exit 1 if contents["Command terminated abnormally."]
+	
+	puts "\#" + run.to_s + ":"
+	puts contents
+	puts
+end
+
+
+
+# # # puts header "second"
+# `time ./a.out`
+
+# puts header "third"
+# `time ./a.out`

@@ -1,0 +1,4 @@
+
+val main = fun() => {
+	this.foo(try {} catch (e) {e});
+}

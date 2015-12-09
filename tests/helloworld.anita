@@ -1,0 +1,48 @@
+val get_separator = fun(width) => {
+	var i = 0;
+	var retval = "";
+	
+	while (i < width) {
+		retval = retval + "=";
+		i = i + 1;
+	}
+	
+	return retval;
+};
+
+val main = fun(app, val firstparam) => {
+	this.get_separator(13).print;
+	"Hello, World!".print;
+
+	val invalidName = "Peter";
+	
+	(try {
+		if (firstparam == invalidName) {
+			throw "Your name can't be " + invalidName + "!";
+		}
+		
+		"Your name isn't " + invalidName + ", it's " + ARGS(1) + "...";		
+	}
+	catch(e) {
+		">>> An error occured: " + e;
+	}).to_s.print;
+	
+
+	this.get_separator(13).print;
+	("Args: " + ARGS.to_s).print;
+	
+	this.get_separator(13).print;
+	var new_person = this.create_person(ARGS(1), 32);
+	("Created new person: '" + new_person() + "'").print;
+};
+
+val create_person = fun(name, age) => {
+	val ret = object {
+		val _name = name;
+		val _age = age;
+	
+		val to_s = fun() => this._name.to_s + " age: " + this._age.to_s;
+	};
+	
+	fun() => ret;
+} 

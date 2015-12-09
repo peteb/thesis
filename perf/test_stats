@@ -1,0 +1,91 @@
+#!/usr/bin/env ruby -wKU
+
+def numeric?(object)
+  true if Float(object) rescue false
+end
+
+def print_row(column_captions, column_widths)
+	blank_spaces = 0
+	
+	line = ""
+	
+	column_captions.each_with_index do |caption, idx|
+		line << " " * blank_spaces + caption
+		blank_spaces = column_widths[idx] - caption.length if idx < column_widths.size
+		blank_spaces = blank_spaces + 2
+	end
+	
+	puts line
+end
+
+def round_precision(float) 
+	(float * 100.0).to_i / 100.0
+end
+
+tests = []
+
+ARGV.each do |test| 
+	run_stats = File.open(test.chomp(".anita") + ".log", "r").read;
+	
+	headers = [:first, :second, :third]
+	parsed_values = {}
+	current_line = nil;
+	
+	run_stats.split(" ").each do |x|
+		if x[0...1] == "\#"
+			current_line = []
+			parsed_values[headers[x[1..-2].to_i - 1]] = current_line
+		elsif numeric? x
+			current_line << x.to_f
+		end
+		
+	end
+
+	average = []
+	
+	(0..2).each do |i|
+		sum = 0;
+		
+		headers.each do |header|
+			sum = sum + parsed_values[header][i]
+		end
+		
+		average[i] = round_precision(sum / 3.0)
+	end
+	
+	tests << {:name => test, 
+		:average => average
+	}.merge(parsed_values)
+end
+
+cat_width = []
+cat_width[0] = tests.max {|a, b| a[:name].length <=> b[:name].length}[:name].length
+cat_width[0] = cat_width[0] - 5
+
+num_headers = [:average, :first, :second, :third]
+
+num_headers.each_with_index do |header, idx|
+	longest = tests.max do |a,b| 
+		a[header].join(", ").length <=> b[header].join(", ").length
+	end
+	
+	cat_width[idx + 1] = longest[header].join(", ").length
+end
+
+total_length = cat_width.inject {|sum, x| sum + x}
+
+puts
+print_row(["Name", "Average", "First", "Second", "Third"], cat_width)
+
+# # puts "Test" + " " * cat_width[0] + "First    Second   Third   Average"
+puts "=" * total_length
+
+tests.each do |test_line|
+	# puts test_line[:name] + test_line[:first].join(", ")
+	
+	headers = []
+	headers << test_line[:name].chomp(".anita")
+
+	num_headers.each {|x| headers << test_line[x].join(", ")}
+	print_row(headers, cat_width)
+end

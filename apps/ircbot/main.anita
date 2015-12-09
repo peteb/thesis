@@ -1,0 +1,66 @@
+val main = fun() => {
+	# TODO: freenode använder ipv6?
+	
+	val adr = NET.address("irc.eu.freenode.net:6667");
+	val socket = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+	socket.connect(adr);
+	socket.puts("USER ptr_bot ptr_bot ptr_bot ptr_bot");
+	socket.puts("NICK ptr_bot");
+	socket.puts("JOIN #c++.se");
+	
+	# this blir här IO... antagligen.
+	val client_obj = this;
+	IO.each_line(socket, fun(x) => client_obj.parse_line(x, socket));
+	# LOBBY.parse_line("hej peter :ett långt meddelande", null);
+	
+	
+};
+
+
+val parse_line = fun(line, client) => {
+	val parse_elements = fun(line) => {
+		val elements = line.split(" ");
+		var ret = [];
+
+		var idx = 0;
+		while (idx < elements.size) {
+			if (elements(idx).size > 0) {
+				val part = elements(idx)(0);
+			
+				if (part == ":" && idx > 0) {
+					val msg = elements(idx..-1).join(" ");
+					ret = ret + msg(1..-1);
+					idx = elements.size;
+				}
+				else {
+					ret = ret + elements(idx);
+				}
+			}
+			
+			idx = idx + 1;
+		}
+
+		ret;		
+	};
+
+	val elements = parse_elements(line);
+	
+	if (elements.size > 0) {
+		LOBBY.handle_command(elements, client);
+	}
+};
+
+val handle_command = fun(cmd, client) => {
+	cmd.to_s.puts;
+	
+	if (cmd(0) == "PING") {
+		client.puts("PONG :" + cmd(1));			
+	}
+	if (cmd(1) == "PRIVMSG") {
+		if (cmd(3)(0..7) == "ptr_bot:") {
+			client.puts("PRIVMSG " + cmd(2) + " :ameh");
+			
+		}
+	}
+}
+

@@ -1,0 +1,179 @@
+#include "tunit.anita"
+
+BEGIN_TEST(lib_try_test)
+	val hej = fun() => IO.class;
+
+	assert(hej() == "io");
+	assert(IO.class == "io");
+	
+	null;
+	try {
+		1234;
+		assert(IO.class == "io");
+		val value = IO.class;
+		assert(value == "io");
+		
+		if (true) {
+			assert(IO.class == "io");
+			
+			var loop = true;
+			while (loop) {
+				loop = false;
+				assert(IO.class == "io");
+				
+				try {
+					"placeholder";
+					val name = IO.class;
+					assert(name == "io");
+					throw IO;
+					assert_unreachable();
+				}
+				catch (e) {
+					assert_reachable();
+					assert(e.class == "io");
+				}
+				assert(IO.class == "io");
+			}
+		}
+	}
+	catch (e) {
+		
+	}
+	
+	val my_fun = fun() => {
+		return IO.class;
+	}
+	
+	assert(my_fun() == "io");
+END_TEST(11)
+
+BEGIN_TEST(simple_test)
+	val upvalue = 42;
+	
+	val foo = fun() => {
+		upvalue;
+	}
+	
+	assert(upvalue == 42);
+	assert(foo() == 42);
+END_TEST(2)
+
+BEGIN_TEST(branch_test)
+	var sum = 5;
+	assert(sum == 5);
+	
+	if (true) {
+		assert(sum == 5);
+		val foo = fun() => sum = sum + 1;
+		assert(sum == 5);
+		foo();
+		assert(sum == 6);
+	}
+	
+	assert(sum == 6);
+END_TEST(5)
+
+BEGIN_TEST(nested_test)
+	val immutable = 5;
+	assert(immutable == 5);
+	
+	val nest1 = fun() => {
+		assert(immutable == 5);
+		
+		val nest2 = fun() => {
+			assert(immutable == 5);
+		}
+	
+		assert(immutable == 5);
+		nest2();
+		assert(immutable == 5);		
+	}
+	
+	assert(immutable == 5);
+	nest1();
+	assert(immutable == 5);
+	
+
+	# test writing to upvals
+	var mutable = 5;
+	assert(mutable == 5);
+	
+	val nest21 = fun() => {
+		assert(mutable == 5);
+		
+		val nest22 = fun() => {
+			assert(mutable == 5);
+			mutable = 8;
+			assert(mutable == 8)
+		}
+	
+		assert(mutable == 5);
+		nest22();
+		assert(mutable == 8);		
+	}
+	
+	assert(mutable == 5);
+	nest21();
+	assert(mutable == 8);
+	
+
+	# test writing to deep-nested
+	mutable = 10;
+	assert(mutable == 10);
+	
+	val deep_nested = fun() => {
+		fun() => {
+			fun() => {
+				fun() => {
+					fun() => {
+						assert(mutable == 10);
+						mutable = 555;
+						assert(mutable == 555);
+					}
+				}
+			}
+		}
+	}
+	
+	assert(mutable == 10);
+	deep_nested()()()()();
+	assert(mutable == 555);
+	
+	# test deep-nested again, but call on each level
+	assert(mutable == 555);
+
+
+	val level1 = fun() => {
+		val level2 = fun() => {
+			val level3 = fun() => {
+				val level4 = fun() => {
+					val level5 = fun() => {
+						assert(mutable == 555);
+						mutable = 1337;
+						assert(mutable == 1337);
+					}
+					
+					level5();
+				}
+				
+				level4();
+			}
+			
+			level3();
+		}
+		
+		level2();
+	}
+
+	assert(mutable == 555);
+	level1();
+	assert(mutable == 1337);
+	
+END_TEST(25)
+
+BEGIN_TEST(main)
+	this.simple_test();
+	this.lib_try_test();
+	this.branch_test();
+	this.nested_test();
+END_TEST(0)

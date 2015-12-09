@@ -1,0 +1,4 @@
+val main = fun() => {
+	val file = IO.open_file("test.txt", "w");
+	file.puts("tja");
+}

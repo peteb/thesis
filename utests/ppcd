@@ -1,0 +1,48 @@
+# 1 "<stdin>"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "<stdin>"
+# 1 "tunit.anita" 1
+
+
+
+
+
+
+val AssertionFailure = fun(expr, file, line) => {
+ if (expr != null) {
+  throw "'" + expr + "', file " + file + ", line " + (line).to_s + ".";
+ }
+};
+# 2 "<stdin>" 2
+
+val test_simple = fun() => {var _assertions = 0; val _fun_name = "test_simple";
+ this.AssertionFailure( (try {if (!([].to_s == "[]")) {"[].to_s == \"[]\""}} catch (e) {e.to_s}) , "<stdin>", 4) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(["foo"].to_s == "[foo]")) {"[\"foo\"].to_s == \"[foo]\""}} catch (e) {e.to_s}) , "<stdin>", 5) ; _assertions = _assertions + 1;
+
+ var array = [1, 2, true, "four"];
+
+ this.AssertionFailure( (try {if (!(array(-1) == "four")) {"array(-1) == \"four\""}} catch (e) {e.to_s}) , "<stdin>", 9) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(array(0) == 1)) {"array(0) == 1"}} catch (e) {e.to_s}) , "<stdin>", 10) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(array(1) == 2)) {"array(1) == 2"}} catch (e) {e.to_s}) , "<stdin>", 11) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(array(2) == true)) {"array(2) == true"}} catch (e) {e.to_s}) , "<stdin>", 12) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(array(3) == "four")) {"array(3) == \"four\""}} catch (e) {e.to_s}) , "<stdin>", 13) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(array(4) == null)) {"array(4) == null"}} catch (e) {e.to_s}) , "<stdin>", 14) ; _assertions = _assertions + 1;
+
+ var ret = array.inject("", fun(x, p) => p + x.to_s);
+ this.AssertionFailure( (try {if (!(ret == "12truefour")) {"ret == \"12truefour\""}} catch (e) {e.to_s}) , "<stdin>", 17) ; _assertions = _assertions + 1;
+
+ var new_array = array.append("last");
+ new_array = new_array.append(null);
+
+ ret = array.inject("", fun(x, p) => p + x.to_s);
+ this.AssertionFailure( (try {if (!(ret == "12truefour")) {"ret == \"12truefour\""}} catch (e) {e.to_s}) , "<stdin>", 23) ; _assertions = _assertions + 1;
+
+ ret = new_array.inject("", fun(x, p) => p + x.to_s);
+ this.AssertionFailure( (try {if (!(ret == "12truefourlastnull")) {"ret == \"12truefourlastnull\""}} catch (e) {e.to_s}) , "<stdin>", 26) ; _assertions = _assertions + 1;
+
+(_fun_name + ": " + _assertions.to_s + " assertion(-s)").puts; this.AssertionFailure( (try {if (!(_assertions == (11))) {"_assertions == (11)"}} catch (e) {e.to_s}) , "<stdin>", 28) ; _assertions = _assertions + 1};
+
+val main = fun() => {var _assertions = 0; val _fun_name = "main";
+ this.test_simple();
+(_fun_name + ": " + _assertions.to_s + " assertion(-s)").puts; this.AssertionFailure( (try {if (!(_assertions == (0))) {"_assertions == (0)"}} catch (e) {e.to_s}) , "<stdin>", 32) ; _assertions = _assertions + 1};

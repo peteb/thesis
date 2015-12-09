@@ -1,0 +1,26 @@
+# 1 "<stdin>"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "<stdin>"
+# 1 "../../../utests/tunit.anita" 1
+
+
+
+
+
+
+val AssertionFailure = fun(expr, file, line) => {
+ if (expr != null) {
+  throw "'" + expr + "', file " + file + ", line " + (line).to_s + ".";
+ }
+};
+# 2 "<stdin>" 2
+
+val tcp_test = fun() => {var _assertions = 0; val _fun_name = "tcp_test";
+ NET.socket();
+
+(_fun_name + ": " + _assertions.to_s + " assertion(-s)").puts; this.AssertionFailure( (try {if (!(_assertions == (0))) {"_assertions == (0)"}} catch (e) {e.to_s}) , "<stdin>", 6) ; _assertions = _assertions + 1};
+
+val main = fun() => {var _assertions = 0; val _fun_name = "main";;
+ this.tcp_test();
+(_fun_name + ": " + _assertions.to_s + " assertion(-s)").puts; this.AssertionFailure( (try {if (!(_assertions == (0))) {"_assertions == (0)"}} catch (e) {e.to_s}) , "<stdin>", 10) ; _assertions = _assertions + 1};

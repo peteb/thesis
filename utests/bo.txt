@@ -1,0 +1,2239 @@
+; AST::Unit
+;    AST::Vardef(AssertionFailure)
+;       AST::Closure
+;          Formals:
+;             AST::Vardef(expr)
+;                AST::Literal(null)
+;             AST::Vardef(file)
+;                AST::Literal(null)
+;             AST::Vardef(line)
+;                AST::Literal(null)
+;          Body:
+;             AST::Block
+;                AST::If
+;                   Condition:
+;                      AST::MethodCall(neq)
+;                         Target:
+;                            AST::Var(expr)
+;                         Arguments:
+;                            AST::Literal(null)
+;                   Then:
+;                      AST::Block
+;                         AST::Throw
+;                            AST::MethodCall(add)
+;                               Target:
+;                                  AST::MethodCall(add)
+;                                     Target:
+;                                        AST::MethodCall(add)
+;                                           Target:
+;                                              AST::MethodCall(add)
+;                                                 Target:
+;                                                    AST::MethodCall(add)
+;                                                       Target:
+;                                                          AST::MethodCall(add)
+;                                                             Target:
+;                                                                AST::Literal("'")
+;                                                             Arguments:
+;                                                                AST::Var(expr)
+;                                                       Arguments:
+;                                                          AST::Literal("', file ")
+;                                                 Arguments:
+;                                                    AST::Var(file)
+;                                           Arguments:
+;                                              AST::Literal(", line ")
+;                                     Arguments:
+;                                        AST::MethodCall(to_s)
+;                                           Target:
+;                                              AST::Var(line)
+;                                           Arguments:
+;                                              <none>
+;                               Arguments:
+;                                  AST::Literal(".")
+;                   Else:
+;                      AST::Literal(null)
+;    AST::Vardef(test_simple)
+;       AST::Closure
+;          Formals:
+;             <none>
+;          Body:
+;             AST::Block
+;                AST::Vardef(_assertions)
+;                   AST::Literal(0)
+;                AST::Vardef(_fun_name)
+;                   AST::Literal("test_simple")
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(to_s)
+;                                                    Target:
+;                                                       AST::Array
+;                                                    Arguments:
+;                                                       <none>
+;                                              Arguments:
+;                                                 AST::Literal("[]")
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("[].to_s == \"[]\"")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(4)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(to_s)
+;                                                    Target:
+;                                                       AST::Array
+;                                                          AST::Literal("foo")
+;                                                    Arguments:
+;                                                       <none>
+;                                              Arguments:
+;                                                 AST::Literal("[foo]")
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("[\"foo\"].to_s == \"[foo]\"")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(5)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::Vardef(array)
+;                   AST::Array
+;                      AST::Literal(1)
+;                      AST::Literal(2)
+;                      AST::Literal(true)
+;                      AST::Literal("four")
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(apply)
+;                                                    Target:
+;                                                       AST::Var(array)
+;                                                    Arguments:
+;                                                       AST::Literal(-1)
+;                                              Arguments:
+;                                                 AST::Literal("four")
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("array(-1) == \"four\"")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(9)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(apply)
+;                                                    Target:
+;                                                       AST::Var(array)
+;                                                    Arguments:
+;                                                       AST::Literal(0)
+;                                              Arguments:
+;                                                 AST::Literal(1)
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("array(0) == 1")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(10)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(apply)
+;                                                    Target:
+;                                                       AST::Var(array)
+;                                                    Arguments:
+;                                                       AST::Literal(1)
+;                                              Arguments:
+;                                                 AST::Literal(2)
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("array(1) == 2")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(11)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(apply)
+;                                                    Target:
+;                                                       AST::Var(array)
+;                                                    Arguments:
+;                                                       AST::Literal(2)
+;                                              Arguments:
+;                                                 AST::Literal(true)
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("array(2) == true")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(12)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(apply)
+;                                                    Target:
+;                                                       AST::Var(array)
+;                                                    Arguments:
+;                                                       AST::Literal(3)
+;                                              Arguments:
+;                                                 AST::Literal("four")
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("array(3) == \"four\"")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(13)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::MethodCall(apply)
+;                                                    Target:
+;                                                       AST::Var(array)
+;                                                    Arguments:
+;                                                       AST::Literal(4)
+;                                              Arguments:
+;                                                 AST::Literal(null)
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("array(4) == null")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(14)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::Vardef(ret)
+;                   AST::MethodCall(inject)
+;                      Target:
+;                         AST::Var(array)
+;                      Arguments:
+;                         AST::Literal("")
+;                         AST::Closure
+;                            Formals:
+;                               AST::Vardef(x)
+;                                  AST::Literal(null)
+;                               AST::Vardef(p)
+;                                  AST::Literal(null)
+;                            Body:
+;                               AST::MethodCall(add)
+;                                  Target:
+;                                     AST::Var(p)
+;                                  Arguments:
+;                                     AST::MethodCall(to_s)
+;                                        Target:
+;                                           AST::Var(x)
+;                                        Arguments:
+;                                           <none>
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::Var(ret)
+;                                              Arguments:
+;                                                 AST::Literal("12truefour")
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("ret == \"12truefour\"")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(17)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::Vardef(new_array)
+;                   AST::MethodCall(append)
+;                      Target:
+;                         AST::Var(array)
+;                      Arguments:
+;                         AST::Literal("last")
+;                AST::Assignment(new_array)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(append)
+;                         Target:
+;                            AST::Var(new_array)
+;                         Arguments:
+;                            AST::Literal(null)
+;                AST::Assignment(ret)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(inject)
+;                         Target:
+;                            AST::Var(array)
+;                         Arguments:
+;                            AST::Literal("")
+;                            AST::Closure
+;                               Formals:
+;                                  AST::Vardef(x)
+;                                     AST::Literal(null)
+;                                  AST::Vardef(p)
+;                                     AST::Literal(null)
+;                               Body:
+;                                  AST::MethodCall(add)
+;                                     Target:
+;                                        AST::Var(p)
+;                                     Arguments:
+;                                        AST::MethodCall(to_s)
+;                                           Target:
+;                                              AST::Var(x)
+;                                           Arguments:
+;                                              <none>
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::Var(ret)
+;                                              Arguments:
+;                                                 AST::Literal("12truefour")
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("ret == \"12truefour\"")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(23)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::Assignment(ret)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(inject)
+;                         Target:
+;                            AST::Var(new_array)
+;                         Arguments:
+;                            AST::Literal("")
+;                            AST::Closure
+;                               Formals:
+;                                  AST::Vardef(x)
+;                                     AST::Literal(null)
+;                                  AST::Vardef(p)
+;                                     AST::Literal(null)
+;                               Body:
+;                                  AST::MethodCall(add)
+;                                     Target:
+;                                        AST::Var(p)
+;                                     Arguments:
+;                                        AST::MethodCall(to_s)
+;                                           Target:
+;                                              AST::Var(x)
+;                                           Arguments:
+;                                              <none>
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::Var(ret)
+;                                              Arguments:
+;                                                 AST::Literal("12truefourlastnull")
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("ret == \"12truefourlastnull\"")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(26)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;                AST::MethodCall(puts)
+;                   Target:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::MethodCall(add)
+;                               Target:
+;                                  AST::MethodCall(add)
+;                                     Target:
+;                                        AST::Var(_fun_name)
+;                                     Arguments:
+;                                        AST::Literal(": ")
+;                               Arguments:
+;                                  AST::MethodCall(to_s)
+;                                     Target:
+;                                        AST::Var(_assertions)
+;                                     Arguments:
+;                                        <none>
+;                         Arguments:
+;                            AST::Literal(" assertion(-s)")
+;                   Arguments:
+;                      <none>
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::Var(_assertions)
+;                                              Arguments:
+;                                                 AST::Literal(11)
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("_assertions == (11)")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(28)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+;    AST::Vardef(main)
+;       AST::Closure
+;          Formals:
+;             <none>
+;          Body:
+;             AST::Block
+;                AST::Vardef(_assertions)
+;                   AST::Literal(0)
+;                AST::Vardef(_fun_name)
+;                   AST::Literal("main")
+;                AST::MethodCall(test_simple)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      <none>
+;                AST::MethodCall(puts)
+;                   Target:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::MethodCall(add)
+;                               Target:
+;                                  AST::MethodCall(add)
+;                                     Target:
+;                                        AST::Var(_fun_name)
+;                                     Arguments:
+;                                        AST::Literal(": ")
+;                               Arguments:
+;                                  AST::MethodCall(to_s)
+;                                     Target:
+;                                        AST::Var(_assertions)
+;                                     Arguments:
+;                                        <none>
+;                         Arguments:
+;                            AST::Literal(" assertion(-s)")
+;                   Arguments:
+;                      <none>
+;                AST::MethodCall(AssertionFailure)
+;                   Target:
+;                      AST::Var(THIS)
+;                   Arguments:
+;                      AST::Try
+;                         Body:
+;                            AST::Block
+;                               AST::If
+;                                  Condition:
+;                                     AST::MethodCall(not)
+;                                        Target:
+;                                           AST::MethodCall(eq)
+;                                              Target:
+;                                                 AST::Var(_assertions)
+;                                              Arguments:
+;                                                 AST::Literal(0)
+;                                        Arguments:
+;                                           <none>
+;                                  Then:
+;                                     AST::Block
+;                                        AST::Literal("_assertions == (0)")
+;                                  Else:
+;                                     AST::Literal(null)
+;                         Formal:
+;                            AST::Vardef(e)
+;                               AST::Literal(null)
+;                         Catch:
+;                            AST::Block
+;                               AST::MethodCall(to_s)
+;                                  Target:
+;                                     AST::Var(e)
+;                                  Arguments:
+;                                     <none>
+;                      AST::Literal("array.anita")
+;                      AST::Literal(32)
+;                AST::Assignment(_assertions)
+;                   Target:
+;                      <null>
+;                   Value:
+;                      AST::MethodCall(add)
+;                         Target:
+;                            AST::Var(_assertions)
+;                         Arguments:
+;                            AST::Literal(1)
+; 
+; ModuleID = 'array.anita'
+
+%callsite = type { i8*, i8*, i32* }
+%fptr = type %ret (i8*, i8*, i8*)*
+%ret = type { i8*, i8* }
+%sym = type i32*
+
+@__lobby_map = linkonce global i8* null           ; <i8**> [#uses=1]
+@__sym_neq = weak global i32 0                    ; <i32*> [#uses=1]
+@0 = internal constant [2 x i8] c"'\00"           ; <[2 x i8]*> [#uses=1]
+@__sym_add = weak global i32 0                    ; <i32*> [#uses=28]
+@1 = internal constant [9 x i8] c"', file \00"    ; <[9 x i8]*> [#uses=1]
+@2 = internal constant [8 x i8] c", line \00"     ; <[8 x i8]*> [#uses=1]
+@__sym_to_s = weak global i32 0                   ; <i32*> [#uses=21]
+@3 = internal constant [2 x i8] c".\00"           ; <[2 x i8]*> [#uses=1]
+@__sym_AssertionFailure = weak global i32 0       ; <i32*> [#uses=14]
+@4 = internal constant [12 x i8] c"test_simple\00" ; <[12 x i8]*> [#uses=1]
+@__sym_eq = weak global i32 0                     ; <i32*> [#uses=13]
+@5 = internal constant [3 x i8] c"[]\00"          ; <[3 x i8]*> [#uses=1]
+@__sym_not = weak global i32 0                    ; <i32*> [#uses=13]
+@6 = internal constant [18 x i8] c"[].to_s == \5C\22[]\5C\22\00" ; <[18 x i8]*> [#uses=1]
+@7 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@8 = internal constant [4 x i8] c"foo\00"         ; <[4 x i8]*> [#uses=1]
+@9 = internal constant [6 x i8] c"[foo]\00"       ; <[6 x i8]*> [#uses=1]
+@10 = internal constant [28 x i8] c"[\5C\22foo\5C\22].to_s == \5C\22[foo]\5C\22\00" ; <[28 x i8]*> [#uses=1]
+@11 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@12 = internal constant [5 x i8] c"four\00"       ; <[5 x i8]*> [#uses=1]
+@__sym_apply = weak global i32 0                  ; <i32*> [#uses=6]
+@13 = internal constant [5 x i8] c"four\00"       ; <[5 x i8]*> [#uses=1]
+@14 = internal constant [22 x i8] c"array(-1) == \5C\22four\5C\22\00" ; <[22 x i8]*> [#uses=1]
+@15 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@16 = internal constant [14 x i8] c"array(0) == 1\00" ; <[14 x i8]*> [#uses=1]
+@17 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@18 = internal constant [14 x i8] c"array(1) == 2\00" ; <[14 x i8]*> [#uses=1]
+@19 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@20 = internal constant [17 x i8] c"array(2) == true\00" ; <[17 x i8]*> [#uses=1]
+@21 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@22 = internal constant [5 x i8] c"four\00"       ; <[5 x i8]*> [#uses=1]
+@23 = internal constant [21 x i8] c"array(3) == \5C\22four\5C\22\00" ; <[21 x i8]*> [#uses=1]
+@24 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@25 = internal constant [17 x i8] c"array(4) == null\00" ; <[17 x i8]*> [#uses=1]
+@26 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@__sym_inject = weak global i32 0                 ; <i32*> [#uses=3]
+@27 = internal constant [1 x i8] zeroinitializer  ; <[1 x i8]*> [#uses=1]
+@28 = internal constant [11 x i8] c"12truefour\00" ; <[11 x i8]*> [#uses=1]
+@29 = internal constant [22 x i8] c"ret == \5C\2212truefour\5C\22\00" ; <[22 x i8]*> [#uses=1]
+@30 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@__sym_append = weak global i32 0                 ; <i32*> [#uses=2]
+@31 = internal constant [5 x i8] c"last\00"       ; <[5 x i8]*> [#uses=1]
+@32 = internal constant [1 x i8] zeroinitializer  ; <[1 x i8]*> [#uses=1]
+@33 = internal constant [11 x i8] c"12truefour\00" ; <[11 x i8]*> [#uses=1]
+@34 = internal constant [22 x i8] c"ret == \5C\2212truefour\5C\22\00" ; <[22 x i8]*> [#uses=1]
+@35 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@36 = internal constant [1 x i8] zeroinitializer  ; <[1 x i8]*> [#uses=1]
+@37 = internal constant [19 x i8] c"12truefourlastnull\00" ; <[19 x i8]*> [#uses=1]
+@38 = internal constant [30 x i8] c"ret == \5C\2212truefourlastnull\5C\22\00" ; <[30 x i8]*> [#uses=1]
+@39 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@40 = internal constant [3 x i8] c": \00"         ; <[3 x i8]*> [#uses=1]
+@41 = internal constant [15 x i8] c" assertion(-s)\00" ; <[15 x i8]*> [#uses=1]
+@__sym_puts = weak global i32 0                   ; <i32*> [#uses=2]
+@42 = internal constant [20 x i8] c"_assertions == (11)\00" ; <[20 x i8]*> [#uses=1]
+@43 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@__sym_test_simple = weak global i32 0            ; <i32*> [#uses=2]
+@44 = internal constant [5 x i8] c"main\00"       ; <[5 x i8]*> [#uses=1]
+@45 = internal constant [3 x i8] c": \00"         ; <[3 x i8]*> [#uses=1]
+@46 = internal constant [15 x i8] c" assertion(-s)\00" ; <[15 x i8]*> [#uses=1]
+@47 = internal constant [19 x i8] c"_assertions == (0)\00" ; <[19 x i8]*> [#uses=1]
+@48 = internal constant [12 x i8] c"array.anita\00" ; <[12 x i8]*> [#uses=1]
+@__sym_main = weak global i32 0                   ; <i32*> [#uses=1]
+
+declare %ret @object_exec(i8*, i32*, i8*)
+
+declare i8* @object_set_slot(i8*, i32*, i8*, i16)
+
+declare i8* @object_get_slot(i8*, i32*)
+
+declare %fptr @object_lookup_method(i8*, i32*)
+
+declare i8* @object_create()
+
+declare i8* @string_object(i8* noalias nocapture) readnone
+
+declare i8* @int_object(i32) readnone
+
+declare i8* @float_object(float) readnone
+
+declare i8* @bool_object(i32) readnone
+
+declare i8* @null_object() readnone
+
+declare i8* @closure_object_place()
+
+declare i8* @closure_object(%fptr)
+
+declare i8* @closure_set_fptrC(i8*, %fptr)
+
+declare i8* @array_get_elementC(i8*, i32)
+
+declare i8* @array_set_elementC(i8*, i32, i8*)
+
+declare i32 @bool_get_value(i8*) readnone
+
+declare i8* @array_object(i32)
+
+declare %ret @__t_throw(i8*)
+
+declare i32 @__t_start(i32, i8*, i8*)
+
+declare void @__t_init()
+
+declare i8* @__t_spawn(i8*)
+
+declare i8* @__t_send(i8*, i8*)
+
+declare i8* @__t_clone(i8*)
+
+declare i8* @__t_wrap_value(i8*)
+
+declare void @__t_callsite(%callsite*, i32*, i8*)
+
+declare %ret @__t_call(%callsite*, i8*)
+
+define i32 @main(i32, i8*) nounwind {
+entry:
+  call void @__t_init()
+  %2 = call i8* @object_create()                  ; <i8*> [#uses=5]
+  %3 = call i8* @closure_object_place()           ; <i8*> [#uses=3]
+  %4 = call i8* @closure_set_fptrC(i8* %3, %fptr @__closure) ; <i8*> [#uses=0]
+  %AssertionFailure = alloca i8*                  ; <i8**> [#uses=1]
+  store i8* %3, i8** %AssertionFailure
+  %5 = call i8* @__t_wrap_value(i8* %3)           ; <i8*> [#uses=1]
+  %6 = call i8* @object_set_slot(i8* %2, i32* @__sym_AssertionFailure, i8* %5, i16 0) ; <i8*> [#uses=0]
+  %7 = call i8* @closure_object_place()           ; <i8*> [#uses=3]
+  %8 = call i8* @closure_set_fptrC(i8* %7, %fptr @__closure1) ; <i8*> [#uses=0]
+  %test_simple = alloca i8*                       ; <i8**> [#uses=1]
+  store i8* %7, i8** %test_simple
+  %9 = call i8* @__t_wrap_value(i8* %7)           ; <i8*> [#uses=1]
+  %10 = call i8* @object_set_slot(i8* %2, i32* @__sym_test_simple, i8* %9, i16 0) ; <i8*> [#uses=0]
+  %11 = call i8* @closure_object_place()          ; <i8*> [#uses=3]
+  %12 = call i8* @closure_set_fptrC(i8* %11, %fptr @__closure5) ; <i8*> [#uses=0]
+  %main = alloca i8*                              ; <i8**> [#uses=1]
+  store i8* %11, i8** %main
+  %13 = call i8* @__t_wrap_value(i8* %11)         ; <i8*> [#uses=1]
+  %14 = call i8* @object_set_slot(i8* %2, i32* @__sym_main, i8* %13, i16 0) ; <i8*> [#uses=0]
+  store i8* %2, i8** @__lobby_map
+  %15 = call i32 @__t_start(i32 %0, i8* %1, i8* %2) ; <i32> [#uses=1]
+  ret i32 %15
+}
+
+define internal %ret @__closure(i8*, i8*, i8*) nounwind {
+entry:
+  %__retval = alloca %ret                         ; <%ret*> [#uses=3]
+  %3 = call i8* @array_get_elementC(i8* %2, i32 0) ; <i8*> [#uses=1]
+  %expr = alloca i8*                              ; <i8**> [#uses=3]
+  store i8* %3, i8** %expr
+  %4 = call i8* @array_get_elementC(i8* %2, i32 1) ; <i8*> [#uses=1]
+  %file = alloca i8*                              ; <i8**> [#uses=2]
+  store i8* %4, i8** %file
+  %5 = call i8* @array_get_elementC(i8* %2, i32 2) ; <i8*> [#uses=1]
+  %line = alloca i8*                              ; <i8**> [#uses=2]
+  store i8* %5, i8** %line
+  br label %cache
+
+cache:                                            ; preds = %entry
+  %6 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %7 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %7, i32* @__sym_add, i8* %6)
+  %8 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %9 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %9, i32* @__sym_to_s, i8* %8)
+  %10 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %11 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %11, i32* @__sym_add, i8* %10)
+  %12 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %13 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %13, i32* @__sym_add, i8* %12)
+  %14 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %15 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %15, i32* @__sym_add, i8* %14)
+  %16 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %17 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %17, i32* @__sym_add, i8* %16)
+  %18 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %19 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %19, i32* @__sym_add, i8* %18)
+  %20 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %21 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %21, i32* @__sym_neq, i8* %20)
+  br label %cont
+
+cont:                                             ; preds = %cache
+  %22 = load i8** %expr                           ; <i8*> [#uses=1]
+  %lit = call i8* @null_object()                  ; <i8*> [#uses=1]
+  %23 = call i8* @array_set_elementC(i8* %20, i32 0, i8* %lit) ; <i8*> [#uses=0]
+  %24 = call %ret @__t_call(%callsite* %21, i8* %22) ; <%ret> [#uses=1]
+  %retval = extractvalue %ret %24, 0              ; <i8*> [#uses=1]
+  %25 = call i32 @bool_get_value(i8* %retval)     ; <i32> [#uses=1]
+  %26 = icmp ne i32 %25, 0                        ; <i1> [#uses=1]
+  br i1 %26, label %then, label %else
+
+then:                                             ; preds = %cont
+  %lit1 = call i8* @string_object(i8* getelementptr inbounds ([2 x i8]* @0, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %27 = load i8** %expr                           ; <i8*> [#uses=1]
+  %28 = call i8* @array_set_elementC(i8* %18, i32 0, i8* %27) ; <i8*> [#uses=0]
+  %29 = call %ret @__t_call(%callsite* %19, i8* %lit1) ; <%ret> [#uses=1]
+  %retval2 = extractvalue %ret %29, 0             ; <i8*> [#uses=1]
+  %lit3 = call i8* @string_object(i8* getelementptr inbounds ([9 x i8]* @1, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %30 = call i8* @array_set_elementC(i8* %16, i32 0, i8* %lit3) ; <i8*> [#uses=0]
+  %31 = call %ret @__t_call(%callsite* %17, i8* %retval2) ; <%ret> [#uses=1]
+  %retval4 = extractvalue %ret %31, 0             ; <i8*> [#uses=1]
+  %32 = load i8** %file                           ; <i8*> [#uses=1]
+  %33 = call i8* @array_set_elementC(i8* %14, i32 0, i8* %32) ; <i8*> [#uses=0]
+  %34 = call %ret @__t_call(%callsite* %15, i8* %retval4) ; <%ret> [#uses=1]
+  %retval5 = extractvalue %ret %34, 0             ; <i8*> [#uses=1]
+  %lit6 = call i8* @string_object(i8* getelementptr inbounds ([8 x i8]* @2, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %35 = call i8* @array_set_elementC(i8* %12, i32 0, i8* %lit6) ; <i8*> [#uses=0]
+  %36 = call %ret @__t_call(%callsite* %13, i8* %retval5) ; <%ret> [#uses=1]
+  %retval7 = extractvalue %ret %36, 0             ; <i8*> [#uses=1]
+  %37 = load i8** %line                           ; <i8*> [#uses=1]
+  %38 = call %ret @__t_call(%callsite* %9, i8* %37) ; <%ret> [#uses=1]
+  %retval8 = extractvalue %ret %38, 0             ; <i8*> [#uses=1]
+  %39 = call i8* @array_set_elementC(i8* %10, i32 0, i8* %retval8) ; <i8*> [#uses=0]
+  %40 = call %ret @__t_call(%callsite* %11, i8* %retval7) ; <%ret> [#uses=1]
+  %retval9 = extractvalue %ret %40, 0             ; <i8*> [#uses=1]
+  %lit10 = call i8* @string_object(i8* getelementptr inbounds ([2 x i8]* @3, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %41 = call i8* @array_set_elementC(i8* %6, i32 0, i8* %lit10) ; <i8*> [#uses=0]
+  %42 = call %ret @__t_call(%callsite* %7, i8* %retval9) ; <%ret> [#uses=1]
+  %retval11 = extractvalue %ret %42, 0            ; <i8*> [#uses=2]
+  %43 = call %ret @__t_throw(i8* %retval11)       ; <%ret> [#uses=1]
+  %retval12 = extractvalue %ret %43, 0            ; <i8*> [#uses=0]
+  br label %ifcont
+
+else:                                             ; preds = %cont
+  %lit13 = call i8* @null_object()                ; <i8*> [#uses=1]
+  br label %ifcont
+
+ifcont:                                           ; preds = %else, %then
+  %iftmp = phi i8* [ %retval11, %then ], [ %lit13, %else ] ; <i8*> [#uses=1]
+  %44 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  %45 = insertvalue %ret %44, i8* %iftmp, 0       ; <%ret> [#uses=1]
+  store %ret %45, %ret* %__retval
+  br label %ret
+
+ret:                                              ; preds = %ifcont
+  %46 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  ret %ret %46
+}
+
+define internal %ret @__closure1(i8*, i8*, i8*) nounwind {
+entry:
+  %__retval = alloca %ret                         ; <%ret*> [#uses=3]
+  br label %cache
+
+cache:                                            ; preds = %entry
+  %3 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %4 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %4, i32* @__sym_add, i8* %3)
+  %5 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %6 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %6, i32* @__sym_to_s, i8* %5)
+  %7 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %8 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %8, i32* @__sym_not, i8* %7)
+  %9 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %10 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %10, i32* @__sym_eq, i8* %9)
+  %11 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %12 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %12, i32* @__sym_AssertionFailure, i8* %11)
+  %13 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %14 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %14, i32* @__sym_puts, i8* %13)
+  %15 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %16 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %16, i32* @__sym_add, i8* %15)
+  %17 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %18 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %18, i32* @__sym_to_s, i8* %17)
+  %19 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %20 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %20, i32* @__sym_add, i8* %19)
+  %21 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %22 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %22, i32* @__sym_add, i8* %21)
+  %23 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %24 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %24, i32* @__sym_add, i8* %23)
+  %25 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %26 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %26, i32* @__sym_to_s, i8* %25)
+  %27 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %28 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %28, i32* @__sym_not, i8* %27)
+  %29 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %30 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %30, i32* @__sym_eq, i8* %29)
+  %31 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %32 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %32, i32* @__sym_AssertionFailure, i8* %31)
+  %33 = call i8* @array_object(i32 2)             ; <i8*> [#uses=3]
+  %34 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %34, i32* @__sym_inject, i8* %33)
+  %35 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %36 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %36, i32* @__sym_add, i8* %35)
+  %37 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %38 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %38, i32* @__sym_to_s, i8* %37)
+  %39 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %40 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %40, i32* @__sym_not, i8* %39)
+  %41 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %42 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %42, i32* @__sym_eq, i8* %41)
+  %43 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %44 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %44, i32* @__sym_AssertionFailure, i8* %43)
+  %45 = call i8* @array_object(i32 2)             ; <i8*> [#uses=3]
+  %46 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %46, i32* @__sym_inject, i8* %45)
+  %47 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %48 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %48, i32* @__sym_append, i8* %47)
+  %49 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %50 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %50, i32* @__sym_append, i8* %49)
+  %51 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %52 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %52, i32* @__sym_add, i8* %51)
+  %53 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %54 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %54, i32* @__sym_to_s, i8* %53)
+  %55 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %56 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %56, i32* @__sym_not, i8* %55)
+  %57 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %58 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %58, i32* @__sym_eq, i8* %57)
+  %59 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %60 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %60, i32* @__sym_AssertionFailure, i8* %59)
+  %61 = call i8* @array_object(i32 2)             ; <i8*> [#uses=3]
+  %62 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %62, i32* @__sym_inject, i8* %61)
+  %63 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %64 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %64, i32* @__sym_add, i8* %63)
+  %65 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %66 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %66, i32* @__sym_to_s, i8* %65)
+  %67 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %68 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %68, i32* @__sym_not, i8* %67)
+  %69 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %70 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %70, i32* @__sym_eq, i8* %69)
+  %71 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %72 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %72, i32* @__sym_apply, i8* %71)
+  %73 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %74 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %74, i32* @__sym_AssertionFailure, i8* %73)
+  %75 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %76 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %76, i32* @__sym_add, i8* %75)
+  %77 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %78 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %78, i32* @__sym_to_s, i8* %77)
+  %79 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %80 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %80, i32* @__sym_not, i8* %79)
+  %81 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %82 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %82, i32* @__sym_eq, i8* %81)
+  %83 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %84 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %84, i32* @__sym_apply, i8* %83)
+  %85 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %86 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %86, i32* @__sym_AssertionFailure, i8* %85)
+  %87 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %88 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %88, i32* @__sym_add, i8* %87)
+  %89 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %90 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %90, i32* @__sym_to_s, i8* %89)
+  %91 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %92 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %92, i32* @__sym_not, i8* %91)
+  %93 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %94 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %94, i32* @__sym_eq, i8* %93)
+  %95 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %96 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %96, i32* @__sym_apply, i8* %95)
+  %97 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %98 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %98, i32* @__sym_AssertionFailure, i8* %97)
+  %99 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %100 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %100, i32* @__sym_add, i8* %99)
+  %101 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %102 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %102, i32* @__sym_to_s, i8* %101)
+  %103 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %104 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %104, i32* @__sym_not, i8* %103)
+  %105 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %106 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %106, i32* @__sym_eq, i8* %105)
+  %107 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %108 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %108, i32* @__sym_apply, i8* %107)
+  %109 = call i8* @array_object(i32 3)            ; <i8*> [#uses=4]
+  %110 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %110, i32* @__sym_AssertionFailure, i8* %109)
+  %111 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %112 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %112, i32* @__sym_add, i8* %111)
+  %113 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %114 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %114, i32* @__sym_to_s, i8* %113)
+  %115 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %116 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %116, i32* @__sym_not, i8* %115)
+  %117 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %118 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %118, i32* @__sym_eq, i8* %117)
+  %119 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %120 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %120, i32* @__sym_apply, i8* %119)
+  %121 = call i8* @array_object(i32 3)            ; <i8*> [#uses=4]
+  %122 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %122, i32* @__sym_AssertionFailure, i8* %121)
+  %123 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %124 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %124, i32* @__sym_add, i8* %123)
+  %125 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %126 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %126, i32* @__sym_to_s, i8* %125)
+  %127 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %128 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %128, i32* @__sym_not, i8* %127)
+  %129 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %130 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %130, i32* @__sym_eq, i8* %129)
+  %131 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %132 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %132, i32* @__sym_apply, i8* %131)
+  %133 = call i8* @array_object(i32 3)            ; <i8*> [#uses=4]
+  %134 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %134, i32* @__sym_AssertionFailure, i8* %133)
+  %135 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %136 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %136, i32* @__sym_add, i8* %135)
+  %137 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %138 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %138, i32* @__sym_to_s, i8* %137)
+  %139 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %140 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %140, i32* @__sym_not, i8* %139)
+  %141 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %142 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %142, i32* @__sym_eq, i8* %141)
+  %143 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %144 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %144, i32* @__sym_to_s, i8* %143)
+  %145 = call i8* @array_object(i32 3)            ; <i8*> [#uses=4]
+  %146 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %146, i32* @__sym_AssertionFailure, i8* %145)
+  %147 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %148 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %148, i32* @__sym_add, i8* %147)
+  %149 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %150 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %150, i32* @__sym_to_s, i8* %149)
+  %151 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %152 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %152, i32* @__sym_not, i8* %151)
+  %153 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %154 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %154, i32* @__sym_eq, i8* %153)
+  %155 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %156 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %156, i32* @__sym_to_s, i8* %155)
+  %157 = call i8* @array_object(i32 3)            ; <i8*> [#uses=4]
+  %158 = alloca %callsite                         ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %158, i32* @__sym_AssertionFailure, i8* %157)
+  br label %cont
+
+cont:                                             ; preds = %cache
+  %lit = call i8* @int_object(i32 0)              ; <i8*> [#uses=1]
+  %_assertions = alloca i8*                       ; <i8**> [#uses=27]
+  store i8* %lit, i8** %_assertions
+  %lit1 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @4, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %_fun_name = alloca i8*                         ; <i8**> [#uses=2]
+  store i8* %lit1, i8** %_fun_name
+  %catchparam = alloca i8*                        ; <i8**> [#uses=1]
+  br label %try
+  %159 = call %ret @__t_call(%callsite* %158, i8* %0) ; <%ret> [#uses=1]
+  %retval10 = extractvalue %ret %159, 0           ; <i8*> [#uses=0]
+  %160 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit11 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %161 = call i8* @array_set_elementC(i8* %147, i32 0, i8* %lit11) ; <i8*> [#uses=0]
+  %162 = call %ret @__t_call(%callsite* %148, i8* %160) ; <%ret> [#uses=1]
+  %retval12 = extractvalue %ret %162, 0           ; <i8*> [#uses=1]
+  store i8* %retval12, i8** %_assertions
+  %catchparam16 = alloca i8*                      ; <i8**> [#uses=1]
+  br label %try13
+  %163 = call %ret @__t_call(%callsite* %146, i8* %0) ; <%ret> [#uses=1]
+  %retval32 = extractvalue %ret %163, 0           ; <i8*> [#uses=0]
+  %164 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit33 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %165 = call i8* @array_set_elementC(i8* %135, i32 0, i8* %lit33) ; <i8*> [#uses=0]
+  %166 = call %ret @__t_call(%callsite* %136, i8* %164) ; <%ret> [#uses=1]
+  %retval34 = extractvalue %ret %166, 0           ; <i8*> [#uses=1]
+  store i8* %retval34, i8** %_assertions
+  %167 = call i8* @array_object(i32 4)            ; <i8*> [#uses=5]
+  %lit35 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %168 = call i8* @array_set_elementC(i8* %167, i32 0, i8* %lit35) ; <i8*> [#uses=0]
+  %lit36 = call i8* @int_object(i32 2)            ; <i8*> [#uses=1]
+  %169 = call i8* @array_set_elementC(i8* %167, i32 1, i8* %lit36) ; <i8*> [#uses=0]
+  %lit37 = call i8* @bool_object(i32 1)           ; <i8*> [#uses=1]
+  %170 = call i8* @array_set_elementC(i8* %167, i32 2, i8* %lit37) ; <i8*> [#uses=0]
+  %lit38 = call i8* @string_object(i8* getelementptr inbounds ([5 x i8]* @12, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %171 = call i8* @array_set_elementC(i8* %167, i32 3, i8* %lit38) ; <i8*> [#uses=0]
+  %array = alloca i8*                             ; <i8**> [#uses=10]
+  store i8* %167, i8** %array
+  %catchparam42 = alloca i8*                      ; <i8**> [#uses=1]
+  br label %try39
+  %172 = call %ret @__t_call(%callsite* %134, i8* %0) ; <%ret> [#uses=1]
+  %retval58 = extractvalue %ret %172, 0           ; <i8*> [#uses=0]
+  %173 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit59 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %174 = call i8* @array_set_elementC(i8* %123, i32 0, i8* %lit59) ; <i8*> [#uses=0]
+  %175 = call %ret @__t_call(%callsite* %124, i8* %173) ; <%ret> [#uses=1]
+  %retval60 = extractvalue %ret %175, 0           ; <i8*> [#uses=1]
+  store i8* %retval60, i8** %_assertions
+  %catchparam64 = alloca i8*                      ; <i8**> [#uses=1]
+  br label %try61
+  %176 = call %ret @__t_call(%callsite* %122, i8* %0) ; <%ret> [#uses=1]
+  %retval80 = extractvalue %ret %176, 0           ; <i8*> [#uses=0]
+  %177 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit81 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %178 = call i8* @array_set_elementC(i8* %111, i32 0, i8* %lit81) ; <i8*> [#uses=0]
+  %179 = call %ret @__t_call(%callsite* %112, i8* %177) ; <%ret> [#uses=1]
+  %retval82 = extractvalue %ret %179, 0           ; <i8*> [#uses=1]
+  store i8* %retval82, i8** %_assertions
+  %catchparam86 = alloca i8*                      ; <i8**> [#uses=1]
+  br label %try83
+  %180 = call %ret @__t_call(%callsite* %110, i8* %0) ; <%ret> [#uses=1]
+  %retval102 = extractvalue %ret %180, 0          ; <i8*> [#uses=0]
+  %181 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit103 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %182 = call i8* @array_set_elementC(i8* %99, i32 0, i8* %lit103) ; <i8*> [#uses=0]
+  %183 = call %ret @__t_call(%callsite* %100, i8* %181) ; <%ret> [#uses=1]
+  %retval104 = extractvalue %ret %183, 0          ; <i8*> [#uses=1]
+  store i8* %retval104, i8** %_assertions
+  %catchparam108 = alloca i8*                     ; <i8**> [#uses=1]
+  br label %try105
+  %184 = call %ret @__t_call(%callsite* %98, i8* %0) ; <%ret> [#uses=1]
+  %retval124 = extractvalue %ret %184, 0          ; <i8*> [#uses=0]
+  %185 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit125 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %186 = call i8* @array_set_elementC(i8* %87, i32 0, i8* %lit125) ; <i8*> [#uses=0]
+  %187 = call %ret @__t_call(%callsite* %88, i8* %185) ; <%ret> [#uses=1]
+  %retval126 = extractvalue %ret %187, 0          ; <i8*> [#uses=1]
+  store i8* %retval126, i8** %_assertions
+  %catchparam130 = alloca i8*                     ; <i8**> [#uses=1]
+  br label %try127
+  %188 = call %ret @__t_call(%callsite* %86, i8* %0) ; <%ret> [#uses=1]
+  %retval146 = extractvalue %ret %188, 0          ; <i8*> [#uses=0]
+  %189 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit147 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %190 = call i8* @array_set_elementC(i8* %75, i32 0, i8* %lit147) ; <i8*> [#uses=0]
+  %191 = call %ret @__t_call(%callsite* %76, i8* %189) ; <%ret> [#uses=1]
+  %retval148 = extractvalue %ret %191, 0          ; <i8*> [#uses=1]
+  store i8* %retval148, i8** %_assertions
+  %catchparam152 = alloca i8*                     ; <i8**> [#uses=1]
+  br label %try149
+  %192 = call %ret @__t_call(%callsite* %74, i8* %0) ; <%ret> [#uses=1]
+  %retval168 = extractvalue %ret %192, 0          ; <i8*> [#uses=0]
+  %193 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit169 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %194 = call i8* @array_set_elementC(i8* %63, i32 0, i8* %lit169) ; <i8*> [#uses=0]
+  %195 = call %ret @__t_call(%callsite* %64, i8* %193) ; <%ret> [#uses=1]
+  %retval170 = extractvalue %ret %195, 0          ; <i8*> [#uses=1]
+  store i8* %retval170, i8** %_assertions
+  %196 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit171 = call i8* @string_object(i8* getelementptr inbounds ([1 x i8]* @27, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %197 = call i8* @array_set_elementC(i8* %61, i32 0, i8* %lit171) ; <i8*> [#uses=0]
+  %198 = call i8* @closure_object_place()         ; <i8*> [#uses=2]
+  %199 = call i8* @closure_set_fptrC(i8* %198, %fptr @__closure2) ; <i8*> [#uses=0]
+  %200 = call i8* @array_set_elementC(i8* %61, i32 1, i8* %198) ; <i8*> [#uses=0]
+  %201 = call %ret @__t_call(%callsite* %62, i8* %196) ; <%ret> [#uses=1]
+  %retval172 = extractvalue %ret %201, 0          ; <i8*> [#uses=1]
+  %ret173 = alloca i8*                            ; <i8**> [#uses=6]
+  store i8* %retval172, i8** %ret173
+  %catchparam177 = alloca i8*                     ; <i8**> [#uses=1]
+  br label %try174
+  %202 = call %ret @__t_call(%callsite* %60, i8* %0) ; <%ret> [#uses=1]
+  %retval191 = extractvalue %ret %202, 0          ; <i8*> [#uses=0]
+  %203 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit192 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %204 = call i8* @array_set_elementC(i8* %51, i32 0, i8* %lit192) ; <i8*> [#uses=0]
+  %205 = call %ret @__t_call(%callsite* %52, i8* %203) ; <%ret> [#uses=1]
+  %retval193 = extractvalue %ret %205, 0          ; <i8*> [#uses=1]
+  store i8* %retval193, i8** %_assertions
+  %206 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit194 = call i8* @string_object(i8* getelementptr inbounds ([5 x i8]* @31, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %207 = call i8* @array_set_elementC(i8* %49, i32 0, i8* %lit194) ; <i8*> [#uses=0]
+  %208 = call %ret @__t_call(%callsite* %50, i8* %206) ; <%ret> [#uses=1]
+  %retval195 = extractvalue %ret %208, 0          ; <i8*> [#uses=1]
+  %new_array = alloca i8*                         ; <i8**> [#uses=4]
+  store i8* %retval195, i8** %new_array
+  %209 = load i8** %new_array                     ; <i8*> [#uses=1]
+  %lit196 = call i8* @null_object()               ; <i8*> [#uses=1]
+  %210 = call i8* @array_set_elementC(i8* %47, i32 0, i8* %lit196) ; <i8*> [#uses=0]
+  %211 = call %ret @__t_call(%callsite* %48, i8* %209) ; <%ret> [#uses=1]
+  %retval197 = extractvalue %ret %211, 0          ; <i8*> [#uses=1]
+  store i8* %retval197, i8** %new_array
+  %212 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit198 = call i8* @string_object(i8* getelementptr inbounds ([1 x i8]* @32, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %213 = call i8* @array_set_elementC(i8* %45, i32 0, i8* %lit198) ; <i8*> [#uses=0]
+  %214 = call i8* @closure_object_place()         ; <i8*> [#uses=2]
+  %215 = call i8* @closure_set_fptrC(i8* %214, %fptr @__closure3) ; <i8*> [#uses=0]
+  %216 = call i8* @array_set_elementC(i8* %45, i32 1, i8* %214) ; <i8*> [#uses=0]
+  %217 = call %ret @__t_call(%callsite* %46, i8* %212) ; <%ret> [#uses=1]
+  %retval199 = extractvalue %ret %217, 0          ; <i8*> [#uses=1]
+  store i8* %retval199, i8** %ret173
+  %catchparam203 = alloca i8*                     ; <i8**> [#uses=1]
+  br label %try200
+  %218 = call %ret @__t_call(%callsite* %44, i8* %0) ; <%ret> [#uses=1]
+  %retval217 = extractvalue %ret %218, 0          ; <i8*> [#uses=0]
+  %219 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit218 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %220 = call i8* @array_set_elementC(i8* %35, i32 0, i8* %lit218) ; <i8*> [#uses=0]
+  %221 = call %ret @__t_call(%callsite* %36, i8* %219) ; <%ret> [#uses=1]
+  %retval219 = extractvalue %ret %221, 0          ; <i8*> [#uses=1]
+  store i8* %retval219, i8** %_assertions
+  %222 = load i8** %new_array                     ; <i8*> [#uses=1]
+  %lit220 = call i8* @string_object(i8* getelementptr inbounds ([1 x i8]* @36, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %223 = call i8* @array_set_elementC(i8* %33, i32 0, i8* %lit220) ; <i8*> [#uses=0]
+  %224 = call i8* @closure_object_place()         ; <i8*> [#uses=2]
+  %225 = call i8* @closure_set_fptrC(i8* %224, %fptr @__closure4) ; <i8*> [#uses=0]
+  %226 = call i8* @array_set_elementC(i8* %33, i32 1, i8* %224) ; <i8*> [#uses=0]
+  %227 = call %ret @__t_call(%callsite* %34, i8* %222) ; <%ret> [#uses=1]
+  %retval221 = extractvalue %ret %227, 0          ; <i8*> [#uses=1]
+  store i8* %retval221, i8** %ret173
+  %catchparam225 = alloca i8*                     ; <i8**> [#uses=1]
+  br label %try222
+  %228 = call %ret @__t_call(%callsite* %32, i8* %0) ; <%ret> [#uses=1]
+  %retval239 = extractvalue %ret %228, 0          ; <i8*> [#uses=0]
+  %229 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit240 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %230 = call i8* @array_set_elementC(i8* %23, i32 0, i8* %lit240) ; <i8*> [#uses=0]
+  %231 = call %ret @__t_call(%callsite* %24, i8* %229) ; <%ret> [#uses=1]
+  %retval241 = extractvalue %ret %231, 0          ; <i8*> [#uses=1]
+  store i8* %retval241, i8** %_assertions
+  %232 = load i8** %_fun_name                     ; <i8*> [#uses=1]
+  %lit242 = call i8* @string_object(i8* getelementptr inbounds ([3 x i8]* @40, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %233 = call i8* @array_set_elementC(i8* %21, i32 0, i8* %lit242) ; <i8*> [#uses=0]
+  %234 = call %ret @__t_call(%callsite* %22, i8* %232) ; <%ret> [#uses=1]
+  %retval243 = extractvalue %ret %234, 0          ; <i8*> [#uses=1]
+  %235 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %236 = call %ret @__t_call(%callsite* %18, i8* %235) ; <%ret> [#uses=1]
+  %retval244 = extractvalue %ret %236, 0          ; <i8*> [#uses=1]
+  %237 = call i8* @array_set_elementC(i8* %19, i32 0, i8* %retval244) ; <i8*> [#uses=0]
+  %238 = call %ret @__t_call(%callsite* %20, i8* %retval243) ; <%ret> [#uses=1]
+  %retval245 = extractvalue %ret %238, 0          ; <i8*> [#uses=1]
+  %lit246 = call i8* @string_object(i8* getelementptr inbounds ([15 x i8]* @41, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %239 = call i8* @array_set_elementC(i8* %15, i32 0, i8* %lit246) ; <i8*> [#uses=0]
+  %240 = call %ret @__t_call(%callsite* %16, i8* %retval245) ; <%ret> [#uses=1]
+  %retval247 = extractvalue %ret %240, 0          ; <i8*> [#uses=1]
+  %241 = call %ret @__t_call(%callsite* %14, i8* %retval247) ; <%ret> [#uses=1]
+  %retval248 = extractvalue %ret %241, 0          ; <i8*> [#uses=0]
+  %catchparam252 = alloca i8*                     ; <i8**> [#uses=1]
+  br label %try249
+  %242 = call %ret @__t_call(%callsite* %12, i8* %0) ; <%ret> [#uses=1]
+  %retval266 = extractvalue %ret %242, 0          ; <i8*> [#uses=0]
+  %243 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit267 = call i8* @int_object(i32 1)           ; <i8*> [#uses=1]
+  %244 = call i8* @array_set_elementC(i8* %3, i32 0, i8* %lit267) ; <i8*> [#uses=0]
+  %245 = call %ret @__t_call(%callsite* %4, i8* %243) ; <%ret> [#uses=1]
+  %retval268 = extractvalue %ret %245, 0          ; <i8*> [#uses=2]
+  store i8* %retval268, i8** %_assertions
+  %246 = load %ret* %__retval                     ; <%ret> [#uses=1]
+  %247 = insertvalue %ret %246, i8* %retval268, 0 ; <%ret> [#uses=1]
+  store %ret %247, %ret* %__retval
+  br label %ret
+
+ret:                                              ; preds = %cont
+  %248 = load %ret* %__retval                     ; <%ret> [#uses=1]
+  ret %ret %248
+
+try:                                              ; preds = %cont
+  %249 = call i8* @array_object(i32 0)            ; <i8*> [#uses=1]
+  %250 = call %ret @__t_call(%callsite* %156, i8* %249) ; <%ret> [#uses=1]
+  %retval = extractvalue %ret %250, 0             ; <i8*> [#uses=1]
+  %lit2 = call i8* @string_object(i8* getelementptr inbounds ([3 x i8]* @5, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %251 = call i8* @array_set_elementC(i8* %153, i32 0, i8* %lit2) ; <i8*> [#uses=0]
+  %252 = call %ret @__t_call(%callsite* %154, i8* %retval) ; <%ret> [#uses=1]
+  %retval3 = extractvalue %ret %252, 0            ; <i8*> [#uses=1]
+  %253 = call %ret @__t_call(%callsite* %152, i8* %retval3) ; <%ret> [#uses=1]
+  %retval4 = extractvalue %ret %253, 0            ; <i8*> [#uses=1]
+  %254 = call i32 @bool_get_value(i8* %retval4)   ; <i32> [#uses=1]
+  %255 = icmp ne i32 %254, 0                      ; <i1> [#uses=1]
+  br i1 %255, label %then, label %else
+
+catch:                                            ; No predecessors!
+  %256 = load i8** %catchparam                    ; <i8*> [#uses=1]
+  %257 = call %ret @__t_call(%callsite* %150, i8* %256) ; <%ret> [#uses=1]
+  %retval7 = extractvalue %ret %257, 0            ; <i8*> [#uses=1]
+  br label %merge
+
+merge:                                            ; preds = %catch, %ifcont
+  %trytmp = phi i8* [ %iftmp, %ifcont ], [ %retval7, %catch ] ; <i8*> [#uses=1]
+  %258 = call i8* @array_set_elementC(i8* %157, i32 0, i8* %trytmp) ; <i8*> [#uses=0]
+  %lit8 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @7, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %259 = call i8* @array_set_elementC(i8* %157, i32 1, i8* %lit8) ; <i8*> [#uses=0]
+  %lit9 = call i8* @int_object(i32 4)             ; <i8*> [#uses=1]
+  %260 = call i8* @array_set_elementC(i8* %157, i32 2, i8* %lit9) ; <i8*> [#uses=0]
+
+then:                                             ; preds = %try
+  %lit5 = call i8* @string_object(i8* getelementptr inbounds ([18 x i8]* @6, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont
+
+else:                                             ; preds = %try
+  %lit6 = call i8* @null_object()                 ; <i8*> [#uses=1]
+  br label %ifcont
+
+ifcont:                                           ; preds = %else, %then
+  %iftmp = phi i8* [ %lit5, %then ], [ %lit6, %else ] ; <i8*> [#uses=1]
+  br label %merge
+
+try13:                                            ; preds = %cont
+  %261 = call i8* @array_object(i32 1)            ; <i8*> [#uses=2]
+  %lit17 = call i8* @string_object(i8* getelementptr inbounds ([4 x i8]* @8, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %262 = call i8* @array_set_elementC(i8* %261, i32 0, i8* %lit17) ; <i8*> [#uses=0]
+  %263 = call %ret @__t_call(%callsite* %144, i8* %261) ; <%ret> [#uses=1]
+  %retval18 = extractvalue %ret %263, 0           ; <i8*> [#uses=1]
+  %lit19 = call i8* @string_object(i8* getelementptr inbounds ([6 x i8]* @9, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %264 = call i8* @array_set_elementC(i8* %141, i32 0, i8* %lit19) ; <i8*> [#uses=0]
+  %265 = call %ret @__t_call(%callsite* %142, i8* %retval18) ; <%ret> [#uses=1]
+  %retval20 = extractvalue %ret %265, 0           ; <i8*> [#uses=1]
+  %266 = call %ret @__t_call(%callsite* %140, i8* %retval20) ; <%ret> [#uses=1]
+  %retval21 = extractvalue %ret %266, 0           ; <i8*> [#uses=1]
+  %267 = call i32 @bool_get_value(i8* %retval21)  ; <i32> [#uses=1]
+  %268 = icmp ne i32 %267, 0                      ; <i1> [#uses=1]
+  br i1 %268, label %then22, label %else24
+
+catch14:                                          ; No predecessors!
+  %269 = load i8** %catchparam16                  ; <i8*> [#uses=1]
+  %270 = call %ret @__t_call(%callsite* %138, i8* %269) ; <%ret> [#uses=1]
+  %retval28 = extractvalue %ret %270, 0           ; <i8*> [#uses=1]
+  br label %merge15
+
+merge15:                                          ; preds = %catch14, %ifcont26
+  %trytmp29 = phi i8* [ %iftmp27, %ifcont26 ], [ %retval28, %catch14 ] ; <i8*> [#uses=1]
+  %271 = call i8* @array_set_elementC(i8* %145, i32 0, i8* %trytmp29) ; <i8*> [#uses=0]
+  %lit30 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @11, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %272 = call i8* @array_set_elementC(i8* %145, i32 1, i8* %lit30) ; <i8*> [#uses=0]
+  %lit31 = call i8* @int_object(i32 5)            ; <i8*> [#uses=1]
+  %273 = call i8* @array_set_elementC(i8* %145, i32 2, i8* %lit31) ; <i8*> [#uses=0]
+
+then22:                                           ; preds = %try13
+  %lit23 = call i8* @string_object(i8* getelementptr inbounds ([28 x i8]* @10, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont26
+
+else24:                                           ; preds = %try13
+  %lit25 = call i8* @null_object()                ; <i8*> [#uses=1]
+  br label %ifcont26
+
+ifcont26:                                         ; preds = %else24, %then22
+  %iftmp27 = phi i8* [ %lit23, %then22 ], [ %lit25, %else24 ] ; <i8*> [#uses=1]
+  br label %merge15
+
+try39:                                            ; preds = %cont
+  %274 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit43 = call i8* @int_object(i32 -1)           ; <i8*> [#uses=1]
+  %275 = call i8* @array_set_elementC(i8* %131, i32 0, i8* %lit43) ; <i8*> [#uses=0]
+  %276 = call %ret @__t_call(%callsite* %132, i8* %274) ; <%ret> [#uses=1]
+  %retval44 = extractvalue %ret %276, 0           ; <i8*> [#uses=1]
+  %lit45 = call i8* @string_object(i8* getelementptr inbounds ([5 x i8]* @13, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %277 = call i8* @array_set_elementC(i8* %129, i32 0, i8* %lit45) ; <i8*> [#uses=0]
+  %278 = call %ret @__t_call(%callsite* %130, i8* %retval44) ; <%ret> [#uses=1]
+  %retval46 = extractvalue %ret %278, 0           ; <i8*> [#uses=1]
+  %279 = call %ret @__t_call(%callsite* %128, i8* %retval46) ; <%ret> [#uses=1]
+  %retval47 = extractvalue %ret %279, 0           ; <i8*> [#uses=1]
+  %280 = call i32 @bool_get_value(i8* %retval47)  ; <i32> [#uses=1]
+  %281 = icmp ne i32 %280, 0                      ; <i1> [#uses=1]
+  br i1 %281, label %then48, label %else50
+
+catch40:                                          ; No predecessors!
+  %282 = load i8** %catchparam42                  ; <i8*> [#uses=1]
+  %283 = call %ret @__t_call(%callsite* %126, i8* %282) ; <%ret> [#uses=1]
+  %retval54 = extractvalue %ret %283, 0           ; <i8*> [#uses=1]
+  br label %merge41
+
+merge41:                                          ; preds = %catch40, %ifcont52
+  %trytmp55 = phi i8* [ %iftmp53, %ifcont52 ], [ %retval54, %catch40 ] ; <i8*> [#uses=1]
+  %284 = call i8* @array_set_elementC(i8* %133, i32 0, i8* %trytmp55) ; <i8*> [#uses=0]
+  %lit56 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @15, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %285 = call i8* @array_set_elementC(i8* %133, i32 1, i8* %lit56) ; <i8*> [#uses=0]
+  %lit57 = call i8* @int_object(i32 9)            ; <i8*> [#uses=1]
+  %286 = call i8* @array_set_elementC(i8* %133, i32 2, i8* %lit57) ; <i8*> [#uses=0]
+
+then48:                                           ; preds = %try39
+  %lit49 = call i8* @string_object(i8* getelementptr inbounds ([22 x i8]* @14, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont52
+
+else50:                                           ; preds = %try39
+  %lit51 = call i8* @null_object()                ; <i8*> [#uses=1]
+  br label %ifcont52
+
+ifcont52:                                         ; preds = %else50, %then48
+  %iftmp53 = phi i8* [ %lit49, %then48 ], [ %lit51, %else50 ] ; <i8*> [#uses=1]
+  br label %merge41
+
+try61:                                            ; preds = %cont
+  %287 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit65 = call i8* @int_object(i32 0)            ; <i8*> [#uses=1]
+  %288 = call i8* @array_set_elementC(i8* %119, i32 0, i8* %lit65) ; <i8*> [#uses=0]
+  %289 = call %ret @__t_call(%callsite* %120, i8* %287) ; <%ret> [#uses=1]
+  %retval66 = extractvalue %ret %289, 0           ; <i8*> [#uses=1]
+  %lit67 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %290 = call i8* @array_set_elementC(i8* %117, i32 0, i8* %lit67) ; <i8*> [#uses=0]
+  %291 = call %ret @__t_call(%callsite* %118, i8* %retval66) ; <%ret> [#uses=1]
+  %retval68 = extractvalue %ret %291, 0           ; <i8*> [#uses=1]
+  %292 = call %ret @__t_call(%callsite* %116, i8* %retval68) ; <%ret> [#uses=1]
+  %retval69 = extractvalue %ret %292, 0           ; <i8*> [#uses=1]
+  %293 = call i32 @bool_get_value(i8* %retval69)  ; <i32> [#uses=1]
+  %294 = icmp ne i32 %293, 0                      ; <i1> [#uses=1]
+  br i1 %294, label %then70, label %else72
+
+catch62:                                          ; No predecessors!
+  %295 = load i8** %catchparam64                  ; <i8*> [#uses=1]
+  %296 = call %ret @__t_call(%callsite* %114, i8* %295) ; <%ret> [#uses=1]
+  %retval76 = extractvalue %ret %296, 0           ; <i8*> [#uses=1]
+  br label %merge63
+
+merge63:                                          ; preds = %catch62, %ifcont74
+  %trytmp77 = phi i8* [ %iftmp75, %ifcont74 ], [ %retval76, %catch62 ] ; <i8*> [#uses=1]
+  %297 = call i8* @array_set_elementC(i8* %121, i32 0, i8* %trytmp77) ; <i8*> [#uses=0]
+  %lit78 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @17, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %298 = call i8* @array_set_elementC(i8* %121, i32 1, i8* %lit78) ; <i8*> [#uses=0]
+  %lit79 = call i8* @int_object(i32 10)           ; <i8*> [#uses=1]
+  %299 = call i8* @array_set_elementC(i8* %121, i32 2, i8* %lit79) ; <i8*> [#uses=0]
+
+then70:                                           ; preds = %try61
+  %lit71 = call i8* @string_object(i8* getelementptr inbounds ([14 x i8]* @16, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont74
+
+else72:                                           ; preds = %try61
+  %lit73 = call i8* @null_object()                ; <i8*> [#uses=1]
+  br label %ifcont74
+
+ifcont74:                                         ; preds = %else72, %then70
+  %iftmp75 = phi i8* [ %lit71, %then70 ], [ %lit73, %else72 ] ; <i8*> [#uses=1]
+  br label %merge63
+
+try83:                                            ; preds = %cont
+  %300 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit87 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %301 = call i8* @array_set_elementC(i8* %107, i32 0, i8* %lit87) ; <i8*> [#uses=0]
+  %302 = call %ret @__t_call(%callsite* %108, i8* %300) ; <%ret> [#uses=1]
+  %retval88 = extractvalue %ret %302, 0           ; <i8*> [#uses=1]
+  %lit89 = call i8* @int_object(i32 2)            ; <i8*> [#uses=1]
+  %303 = call i8* @array_set_elementC(i8* %105, i32 0, i8* %lit89) ; <i8*> [#uses=0]
+  %304 = call %ret @__t_call(%callsite* %106, i8* %retval88) ; <%ret> [#uses=1]
+  %retval90 = extractvalue %ret %304, 0           ; <i8*> [#uses=1]
+  %305 = call %ret @__t_call(%callsite* %104, i8* %retval90) ; <%ret> [#uses=1]
+  %retval91 = extractvalue %ret %305, 0           ; <i8*> [#uses=1]
+  %306 = call i32 @bool_get_value(i8* %retval91)  ; <i32> [#uses=1]
+  %307 = icmp ne i32 %306, 0                      ; <i1> [#uses=1]
+  br i1 %307, label %then92, label %else94
+
+catch84:                                          ; No predecessors!
+  %308 = load i8** %catchparam86                  ; <i8*> [#uses=1]
+  %309 = call %ret @__t_call(%callsite* %102, i8* %308) ; <%ret> [#uses=1]
+  %retval98 = extractvalue %ret %309, 0           ; <i8*> [#uses=1]
+  br label %merge85
+
+merge85:                                          ; preds = %catch84, %ifcont96
+  %trytmp99 = phi i8* [ %iftmp97, %ifcont96 ], [ %retval98, %catch84 ] ; <i8*> [#uses=1]
+  %310 = call i8* @array_set_elementC(i8* %109, i32 0, i8* %trytmp99) ; <i8*> [#uses=0]
+  %lit100 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @19, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %311 = call i8* @array_set_elementC(i8* %109, i32 1, i8* %lit100) ; <i8*> [#uses=0]
+  %lit101 = call i8* @int_object(i32 11)          ; <i8*> [#uses=1]
+  %312 = call i8* @array_set_elementC(i8* %109, i32 2, i8* %lit101) ; <i8*> [#uses=0]
+
+then92:                                           ; preds = %try83
+  %lit93 = call i8* @string_object(i8* getelementptr inbounds ([14 x i8]* @18, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont96
+
+else94:                                           ; preds = %try83
+  %lit95 = call i8* @null_object()                ; <i8*> [#uses=1]
+  br label %ifcont96
+
+ifcont96:                                         ; preds = %else94, %then92
+  %iftmp97 = phi i8* [ %lit93, %then92 ], [ %lit95, %else94 ] ; <i8*> [#uses=1]
+  br label %merge85
+
+try105:                                           ; preds = %cont
+  %313 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit109 = call i8* @int_object(i32 2)           ; <i8*> [#uses=1]
+  %314 = call i8* @array_set_elementC(i8* %95, i32 0, i8* %lit109) ; <i8*> [#uses=0]
+  %315 = call %ret @__t_call(%callsite* %96, i8* %313) ; <%ret> [#uses=1]
+  %retval110 = extractvalue %ret %315, 0          ; <i8*> [#uses=1]
+  %lit111 = call i8* @bool_object(i32 1)          ; <i8*> [#uses=1]
+  %316 = call i8* @array_set_elementC(i8* %93, i32 0, i8* %lit111) ; <i8*> [#uses=0]
+  %317 = call %ret @__t_call(%callsite* %94, i8* %retval110) ; <%ret> [#uses=1]
+  %retval112 = extractvalue %ret %317, 0          ; <i8*> [#uses=1]
+  %318 = call %ret @__t_call(%callsite* %92, i8* %retval112) ; <%ret> [#uses=1]
+  %retval113 = extractvalue %ret %318, 0          ; <i8*> [#uses=1]
+  %319 = call i32 @bool_get_value(i8* %retval113) ; <i32> [#uses=1]
+  %320 = icmp ne i32 %319, 0                      ; <i1> [#uses=1]
+  br i1 %320, label %then114, label %else116
+
+catch106:                                         ; No predecessors!
+  %321 = load i8** %catchparam108                 ; <i8*> [#uses=1]
+  %322 = call %ret @__t_call(%callsite* %90, i8* %321) ; <%ret> [#uses=1]
+  %retval120 = extractvalue %ret %322, 0          ; <i8*> [#uses=1]
+  br label %merge107
+
+merge107:                                         ; preds = %catch106, %ifcont118
+  %trytmp121 = phi i8* [ %iftmp119, %ifcont118 ], [ %retval120, %catch106 ] ; <i8*> [#uses=1]
+  %323 = call i8* @array_set_elementC(i8* %97, i32 0, i8* %trytmp121) ; <i8*> [#uses=0]
+  %lit122 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @21, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %324 = call i8* @array_set_elementC(i8* %97, i32 1, i8* %lit122) ; <i8*> [#uses=0]
+  %lit123 = call i8* @int_object(i32 12)          ; <i8*> [#uses=1]
+  %325 = call i8* @array_set_elementC(i8* %97, i32 2, i8* %lit123) ; <i8*> [#uses=0]
+
+then114:                                          ; preds = %try105
+  %lit115 = call i8* @string_object(i8* getelementptr inbounds ([17 x i8]* @20, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont118
+
+else116:                                          ; preds = %try105
+  %lit117 = call i8* @null_object()               ; <i8*> [#uses=1]
+  br label %ifcont118
+
+ifcont118:                                        ; preds = %else116, %then114
+  %iftmp119 = phi i8* [ %lit115, %then114 ], [ %lit117, %else116 ] ; <i8*> [#uses=1]
+  br label %merge107
+
+try127:                                           ; preds = %cont
+  %326 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit131 = call i8* @int_object(i32 3)           ; <i8*> [#uses=1]
+  %327 = call i8* @array_set_elementC(i8* %83, i32 0, i8* %lit131) ; <i8*> [#uses=0]
+  %328 = call %ret @__t_call(%callsite* %84, i8* %326) ; <%ret> [#uses=1]
+  %retval132 = extractvalue %ret %328, 0          ; <i8*> [#uses=1]
+  %lit133 = call i8* @string_object(i8* getelementptr inbounds ([5 x i8]* @22, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %329 = call i8* @array_set_elementC(i8* %81, i32 0, i8* %lit133) ; <i8*> [#uses=0]
+  %330 = call %ret @__t_call(%callsite* %82, i8* %retval132) ; <%ret> [#uses=1]
+  %retval134 = extractvalue %ret %330, 0          ; <i8*> [#uses=1]
+  %331 = call %ret @__t_call(%callsite* %80, i8* %retval134) ; <%ret> [#uses=1]
+  %retval135 = extractvalue %ret %331, 0          ; <i8*> [#uses=1]
+  %332 = call i32 @bool_get_value(i8* %retval135) ; <i32> [#uses=1]
+  %333 = icmp ne i32 %332, 0                      ; <i1> [#uses=1]
+  br i1 %333, label %then136, label %else138
+
+catch128:                                         ; No predecessors!
+  %334 = load i8** %catchparam130                 ; <i8*> [#uses=1]
+  %335 = call %ret @__t_call(%callsite* %78, i8* %334) ; <%ret> [#uses=1]
+  %retval142 = extractvalue %ret %335, 0          ; <i8*> [#uses=1]
+  br label %merge129
+
+merge129:                                         ; preds = %catch128, %ifcont140
+  %trytmp143 = phi i8* [ %iftmp141, %ifcont140 ], [ %retval142, %catch128 ] ; <i8*> [#uses=1]
+  %336 = call i8* @array_set_elementC(i8* %85, i32 0, i8* %trytmp143) ; <i8*> [#uses=0]
+  %lit144 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @24, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %337 = call i8* @array_set_elementC(i8* %85, i32 1, i8* %lit144) ; <i8*> [#uses=0]
+  %lit145 = call i8* @int_object(i32 13)          ; <i8*> [#uses=1]
+  %338 = call i8* @array_set_elementC(i8* %85, i32 2, i8* %lit145) ; <i8*> [#uses=0]
+
+then136:                                          ; preds = %try127
+  %lit137 = call i8* @string_object(i8* getelementptr inbounds ([21 x i8]* @23, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont140
+
+else138:                                          ; preds = %try127
+  %lit139 = call i8* @null_object()               ; <i8*> [#uses=1]
+  br label %ifcont140
+
+ifcont140:                                        ; preds = %else138, %then136
+  %iftmp141 = phi i8* [ %lit137, %then136 ], [ %lit139, %else138 ] ; <i8*> [#uses=1]
+  br label %merge129
+
+try149:                                           ; preds = %cont
+  %339 = load i8** %array                         ; <i8*> [#uses=1]
+  %lit153 = call i8* @int_object(i32 4)           ; <i8*> [#uses=1]
+  %340 = call i8* @array_set_elementC(i8* %71, i32 0, i8* %lit153) ; <i8*> [#uses=0]
+  %341 = call %ret @__t_call(%callsite* %72, i8* %339) ; <%ret> [#uses=1]
+  %retval154 = extractvalue %ret %341, 0          ; <i8*> [#uses=1]
+  %lit155 = call i8* @null_object()               ; <i8*> [#uses=1]
+  %342 = call i8* @array_set_elementC(i8* %69, i32 0, i8* %lit155) ; <i8*> [#uses=0]
+  %343 = call %ret @__t_call(%callsite* %70, i8* %retval154) ; <%ret> [#uses=1]
+  %retval156 = extractvalue %ret %343, 0          ; <i8*> [#uses=1]
+  %344 = call %ret @__t_call(%callsite* %68, i8* %retval156) ; <%ret> [#uses=1]
+  %retval157 = extractvalue %ret %344, 0          ; <i8*> [#uses=1]
+  %345 = call i32 @bool_get_value(i8* %retval157) ; <i32> [#uses=1]
+  %346 = icmp ne i32 %345, 0                      ; <i1> [#uses=1]
+  br i1 %346, label %then158, label %else160
+
+catch150:                                         ; No predecessors!
+  %347 = load i8** %catchparam152                 ; <i8*> [#uses=1]
+  %348 = call %ret @__t_call(%callsite* %66, i8* %347) ; <%ret> [#uses=1]
+  %retval164 = extractvalue %ret %348, 0          ; <i8*> [#uses=1]
+  br label %merge151
+
+merge151:                                         ; preds = %catch150, %ifcont162
+  %trytmp165 = phi i8* [ %iftmp163, %ifcont162 ], [ %retval164, %catch150 ] ; <i8*> [#uses=1]
+  %349 = call i8* @array_set_elementC(i8* %73, i32 0, i8* %trytmp165) ; <i8*> [#uses=0]
+  %lit166 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @26, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %350 = call i8* @array_set_elementC(i8* %73, i32 1, i8* %lit166) ; <i8*> [#uses=0]
+  %lit167 = call i8* @int_object(i32 14)          ; <i8*> [#uses=1]
+  %351 = call i8* @array_set_elementC(i8* %73, i32 2, i8* %lit167) ; <i8*> [#uses=0]
+
+then158:                                          ; preds = %try149
+  %lit159 = call i8* @string_object(i8* getelementptr inbounds ([17 x i8]* @25, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont162
+
+else160:                                          ; preds = %try149
+  %lit161 = call i8* @null_object()               ; <i8*> [#uses=1]
+  br label %ifcont162
+
+ifcont162:                                        ; preds = %else160, %then158
+  %iftmp163 = phi i8* [ %lit159, %then158 ], [ %lit161, %else160 ] ; <i8*> [#uses=1]
+  br label %merge151
+
+try174:                                           ; preds = %cont
+  %352 = load i8** %ret173                        ; <i8*> [#uses=1]
+  %lit178 = call i8* @string_object(i8* getelementptr inbounds ([11 x i8]* @28, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %353 = call i8* @array_set_elementC(i8* %57, i32 0, i8* %lit178) ; <i8*> [#uses=0]
+  %354 = call %ret @__t_call(%callsite* %58, i8* %352) ; <%ret> [#uses=1]
+  %retval179 = extractvalue %ret %354, 0          ; <i8*> [#uses=1]
+  %355 = call %ret @__t_call(%callsite* %56, i8* %retval179) ; <%ret> [#uses=1]
+  %retval180 = extractvalue %ret %355, 0          ; <i8*> [#uses=1]
+  %356 = call i32 @bool_get_value(i8* %retval180) ; <i32> [#uses=1]
+  %357 = icmp ne i32 %356, 0                      ; <i1> [#uses=1]
+  br i1 %357, label %then181, label %else183
+
+catch175:                                         ; No predecessors!
+  %358 = load i8** %catchparam177                 ; <i8*> [#uses=1]
+  %359 = call %ret @__t_call(%callsite* %54, i8* %358) ; <%ret> [#uses=1]
+  %retval187 = extractvalue %ret %359, 0          ; <i8*> [#uses=1]
+  br label %merge176
+
+merge176:                                         ; preds = %catch175, %ifcont185
+  %trytmp188 = phi i8* [ %iftmp186, %ifcont185 ], [ %retval187, %catch175 ] ; <i8*> [#uses=1]
+  %360 = call i8* @array_set_elementC(i8* %59, i32 0, i8* %trytmp188) ; <i8*> [#uses=0]
+  %lit189 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @30, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %361 = call i8* @array_set_elementC(i8* %59, i32 1, i8* %lit189) ; <i8*> [#uses=0]
+  %lit190 = call i8* @int_object(i32 17)          ; <i8*> [#uses=1]
+  %362 = call i8* @array_set_elementC(i8* %59, i32 2, i8* %lit190) ; <i8*> [#uses=0]
+
+then181:                                          ; preds = %try174
+  %lit182 = call i8* @string_object(i8* getelementptr inbounds ([22 x i8]* @29, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont185
+
+else183:                                          ; preds = %try174
+  %lit184 = call i8* @null_object()               ; <i8*> [#uses=1]
+  br label %ifcont185
+
+ifcont185:                                        ; preds = %else183, %then181
+  %iftmp186 = phi i8* [ %lit182, %then181 ], [ %lit184, %else183 ] ; <i8*> [#uses=1]
+  br label %merge176
+
+try200:                                           ; preds = %cont
+  %363 = load i8** %ret173                        ; <i8*> [#uses=1]
+  %lit204 = call i8* @string_object(i8* getelementptr inbounds ([11 x i8]* @33, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %364 = call i8* @array_set_elementC(i8* %41, i32 0, i8* %lit204) ; <i8*> [#uses=0]
+  %365 = call %ret @__t_call(%callsite* %42, i8* %363) ; <%ret> [#uses=1]
+  %retval205 = extractvalue %ret %365, 0          ; <i8*> [#uses=1]
+  %366 = call %ret @__t_call(%callsite* %40, i8* %retval205) ; <%ret> [#uses=1]
+  %retval206 = extractvalue %ret %366, 0          ; <i8*> [#uses=1]
+  %367 = call i32 @bool_get_value(i8* %retval206) ; <i32> [#uses=1]
+  %368 = icmp ne i32 %367, 0                      ; <i1> [#uses=1]
+  br i1 %368, label %then207, label %else209
+
+catch201:                                         ; No predecessors!
+  %369 = load i8** %catchparam203                 ; <i8*> [#uses=1]
+  %370 = call %ret @__t_call(%callsite* %38, i8* %369) ; <%ret> [#uses=1]
+  %retval213 = extractvalue %ret %370, 0          ; <i8*> [#uses=1]
+  br label %merge202
+
+merge202:                                         ; preds = %catch201, %ifcont211
+  %trytmp214 = phi i8* [ %iftmp212, %ifcont211 ], [ %retval213, %catch201 ] ; <i8*> [#uses=1]
+  %371 = call i8* @array_set_elementC(i8* %43, i32 0, i8* %trytmp214) ; <i8*> [#uses=0]
+  %lit215 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @35, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %372 = call i8* @array_set_elementC(i8* %43, i32 1, i8* %lit215) ; <i8*> [#uses=0]
+  %lit216 = call i8* @int_object(i32 23)          ; <i8*> [#uses=1]
+  %373 = call i8* @array_set_elementC(i8* %43, i32 2, i8* %lit216) ; <i8*> [#uses=0]
+
+then207:                                          ; preds = %try200
+  %lit208 = call i8* @string_object(i8* getelementptr inbounds ([22 x i8]* @34, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont211
+
+else209:                                          ; preds = %try200
+  %lit210 = call i8* @null_object()               ; <i8*> [#uses=1]
+  br label %ifcont211
+
+ifcont211:                                        ; preds = %else209, %then207
+  %iftmp212 = phi i8* [ %lit208, %then207 ], [ %lit210, %else209 ] ; <i8*> [#uses=1]
+  br label %merge202
+
+try222:                                           ; preds = %cont
+  %374 = load i8** %ret173                        ; <i8*> [#uses=1]
+  %lit226 = call i8* @string_object(i8* getelementptr inbounds ([19 x i8]* @37, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %375 = call i8* @array_set_elementC(i8* %29, i32 0, i8* %lit226) ; <i8*> [#uses=0]
+  %376 = call %ret @__t_call(%callsite* %30, i8* %374) ; <%ret> [#uses=1]
+  %retval227 = extractvalue %ret %376, 0          ; <i8*> [#uses=1]
+  %377 = call %ret @__t_call(%callsite* %28, i8* %retval227) ; <%ret> [#uses=1]
+  %retval228 = extractvalue %ret %377, 0          ; <i8*> [#uses=1]
+  %378 = call i32 @bool_get_value(i8* %retval228) ; <i32> [#uses=1]
+  %379 = icmp ne i32 %378, 0                      ; <i1> [#uses=1]
+  br i1 %379, label %then229, label %else231
+
+catch223:                                         ; No predecessors!
+  %380 = load i8** %catchparam225                 ; <i8*> [#uses=1]
+  %381 = call %ret @__t_call(%callsite* %26, i8* %380) ; <%ret> [#uses=1]
+  %retval235 = extractvalue %ret %381, 0          ; <i8*> [#uses=1]
+  br label %merge224
+
+merge224:                                         ; preds = %catch223, %ifcont233
+  %trytmp236 = phi i8* [ %iftmp234, %ifcont233 ], [ %retval235, %catch223 ] ; <i8*> [#uses=1]
+  %382 = call i8* @array_set_elementC(i8* %31, i32 0, i8* %trytmp236) ; <i8*> [#uses=0]
+  %lit237 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @39, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %383 = call i8* @array_set_elementC(i8* %31, i32 1, i8* %lit237) ; <i8*> [#uses=0]
+  %lit238 = call i8* @int_object(i32 26)          ; <i8*> [#uses=1]
+  %384 = call i8* @array_set_elementC(i8* %31, i32 2, i8* %lit238) ; <i8*> [#uses=0]
+
+then229:                                          ; preds = %try222
+  %lit230 = call i8* @string_object(i8* getelementptr inbounds ([30 x i8]* @38, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont233
+
+else231:                                          ; preds = %try222
+  %lit232 = call i8* @null_object()               ; <i8*> [#uses=1]
+  br label %ifcont233
+
+ifcont233:                                        ; preds = %else231, %then229
+  %iftmp234 = phi i8* [ %lit230, %then229 ], [ %lit232, %else231 ] ; <i8*> [#uses=1]
+  br label %merge224
+
+try249:                                           ; preds = %cont
+  %385 = load i8** %_assertions                   ; <i8*> [#uses=1]
+  %lit253 = call i8* @int_object(i32 11)          ; <i8*> [#uses=1]
+  %386 = call i8* @array_set_elementC(i8* %9, i32 0, i8* %lit253) ; <i8*> [#uses=0]
+  %387 = call %ret @__t_call(%callsite* %10, i8* %385) ; <%ret> [#uses=1]
+  %retval254 = extractvalue %ret %387, 0          ; <i8*> [#uses=1]
+  %388 = call %ret @__t_call(%callsite* %8, i8* %retval254) ; <%ret> [#uses=1]
+  %retval255 = extractvalue %ret %388, 0          ; <i8*> [#uses=1]
+  %389 = call i32 @bool_get_value(i8* %retval255) ; <i32> [#uses=1]
+  %390 = icmp ne i32 %389, 0                      ; <i1> [#uses=1]
+  br i1 %390, label %then256, label %else258
+
+catch250:                                         ; No predecessors!
+  %391 = load i8** %catchparam252                 ; <i8*> [#uses=1]
+  %392 = call %ret @__t_call(%callsite* %6, i8* %391) ; <%ret> [#uses=1]
+  %retval262 = extractvalue %ret %392, 0          ; <i8*> [#uses=1]
+  br label %merge251
+
+merge251:                                         ; preds = %catch250, %ifcont260
+  %trytmp263 = phi i8* [ %iftmp261, %ifcont260 ], [ %retval262, %catch250 ] ; <i8*> [#uses=1]
+  %393 = call i8* @array_set_elementC(i8* %11, i32 0, i8* %trytmp263) ; <i8*> [#uses=0]
+  %lit264 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @43, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %394 = call i8* @array_set_elementC(i8* %11, i32 1, i8* %lit264) ; <i8*> [#uses=0]
+  %lit265 = call i8* @int_object(i32 28)          ; <i8*> [#uses=1]
+  %395 = call i8* @array_set_elementC(i8* %11, i32 2, i8* %lit265) ; <i8*> [#uses=0]
+
+then256:                                          ; preds = %try249
+  %lit257 = call i8* @string_object(i8* getelementptr inbounds ([20 x i8]* @42, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont260
+
+else258:                                          ; preds = %try249
+  %lit259 = call i8* @null_object()               ; <i8*> [#uses=1]
+  br label %ifcont260
+
+ifcont260:                                        ; preds = %else258, %then256
+  %iftmp261 = phi i8* [ %lit257, %then256 ], [ %lit259, %else258 ] ; <i8*> [#uses=1]
+  br label %merge251
+}
+
+define internal %ret @__closure2(i8*, i8*, i8*) nounwind {
+entry:
+  %__retval = alloca %ret                         ; <%ret*> [#uses=3]
+  %3 = call i8* @array_get_elementC(i8* %2, i32 0) ; <i8*> [#uses=1]
+  %x = alloca i8*                                 ; <i8**> [#uses=2]
+  store i8* %3, i8** %x
+  %4 = call i8* @array_get_elementC(i8* %2, i32 1) ; <i8*> [#uses=1]
+  %p = alloca i8*                                 ; <i8**> [#uses=2]
+  store i8* %4, i8** %p
+  br label %cache
+
+cache:                                            ; preds = %entry
+  %5 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %6 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %6, i32* @__sym_to_s, i8* %5)
+  %7 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %8 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %8, i32* @__sym_add, i8* %7)
+  br label %cont
+
+cont:                                             ; preds = %cache
+  %9 = load i8** %p                               ; <i8*> [#uses=1]
+  %10 = load i8** %x                              ; <i8*> [#uses=1]
+  %11 = call %ret @__t_call(%callsite* %6, i8* %10) ; <%ret> [#uses=1]
+  %retval = extractvalue %ret %11, 0              ; <i8*> [#uses=1]
+  %12 = call i8* @array_set_elementC(i8* %7, i32 0, i8* %retval) ; <i8*> [#uses=0]
+  %13 = call %ret @__t_call(%callsite* %8, i8* %9) ; <%ret> [#uses=1]
+  %retval1 = extractvalue %ret %13, 0             ; <i8*> [#uses=1]
+  %14 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  %15 = insertvalue %ret %14, i8* %retval1, 0     ; <%ret> [#uses=1]
+  store %ret %15, %ret* %__retval
+  br label %ret
+
+ret:                                              ; preds = %cont
+  %16 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  ret %ret %16
+}
+
+define internal %ret @__closure3(i8*, i8*, i8*) nounwind {
+entry:
+  %__retval = alloca %ret                         ; <%ret*> [#uses=3]
+  %3 = call i8* @array_get_elementC(i8* %2, i32 0) ; <i8*> [#uses=1]
+  %x = alloca i8*                                 ; <i8**> [#uses=2]
+  store i8* %3, i8** %x
+  %4 = call i8* @array_get_elementC(i8* %2, i32 1) ; <i8*> [#uses=1]
+  %p = alloca i8*                                 ; <i8**> [#uses=2]
+  store i8* %4, i8** %p
+  br label %cache
+
+cache:                                            ; preds = %entry
+  %5 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %6 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %6, i32* @__sym_to_s, i8* %5)
+  %7 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %8 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %8, i32* @__sym_add, i8* %7)
+  br label %cont
+
+cont:                                             ; preds = %cache
+  %9 = load i8** %p                               ; <i8*> [#uses=1]
+  %10 = load i8** %x                              ; <i8*> [#uses=1]
+  %11 = call %ret @__t_call(%callsite* %6, i8* %10) ; <%ret> [#uses=1]
+  %retval = extractvalue %ret %11, 0              ; <i8*> [#uses=1]
+  %12 = call i8* @array_set_elementC(i8* %7, i32 0, i8* %retval) ; <i8*> [#uses=0]
+  %13 = call %ret @__t_call(%callsite* %8, i8* %9) ; <%ret> [#uses=1]
+  %retval1 = extractvalue %ret %13, 0             ; <i8*> [#uses=1]
+  %14 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  %15 = insertvalue %ret %14, i8* %retval1, 0     ; <%ret> [#uses=1]
+  store %ret %15, %ret* %__retval
+  br label %ret
+
+ret:                                              ; preds = %cont
+  %16 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  ret %ret %16
+}
+
+define internal %ret @__closure4(i8*, i8*, i8*) nounwind {
+entry:
+  %__retval = alloca %ret                         ; <%ret*> [#uses=3]
+  %3 = call i8* @array_get_elementC(i8* %2, i32 0) ; <i8*> [#uses=1]
+  %x = alloca i8*                                 ; <i8**> [#uses=2]
+  store i8* %3, i8** %x
+  %4 = call i8* @array_get_elementC(i8* %2, i32 1) ; <i8*> [#uses=1]
+  %p = alloca i8*                                 ; <i8**> [#uses=2]
+  store i8* %4, i8** %p
+  br label %cache
+
+cache:                                            ; preds = %entry
+  %5 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %6 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %6, i32* @__sym_to_s, i8* %5)
+  %7 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %8 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %8, i32* @__sym_add, i8* %7)
+  br label %cont
+
+cont:                                             ; preds = %cache
+  %9 = load i8** %p                               ; <i8*> [#uses=1]
+  %10 = load i8** %x                              ; <i8*> [#uses=1]
+  %11 = call %ret @__t_call(%callsite* %6, i8* %10) ; <%ret> [#uses=1]
+  %retval = extractvalue %ret %11, 0              ; <i8*> [#uses=1]
+  %12 = call i8* @array_set_elementC(i8* %7, i32 0, i8* %retval) ; <i8*> [#uses=0]
+  %13 = call %ret @__t_call(%callsite* %8, i8* %9) ; <%ret> [#uses=1]
+  %retval1 = extractvalue %ret %13, 0             ; <i8*> [#uses=1]
+  %14 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  %15 = insertvalue %ret %14, i8* %retval1, 0     ; <%ret> [#uses=1]
+  store %ret %15, %ret* %__retval
+  br label %ret
+
+ret:                                              ; preds = %cont
+  %16 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  ret %ret %16
+}
+
+define internal %ret @__closure5(i8*, i8*, i8*) nounwind {
+entry:
+  %__retval = alloca %ret                         ; <%ret*> [#uses=3]
+  br label %cache
+
+cache:                                            ; preds = %entry
+  %3 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %4 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %4, i32* @__sym_add, i8* %3)
+  %5 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %6 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %6, i32* @__sym_to_s, i8* %5)
+  %7 = call i8* @array_object(i32 0)              ; <i8*> [#uses=1]
+  %8 = alloca %callsite                           ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %8, i32* @__sym_not, i8* %7)
+  %9 = call i8* @array_object(i32 1)              ; <i8*> [#uses=2]
+  %10 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %10, i32* @__sym_eq, i8* %9)
+  %11 = call i8* @array_object(i32 3)             ; <i8*> [#uses=4]
+  %12 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %12, i32* @__sym_AssertionFailure, i8* %11)
+  %13 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %14 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %14, i32* @__sym_puts, i8* %13)
+  %15 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %16 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %16, i32* @__sym_add, i8* %15)
+  %17 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %18 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %18, i32* @__sym_to_s, i8* %17)
+  %19 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %20 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %20, i32* @__sym_add, i8* %19)
+  %21 = call i8* @array_object(i32 1)             ; <i8*> [#uses=2]
+  %22 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %22, i32* @__sym_add, i8* %21)
+  %23 = call i8* @array_object(i32 0)             ; <i8*> [#uses=1]
+  %24 = alloca %callsite                          ; <%callsite*> [#uses=2]
+  call void @__t_callsite(%callsite* %24, i32* @__sym_test_simple, i8* %23)
+  br label %cont
+
+cont:                                             ; preds = %cache
+  %lit = call i8* @int_object(i32 0)              ; <i8*> [#uses=1]
+  %_assertions = alloca i8*                       ; <i8**> [#uses=5]
+  store i8* %lit, i8** %_assertions
+  %lit1 = call i8* @string_object(i8* getelementptr inbounds ([5 x i8]* @44, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %_fun_name = alloca i8*                         ; <i8**> [#uses=2]
+  store i8* %lit1, i8** %_fun_name
+  %25 = call %ret @__t_call(%callsite* %24, i8* %0) ; <%ret> [#uses=1]
+  %retval = extractvalue %ret %25, 0              ; <i8*> [#uses=0]
+  %26 = load i8** %_fun_name                      ; <i8*> [#uses=1]
+  %lit2 = call i8* @string_object(i8* getelementptr inbounds ([3 x i8]* @45, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %27 = call i8* @array_set_elementC(i8* %21, i32 0, i8* %lit2) ; <i8*> [#uses=0]
+  %28 = call %ret @__t_call(%callsite* %22, i8* %26) ; <%ret> [#uses=1]
+  %retval3 = extractvalue %ret %28, 0             ; <i8*> [#uses=1]
+  %29 = load i8** %_assertions                    ; <i8*> [#uses=1]
+  %30 = call %ret @__t_call(%callsite* %18, i8* %29) ; <%ret> [#uses=1]
+  %retval4 = extractvalue %ret %30, 0             ; <i8*> [#uses=1]
+  %31 = call i8* @array_set_elementC(i8* %19, i32 0, i8* %retval4) ; <i8*> [#uses=0]
+  %32 = call %ret @__t_call(%callsite* %20, i8* %retval3) ; <%ret> [#uses=1]
+  %retval5 = extractvalue %ret %32, 0             ; <i8*> [#uses=1]
+  %lit6 = call i8* @string_object(i8* getelementptr inbounds ([15 x i8]* @46, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %33 = call i8* @array_set_elementC(i8* %15, i32 0, i8* %lit6) ; <i8*> [#uses=0]
+  %34 = call %ret @__t_call(%callsite* %16, i8* %retval5) ; <%ret> [#uses=1]
+  %retval7 = extractvalue %ret %34, 0             ; <i8*> [#uses=1]
+  %35 = call %ret @__t_call(%callsite* %14, i8* %retval7) ; <%ret> [#uses=1]
+  %retval8 = extractvalue %ret %35, 0             ; <i8*> [#uses=0]
+  %catchparam = alloca i8*                        ; <i8**> [#uses=1]
+  br label %try
+  %36 = call %ret @__t_call(%callsite* %12, i8* %0) ; <%ret> [#uses=1]
+  %retval17 = extractvalue %ret %36, 0            ; <i8*> [#uses=0]
+  %37 = load i8** %_assertions                    ; <i8*> [#uses=1]
+  %lit18 = call i8* @int_object(i32 1)            ; <i8*> [#uses=1]
+  %38 = call i8* @array_set_elementC(i8* %3, i32 0, i8* %lit18) ; <i8*> [#uses=0]
+  %39 = call %ret @__t_call(%callsite* %4, i8* %37) ; <%ret> [#uses=1]
+  %retval19 = extractvalue %ret %39, 0            ; <i8*> [#uses=2]
+  store i8* %retval19, i8** %_assertions
+  %40 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  %41 = insertvalue %ret %40, i8* %retval19, 0    ; <%ret> [#uses=1]
+  store %ret %41, %ret* %__retval
+  br label %ret
+
+ret:                                              ; preds = %cont
+  %42 = load %ret* %__retval                      ; <%ret> [#uses=1]
+  ret %ret %42
+
+try:                                              ; preds = %cont
+  %43 = load i8** %_assertions                    ; <i8*> [#uses=1]
+  %lit9 = call i8* @int_object(i32 0)             ; <i8*> [#uses=1]
+  %44 = call i8* @array_set_elementC(i8* %9, i32 0, i8* %lit9) ; <i8*> [#uses=0]
+  %45 = call %ret @__t_call(%callsite* %10, i8* %43) ; <%ret> [#uses=1]
+  %retval10 = extractvalue %ret %45, 0            ; <i8*> [#uses=1]
+  %46 = call %ret @__t_call(%callsite* %8, i8* %retval10) ; <%ret> [#uses=1]
+  %retval11 = extractvalue %ret %46, 0            ; <i8*> [#uses=1]
+  %47 = call i32 @bool_get_value(i8* %retval11)   ; <i32> [#uses=1]
+  %48 = icmp ne i32 %47, 0                        ; <i1> [#uses=1]
+  br i1 %48, label %then, label %else
+
+catch:                                            ; No predecessors!
+  %49 = load i8** %catchparam                     ; <i8*> [#uses=1]
+  %50 = call %ret @__t_call(%callsite* %6, i8* %49) ; <%ret> [#uses=1]
+  %retval14 = extractvalue %ret %50, 0            ; <i8*> [#uses=1]
+  br label %merge
+
+merge:                                            ; preds = %catch, %ifcont
+  %trytmp = phi i8* [ %iftmp, %ifcont ], [ %retval14, %catch ] ; <i8*> [#uses=1]
+  %51 = call i8* @array_set_elementC(i8* %11, i32 0, i8* %trytmp) ; <i8*> [#uses=0]
+  %lit15 = call i8* @string_object(i8* getelementptr inbounds ([12 x i8]* @48, i32 0, i32 0)) ; <i8*> [#uses=1]
+  %52 = call i8* @array_set_elementC(i8* %11, i32 1, i8* %lit15) ; <i8*> [#uses=0]
+  %lit16 = call i8* @int_object(i32 32)           ; <i8*> [#uses=1]
+  %53 = call i8* @array_set_elementC(i8* %11, i32 2, i8* %lit16) ; <i8*> [#uses=0]
+
+then:                                             ; preds = %try
+  %lit12 = call i8* @string_object(i8* getelementptr inbounds ([19 x i8]* @47, i32 0, i32 0)) ; <i8*> [#uses=1]
+  br label %ifcont
+
+else:                                             ; preds = %try
+  %lit13 = call i8* @null_object()                ; <i8*> [#uses=1]
+  br label %ifcont
+
+ifcont:                                           ; preds = %else, %then
+  %iftmp = phi i8* [ %lit12, %then ], [ %lit13, %else ] ; <i8*> [#uses=1]
+  br label %merge
+}

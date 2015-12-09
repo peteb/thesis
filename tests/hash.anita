@@ -1,0 +1,28 @@
+val hash_proto = object {
+	val apply = fun(x) => {
+		var i = 0;
+
+		while (i < this.values.size) {
+			val value = this.values.at(i);
+			if (value(0) == x) {
+				return value;
+			}
+			
+			i = i + 1;
+		}
+		
+		throw "key " + x.to_s + " not found";
+	}
+};
+
+val create_hash = fun() => {
+	object {
+		val values = args;
+		val delegate = this.hash_proto;
+	}
+};
+
+val main = fun() => {
+	val hash = create_hash(["peter", 1337], ["satan", 666]);
+	hash("peter")(1).to_s.puts;
+}

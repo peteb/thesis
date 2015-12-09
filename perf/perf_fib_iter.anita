@@ -1,0 +1,23 @@
+# this test is useless, actually.
+# just for comparing with the recursive counterpart
+
+val main = fun() => {
+	val max = 33;
+	this.fib(max).to_s.puts;	
+};
+
+val fib = fun(n) => {
+	var a = 0;
+	var b = 1;
+	var x = 0;
+	var i = 0;
+	
+	while (i < n) {
+		x = b;
+		b = a + b;
+		a = x;
+		i = i + 1;
+	}
+	
+	x;
+};

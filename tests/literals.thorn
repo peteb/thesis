@@ -1,0 +1,23 @@
+var main = fun() => {
+	var a = null;
+	var b = 63884;
+	var c = 3.14159;
+	var d = "elis";
+	var e = true;
+	
+	# a.as_string.print;		# shan't deref null
+	b.to_s.print;
+	c.to_s.print;
+	d.to_s.print;
+	e.to_s.print;
+	
+	(45).to_s.print;
+	(45).to_s.print;
+	(45).to_s.print;
+	(45).to_s.print;
+
+	"hej".to_s.print;
+	"hej".to_s.print;
+	"hej".to_s.print;
+	"hej".to_s.print;
+}

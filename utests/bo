@@ -1,0 +1,35 @@
+# 1 "<stdin>"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "<stdin>"
+# 1 "tunit.anita" 1
+
+
+
+
+
+
+val AssertionFailure = fun(expr, file, line) => {
+ if (expr != null) {
+  throw "'" + expr + "', file " + file + ", line " + (line).to_s + ".";
+ }
+};
+# 2 "<stdin>" 2
+
+val test_simple = fun() => {var _assertions = 0; val _fun_name = "test_simple";
+ var foo = fun() => {
+  this.AssertionFailure( (try {if (!(true)) {"reachable"}} catch (e) {e.to_s}) , "<stdin>", 5) ; _assertions = _assertions + 1; # trying to re-assign immutable variable?!
+   return true;
+  this.AssertionFailure( (try {if (!(false)) {"unreachable"}} catch (e) {e.to_s}) , "<stdin>", 7) ; _assertions = _assertions + 1;
+  return null;
+  "foo";
+ };
+
+ this.AssertionFailure( (try {if (!(true)) {"reachable"}} catch (e) {e.to_s}) , "<stdin>", 12) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(foo() == true)) {"foo() == true"}} catch (e) {e.to_s}) , "<stdin>", 13) ; _assertions = _assertions + 1;
+ this.AssertionFailure( (try {if (!(true)) {"reachable"}} catch (e) {e.to_s}) , "<stdin>", 14) ; _assertions = _assertions + 1;
+(_fun_name + ": " + _assertions.to_s + " assertion(-s)").print; this.AssertionFailure( (try {if (!(_assertions == (4))) {"_assertions == (4)"}} catch (e) {e.to_s}) , "<stdin>", 15) ; _assertions = _assertions + 1};
+
+val main = fun() => {var _assertions = 0; val _fun_name = "main";
+ this.test_simple();
+(_fun_name + ": " + _assertions.to_s + " assertion(-s)").print; this.AssertionFailure( (try {if (!(_assertions == (0))) {"_assertions == (0)"}} catch (e) {e.to_s}) , "<stdin>", 19) ; _assertions = _assertions + 1};

@@ -1,0 +1,21 @@
+val main = fun() => {
+	val x = object {
+		var foo = "tja";
+		var default = "EN STOR FET KATT";
+		var get_default_age = fun(x, y) => {"Age: " + (x + y).to_s; };
+		
+		var test = fun() => {
+			var testval = "boooooork";
+			testval = "katt";
+			testval = this.default;
+			
+			this.foo = testval + " " + THIS.get_default_age(3, 5);
+		}
+	};
+	
+	x.foo = "bo";
+	
+	x.foo.print;
+	x.test;
+	x.foo.print;
+}

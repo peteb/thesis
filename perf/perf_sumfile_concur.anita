@@ -1,0 +1,36 @@
+val create_summer = fun() => {
+	spawn fun() => {
+		var msg;
+		var total_sum = 0;
+		
+		while (msg = this.read) {
+			val tokens = msg.split(" ");
+			var i = 0;
+			
+			while (i < tokens.size) {
+				total_sum = total_sum + tokens(i).to_i;
+				i = i + 1;
+			}
+		}
+		
+		msg.respond(total_sum);
+	}	
+};
+
+val main = fun() => {
+	val stream = IO.open_file("input_list_vs_gen.txt", "r");
+	
+	val calculators = [this.create_summer];
+	var line;
+	var i = 0;
+	
+	while (line = stream.gets) {
+		val calculator = calculators(i % calculators.size);
+		calculator ! line;
+		
+		i = i + 1;
+	}
+	
+	val sum = calculators.inject(0, fun(x, prev) => (x ! null).wait + prev);
+	("Grand total: " + sum.to_s).puts;
+}

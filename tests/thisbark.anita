@@ -1,0 +1,7 @@
+val main = fun() => {
+	var foo = fun() => 1;
+	var bar = fun() => foo = fun() => 1337;
+	
+	bar();
+	foo().to_s.puts;
+}

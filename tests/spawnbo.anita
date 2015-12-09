@@ -1,0 +1,9 @@
+val main = fun() => {
+	var foo = 123;
+	
+	foo.to_s.puts;
+	val proc = spawn fun() => foo = "KATT";
+	foo.to_s.puts;
+	
+	
+}

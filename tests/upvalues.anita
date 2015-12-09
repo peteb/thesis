@@ -1,0 +1,21 @@
+var main = fun() => {
+	var obj = object {
+
+		var boing = fun() => {
+			var ret = "Hej: " + THIS.sum_and_print(3, 88);
+			ret.print;
+		};
+
+		var sum_and_print = fun(x, y) => {
+			var sum = x + y;
+			("Svar: " + sum.to_s);
+		};
+		
+	};
+	
+
+	
+	obj.boing;
+	
+#	var foo = fun() => fun() => {x.print};
+};

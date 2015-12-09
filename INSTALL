@@ -1,0 +1,26 @@
+Building thorn-llvm:
+	(it shouldn't be too hard, though it might take a lot of time; don't 
+	forget the -j option in make!)
+	
+	First, compile llvm
+		cd llvm-2.6
+		./configure && make
+
+		Note: LLVM doesn't seem to default to x86_64 on Mac OS X,
+	  	use ./configure --target x86_64 if there are mismatching archs
+		when building thorn-llvm.
+		
+		There's no need to install LLVM globally; the local version will 
+		be used. If no local version is present, it will look for a 
+		global install.
+		
+	Then compile Boehm's gc
+		cd gc-7.1
+		./configure --enable-threads=posix && make
+		
+	Finally, we can build thorn-llvm!
+		./autogen.sh	 if the configure script doesn't exist yet
+		./configure && make && sudo make install 
+		
+		This will install the binary (tlc) and the man page.	
+

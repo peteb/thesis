@@ -1,0 +1,46 @@
+val main = fun() => {
+	# var x = "hej";
+	# var y = x.clone;
+	# y.print;
+	# 
+	
+	val isan = object {
+		val name = "Elisabet";
+		val age = 22;
+		val to_s = fun() => this.name + ": " + this.age.to_s + " years old";		
+	}
+	
+	val item_of_interest = object {
+		val item = isan;
+		val amount = 100;
+		
+		val to_s = fun() => {
+			this.item.to_s + " amount: " + this.amount.to_s;
+		}
+	}
+	
+	var person = object {
+		var name = "Peter";
+		val age = 22;
+		var interest = item_of_interest;
+		
+		val to_s = fun() => {
+			this.name + ": " + this.age.to_s + " years old\nLikes: " 
+				+ this.interest.to_s;
+		};
+	};
+
+	person.to_s.print;
+	
+	var new_person = person.clone;
+	new_person.to_s.print;
+	new_person.age.to_s.print;
+	new_person.interest = "Isan!";
+	new_person.to_s.print;
+	
+	person.to_s.print;
+	
+#	new_person.age.to_s.print;
+#	new_person.to_s.print;
+}
+

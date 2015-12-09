@@ -1,0 +1,8 @@
+#!/bin/bash -x
+CFLAGS="-Wall"
+
+if [ `uname` == "Darwin" ]; then
+  CFLAGS="$CFLAGS -arch i386"
+fi
+
+g++ -g $@ `../../llvm-config --cxxflags --ldflags --libs core bitwriter` $CFLAGS

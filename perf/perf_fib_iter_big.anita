@@ -1,0 +1,25 @@
+val main = fun() => {
+	val max = 86;
+	var i = 0;
+	
+	while (i < 1000000) {
+		this.fib(max);	
+		i = i + 1;
+	}
+};
+
+val fib = fun(n) => {
+	var a = 0;
+	var b = 1;
+	var x = 0;
+	var i = 0;
+	
+	while (i < n) {
+		x = b;
+		b = a + b;
+		a = x;
+		i = i + 1;
+	}
+	
+	x;
+};

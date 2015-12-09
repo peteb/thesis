@@ -1,0 +1,10 @@
+val main = fun() => {
+	val s = "hej";
+	("h: " + s(0..0)).puts;
+	s(0..1).puts;
+	s(0..2).puts;
+	s(0..-1).puts;
+	s(0..-2).puts;
+	s(0..-3).puts;
+
+}

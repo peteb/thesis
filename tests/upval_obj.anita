@@ -1,0 +1,13 @@
+val main = fun() => {
+	val obj = this.my_obj;
+};
+
+val my_obj = fun() => {
+	val to_s = fun() => {
+		"hej".puts;
+	}
+	
+	val upvals = fun() => {
+		to_s;
+	}
+}

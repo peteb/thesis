@@ -1,0 +1,17 @@
+var main = fun() => {
+	"hej".print;
+	
+	(if (2 == 3) {"hund"} else {"katt"}).print;
+	
+	if (45 == 45) {
+		"CORRECT".print;
+	}
+	
+	if (3 > 4) {
+		"happ".print;
+	}
+	
+	if (1 < 2 && 3 < 4) {
+		"correct again!".print;
+	}
+}

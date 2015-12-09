@@ -1,0 +1,9 @@
+
+
+val main = fun() => {
+	var loop = true;
+	while (loop) {
+		loop = false;
+	}
+}
+

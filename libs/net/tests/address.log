@@ -1,0 +1,8 @@
+[tool entry: 0x10000e4d0]
+Google: 208.69.34.231
+main: 1 assertion(-s)
+
+Memory stats:
+Heap size = 65536
+mem usage: 0, num allocs: 0
+# collections 2

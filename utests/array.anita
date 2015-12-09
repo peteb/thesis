@@ -1,0 +1,50 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_simple)
+	assert_eq([].to_s, "[]");
+	# assert(["foo"].to_s == "[\"foo\"]");
+	
+	var array = [1, 2, true, "four"];
+
+	assert_eq(array(-1), "four");
+	assert_eq(array(0), 1);
+	assert_eq(array(1), 2);
+	assert_eq(array(2), true);
+	assert_eq(array(3), "four");
+	assert_eq(array(4), null);
+	
+	var ret = array.inject("", fun(x, p) => p + x.to_s);
+	assert_eq(ret, "12truefour");
+	
+	var new_array = array.append("last");
+	new_array = new_array.append(null);
+	
+	ret = array.inject("", fun(x, p) => p + x.to_s);
+	assert_eq(ret, "12truefour");
+	
+	ret = new_array.inject("", fun(x, p) => p + x.to_s);
+	assert_eq(ret, "12truefourlastnull");
+	
+END_TEST(10)
+
+BEGIN_TEST(test_eq)
+	assert_eq(([]), ([]));
+	assert_eq(([1]), ([1]));
+	assert_eq(([1, 2, 3, 4]), ([1, 2, 3, 4]));
+	assert_eq((["how", null, -1]), (["how", null, -1]));
+END_TEST(4)
+
+BEGIN_TEST(test_range)
+	val array = [1, 2, true, "four", 5];
+	assert_eq(array(0..0), ([1]));	# arrays are wrapped because of the parser
+	assert_eq(array(0..1), ([1, 2]));
+	assert_eq(array(0..-1), ([1, 2, true, "four", 5]));
+	assert_eq(array(1..1), ([2]));
+	assert_eq(array(1..-2), ([2, true, "four"]));
+END_TEST(5)
+
+BEGIN_TEST(main)
+	this.test_simple();
+	this.test_eq();
+	this.test_range();
+END_TEST(0)

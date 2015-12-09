@@ -1,0 +1,46 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_simple)
+	assert_reachable();
+	while (false) {
+		assert_unreachable();
+	}
+
+	assert_reachable();
+	
+	var x = 0;
+	
+	while (x < 10) {
+		assert_reachable();
+		x = x + 1;
+	}
+	
+	assert_reachable();
+END_TEST(13)
+
+BEGIN_TEST(test_nested)
+	assert_reachable();
+	
+	var x = 0;
+	
+	while (x < 20) {
+		assert_reachable();
+		var y = 0;
+		
+		while (y < 5) {
+			assert_reachable();
+			y = y + 1;
+		}
+		
+		assert_reachable();
+		x = x + 1;
+	}
+	
+	assert_reachable();
+
+END_TEST(142)
+
+BEGIN_TEST(main)
+	this.test_simple();
+	this.test_nested();
+END_TEST(0)

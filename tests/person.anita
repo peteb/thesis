@@ -1,0 +1,32 @@
+
+val main = fun() => {	
+	var x = this.create_person();
+	x.class.print;
+	#x.cool.class.print;
+	
+	var foo = object {
+		var z = fun(y) => {
+			x.class.print;
+			y.class.print;
+			__closure.inspect;
+		};
+	}
+
+	(3).inspect;
+	foo.z;
+};
+
+
+val person_class = object {
+	val class = "person";
+};
+
+val create_person = fun(first_name, last_name) => {
+	val new_person = object {
+		val delegate = this.person_class;
+	};
+	
+	#new_person.delegate = this.person_class;
+	
+	return new_person;
+};

@@ -1,0 +1,50 @@
+#include "tunit.anita"
+
+val meth = fun() => this.class;
+
+BEGIN_TEST(simple_test)
+	val clos = fun() => self.class;
+	assert(clos() == "closure");
+	assert(this.meth() == "object");
+
+	val obj = object {
+		val meth = fun() => clos;
+	}
+	
+	obj.meth.to_s.puts;
+END_TEST(2)
+
+BEGIN_TEST(params_test)
+	assert(this.class == "object");
+	
+	val foo = fun(i) => {
+		assert(this.class == "object");
+		assert(self.class == "closure");
+		assert(i.class == "int");
+		
+		if (i > 0) {
+			self(i - 1);
+		}
+	}
+	
+	foo(1);
+END_TEST(7)
+
+BEGIN_TEST(closure_upval_test)
+	var i = 0;
+	
+	while (i < 4) {
+		val bar = fun(x) => x + 1;
+		val foo = fun(x) => bar(x);
+		i = foo(i);
+	}
+	
+	assert(i == 4);
+	
+END_TEST(1)
+
+BEGIN_TEST(main)
+	this.simple_test();
+	this.params_test();
+	this.closure_upval_test();
+END_TEST(0)

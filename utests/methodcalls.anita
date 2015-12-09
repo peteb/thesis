@@ -1,0 +1,21 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_binding)	
+	# this test checks that an update to a method in an object is carried over
+	# to callsite caches (if any)
+	
+	var my_obj = object {var get_val = fun() => 0};
+	var i = 0;
+	
+	while (i < 10) {
+		assert_eq(my_obj.get_val, i);
+		i = i + 1;
+		my_obj.get_val = fun() => i;
+	}
+	
+	assert_eq(my_obj.get_val, 10);	
+END_TEST(11)
+
+val main = fun() => {
+	this.test_binding();
+}

@@ -1,0 +1,20 @@
+val main = fun() => {
+	var i = 0;
+	while (i < 10000000) {
+		val bar = fun(x) => x + 1;
+		val foo = fun(x) => bar(x);
+		i = foo(i);
+	}
+	
+	# det funkar inte eftersom den försöker sätta self.bar i varje iteration
+	# vilket är EL STUPIDO!!!!!!!!!!
+	# eller det är väl egentligen så man måste göra... men sloten kan vara
+	# writable. men det här är skumma saker alltså.
+	# eftersom bar är val behöver den inte ta ett slot i sig själv, den 
+	# går inte att skriva till. så gör som förut bara, kopiera in den i
+	# inner och sätt den som en Slot, inte ParentSlot
+	# med vars kan man analysera koden, om det inte finns en direkt assignment
+	# borde man kunna komma undan med att inte tillåta assignments
+	
+	i.to_s.puts;
+}

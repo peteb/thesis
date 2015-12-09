@@ -1,0 +1,54 @@
+#include "tunit.anita"
+
+val foo_a = fun() => true;
+val foo_b = fun() => "hej";
+val foo_c = fun() => null;
+
+BEGIN_TEST(test_simple)
+	var a = fun() => true;
+	var b = fun() => "hej";
+	var c = fun() => null;
+
+	assert(a());
+	assert(b() == "hej");
+	assert(c() == null);
+	assert(this.foo_a());
+	assert(this.foo_b() == "hej");
+	assert(this.foo_c() == null);
+END_TEST(6)
+
+BEGIN_TEST(test_nested)
+	var a = fun(x, y) => x + y;
+	var b = fun(z) => a(z, 5);
+	
+	assert(a(13, 4) == 17);
+	assert(b(5) == 10);
+	assert(exc_val(b() == 3, null) == "method not found");
+END_TEST(3)
+
+BEGIN_TEST(test_upvals)
+	# TODO: not certain of this behavior
+	# doesn't work now though. upvals are read-only
+	# assertions fail to compile in inner functions because they use
+	# an upvalue to count the number of assertions made
+	
+	var x = 1337;
+	
+	# TODO: this tests updating of upvals
+	var foo = fun() => {
+		assert(x == 1337);
+		x = x + 1;
+		assert(x == 1338);
+	};
+	
+	assert(x == 1337);
+	foo();
+	assert(x == 1338);
+END_TEST(4)
+
+BEGIN_TEST(main)
+	this.test_simple();
+	this.test_nested();
+	this.test_upvals();
+END_TEST(0)
+

@@ -1,0 +1,4 @@
+val main = fun() => {
+	val sum = fun(x, y) => x + y;
+	
+}

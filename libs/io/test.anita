@@ -1,0 +1,54 @@
+val main = fun() => {
+	"hello, world!".puts;
+	# # 
+	# val file = IO.open_file("test.txt", "r");
+	# # var line;
+	# # 
+	# # while (line = file.gets) {
+	# # 	line.puts;
+	# # }
+	# # 
+	# #file.puts("HEEEEEEJ");
+	# # IO.stdout.puts("Enter stuff:");
+	# # 
+	# # while (line = IO.stdin.gets) {
+	# # 	IO.stdout.puts("Wrote: " + line);
+	# # }
+	# 
+	# file.rewind;
+	# #file.each(fun(line) => ("Line: " + line).puts);
+	# file.all.puts;
+	
+	val input_reader = spawn fun() => {
+		# var line;
+		# 	while (line = IO.stdin.gets) {
+		# 		IO.stdout.puts("Got " + line);
+		# 	}
+		
+		var msg;
+		while (msg = this.read) {
+			(">>> Please answer: " + msg.to_s).puts;
+			
+			msg.respond(IO.stdin.gets);
+		}
+	};
+	
+	val tinker = spawn fun() => {
+		var future = input_reader ! "tja";
+		
+		var x = 0;
+		while (1) {
+			x = x + 1;
+
+			if (future.ready?) {
+				("We got result: " + future.wait.to_s).puts;
+				future = input_reader ! x;
+			}
+			else {
+				("No answer... " + x.to_s).puts;
+			}
+			
+			this.sleep(1);
+		}
+	};
+}

@@ -1,0 +1,11 @@
+val main = fun() => {
+	var line;
+	var sum = 0;
+	val stream = IO.open_file("input_list_vs_gen.txt", "r");
+	
+	while (line = stream.gets) {
+		sum = sum + line.split(" ").inject(0, fun(x, s) => s + x.to_i);
+	}
+
+	("Grand total: " + sum.to_s).puts;
+}

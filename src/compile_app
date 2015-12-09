@@ -1,0 +1,7 @@
+#!/bin/bash
+# 1. compiles anita json ast into llvm bc
+# 2. links with standardlib bc 
+# param 1: Anita json
+
+./tlc $1 -o app.bc --emit-ll --emit-ast
+llvm-ld libthorn/libthorn.bc app.bc -o hej.bc

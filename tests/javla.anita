@@ -1,0 +1,61 @@
+#include "tunit.anita"
+
+val lib_try_test = fun() => {
+	val hej = fun() => IO.class;
+	hej() == "io";
+	IO.class == "io";
+	
+	null;
+	try {
+		1234;
+		IO.class == "io";
+		val value = IO.class;
+		value == "io";
+		
+		if (true) {
+			IO.class == "io";
+			
+			var loop = true;
+			while (loop) {
+				loop = false;
+				IO.class == "io";
+				
+				try {
+					"placeholder";
+					val name = IO.class;
+					name == "io";
+					throw IO;
+				}
+				catch (e) {
+					e.class == "io";
+				}
+				IO.class == "io";
+			}
+		}
+	}
+	catch (e) {
+		
+	}
+	
+	val my_fun = fun() => {
+		return IO.class;
+	}
+	
+	my_fun() == "io";
+};
+
+val simple_test = fun() => {
+	val upvalue = 42;
+	
+	val foo = fun() => {
+		upvalue;
+	}
+	
+	upvalue == 42;
+	foo() == 42;
+};
+
+val main = fun() => {
+	this.lib_try_test();
+	this.simple_test();
+}

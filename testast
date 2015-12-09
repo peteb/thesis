@@ -1,0 +1,1 @@
+{"members":[{"name":"main","init":{"body":{"members":[{"name":"sum","init":{"value":0,"kind":"int"},"isval":false,"kind":"vardef"},{"body":{"name":"sum","value":{"value":34,"kind":"int"},"target":null,"kind":"assign"},"formals":[],"kind":"closure"}],"kind":"block"},"formals":[],"kind":"closure"},"isval":true,"kind":"vardef"}],"kind":"unit"}

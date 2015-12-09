@@ -1,0 +1,13 @@
+val main = fun() => {
+	var i = 0;
+	while (i < 10000000) {
+		val foo = fun(x) => {
+			val bar = fun(y) => y + 1;
+			bar(x);
+		}
+		
+		i = foo(i);
+	}
+	
+	i.to_s.puts;
+}

@@ -1,0 +1,14 @@
+
+var main = fun() => {
+	var i = 0;
+	
+	"it begins".print;
+	
+	while (i < 10) {
+		i.to_s.print;
+		i = i + 1;
+	}	
+		
+	
+	"and ends".print;
+}

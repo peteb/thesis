@@ -1,0 +1,13 @@
+val main = fun() => {
+	val foo = fun() => {
+		throw null;
+	}
+	
+	#val bar = fun() => {return 8; 3};
+	# 
+	# foo();
+	var x = foo();
+#	x.to_s.print;
+	
+	return null;
+}

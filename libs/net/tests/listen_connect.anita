@@ -1,0 +1,19 @@
+#include "tunit.anita"
+
+BEGIN_TEST(tcp_test)
+	val server = NET.tcp_socket;
+	assert(null != server);
+	server.listen(NET.address("0.0.0.0:12345"));
+	
+	val client = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+	assert(null != client);
+	client.connect(NET.address("127.0.0.1:12345"));
+	
+	val connection = server.accept();
+	assert(null != connection);
+	connection.peer_address.to_s.puts;	
+END_TEST(3)
+
+BEGIN_TEST(main)
+	this.tcp_test();
+END_TEST(0)

@@ -1,0 +1,40 @@
+#include "tunit.anita"
+
+# TODO: futures som väntar på något från en tråd som dött,
+#       de kanske borde dö?
+
+BEGIN_TEST(test_simple)
+	val receiver = spawn fun() => {
+		val message = this.read;
+		message.respond(message + 4);
+		message.respond(message - 5);
+		message.respond(null);
+	}
+	
+	val future = receiver ! 5;
+	assert(future.wait == 9);
+	assert(future.wait == 0);
+	assert(future.wait == null);
+END_TEST(3)
+
+BEGIN_TEST(test_many)
+	val adder = spawn fun() => {
+		var msg;
+		while (msg = this.read) {
+			msg.respond(msg + 5);
+		}
+	}
+	
+	var i = 0;
+	while (i < 100) {
+		i = i + 1;
+		assert((adder ! i).wait == i + 5);
+	}
+	
+	adder ! null;
+END_TEST(100)
+
+BEGIN_TEST(main)
+	this.test_simple();
+	this.test_many();
+END_TEST(0)

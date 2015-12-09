@@ -1,0 +1,54 @@
+val main = fun() => {
+
+	val calc_proc = spawn fun() => {
+		var msg;
+		var loop = true;
+		
+		while (loop && (msg = this.read)) {
+			if (msg) {
+				("Calculating: " + msg.to_s).puts;
+				msg.respond(msg(0) + msg(1));
+			}
+			else {
+				loop = false;
+			}
+		};
+		
+		"Calculator says bye!".puts;
+	};
+	
+	# calc_proc.inspect;
+	#(calc_proc ! [3, 8]).wait.to_s.puts;
+	#(calc_proc ! [-3, 3]).wait.to_s.puts;
+	#(calc_proc ! [4, 5]).wait.to_s.puts;
+	
+	
+	var futures = [
+		calc_proc ! [3, 8], 
+		calc_proc ! [-3, 3],
+		calc_proc ! [4, 5],
+		calc_proc ! [-123, 3235]
+	];
+	
+	var x = 0;	
+	while (! futures.all?(fun(y) => y.ready?) ) {
+		x = x + 1;
+	}
+
+	("Waited " + x.to_s + " iterations for result").puts;
+	
+	val fprinter = fun(x, idx) => {
+		("f" + idx.to_s + ": " + x.wait.to_s).puts;
+	}
+	
+	futures.each_with_index(fprinter);
+	
+	calc_proc ! null;
+	("Calculator returned: " + calc_proc.wait.to_s).puts;
+	
+	["hej", "jag", 43, null, "hehehe"].join.puts;
+	
+	(-3..4).each(fun(x) => x.to_s.puts);
+	
+	
+}

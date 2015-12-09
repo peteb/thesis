@@ -1,0 +1,8 @@
+val do_stuff = fun() => {
+	"Cool, libs are working!".puts;
+	STD.class.puts;
+};
+
+val class = fun() => "stdlib";
+
+val create_object = fun() => object {val name = "peter"};

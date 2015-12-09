@@ -1,0 +1,4 @@
+val main = fun() => {
+	val str = "Hejsan......";
+	str.to_s.puts;
+};

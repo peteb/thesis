@@ -1,0 +1,22 @@
+
+CC = /Developer/usr/bin/clang
+LD = llvm-ld
+CFLAGS = -emit-llvm
+LDFLAGS = -link-as-library -lgc
+OBJS = object.bc string.bc null.bc closure.bc integer.bc bool.bc float.bc array.bc  \
+       throw.bc start.bc memory.bc object_proto.bc proc.bc spawn.bc process.bc 		\
+       msg_queue.bc range.bc send.bc future.bc entries.bc data.bc callsite.bc       \
+       object_map.bc ptr_tag.bc
+
+OUTPUT = libthorn.bc
+
+all: $(OUTPUT)
+
+$(OUTPUT): $(OBJS)
+	$(LD) $(OBJS) -o $(OUTPUT) $(LDFLAGS)
+
+%.bc: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm $(OBJS) $(OUTPUT)

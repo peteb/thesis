@@ -1,0 +1,8 @@
+val main = fun() => {
+	try {
+		throw "hej";
+	}
+	catch (e) {
+		e.to_s.puts;
+	}
+}

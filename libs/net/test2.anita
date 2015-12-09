@@ -1,0 +1,16 @@
+val main = fun() => {
+	val server = spawn fun() => {
+		val socket = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+		socket.listen(NET.getaddrinfo("0.0.0.0:12345"));
+		
+		var client = socket.accept;
+		(client.peer_address.to_s + " connected.").puts;
+	
+		var data = client.read(1);
+		data.class.puts;
+		
+		("Received: " + data.size.to_s + " bytes.").puts;
+	}
+	
+	server.wait;
+}

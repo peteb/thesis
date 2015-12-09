@@ -1,0 +1,16 @@
+val hej = "Fooooooooooooobar";
+
+val main = fun() => {
+#	LOBBY.hej.print;
+	# STD.do_stuff;
+	# STD.create_object.inspect;
+	# STD.en_metod_som_inte_finns("katt");
+	
+	#NETWORK.Socket.new(NETWORK.Address.new("127.0.0.1"));
+
+	val file = IO.file_open("test.txt", "w");
+	file.inspect;
+	file.write("Coolt, nu kan man skriva ut saker alltså");
+	
+}
+

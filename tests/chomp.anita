@@ -1,0 +1,4 @@
+val main = fun() => {
+	("Hej " + IO.crlf).chomp.puts;
+	"Hejsan.anita".chomp(".anita").puts;
+}

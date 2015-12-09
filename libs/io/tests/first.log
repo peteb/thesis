@@ -1,0 +1,2 @@
+Assertion failed: (ofs != -1 && "failed to add slot"), function object_set_slot, file object.c, line 116.
+size of long: 8

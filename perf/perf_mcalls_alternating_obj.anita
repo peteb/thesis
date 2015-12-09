@@ -1,0 +1,58 @@
+val main = fun() => {
+	val obj1 = object {
+		val fun1 = fun() => false;
+		val fun2 = fun() => true;
+		val fun3 = fun() => false;
+		val fun4 = fun() => true;
+		val fun5 = fun() => false;
+		val fun6 = fun() => true;
+		val fun7 = fun() => false;
+		val fun8 = fun() => true;
+		val fun9 = fun() => false;
+		val fun10 = fun() => true;
+	}
+
+	val obj2 = object {
+		val fun1 = fun() => true;
+		val fun2 = fun() => false;
+		val fun3 = fun() => true;
+		val fun4 = fun() => false;
+		val fun5 = fun() => true;
+		val fun6 = fun() => false;
+		val fun7 = fun() => true;
+		val fun8 = fun() => false;
+		val fun9 = fun() => true;
+		val fun10 = fun() => false;
+	}
+	
+	val cached_max = 10000000;
+	var last = 1;
+	var i = 0;
+	var obj;
+	
+	while (i < cached_max) {
+		# this is apparently faster than [obj1, obj2](i %2)
+		
+		if (last == 1) {
+			last = 2;
+			obj = obj1;
+		}
+		else {
+			last = 1;
+			obj = obj2;
+		}
+		
+		obj.fun10();
+		obj.fun1();
+		obj.fun9();
+		obj.fun2();
+		obj.fun8();
+		obj.fun3();
+		obj.fun7();
+		obj.fun4();
+		obj.fun6();
+		obj.fun5();
+		
+		i = i + 1;
+	}
+}

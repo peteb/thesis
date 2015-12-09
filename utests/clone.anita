@@ -1,0 +1,76 @@
+#include "tunit.anita"
+
+BEGIN_TEST(test_object)
+	val orig = object {
+		var foo = 44;
+		var name = "Fredrick Fuchs";
+	};
+	
+	val clone = orig.clone;
+	
+	assert(orig.foo == 44);
+	assert(orig.name == "Fredrick Fuchs");
+	assert(clone.foo == 44);
+	assert(clone.name == "Fredrick Fuchs");
+	
+	clone.foo = false;
+	assert(clone.foo == false);
+	assert_not(clone.foo == 44);
+	assert(orig.foo == 44);
+	assert_not(orig.foo == false);
+	
+	orig.name = "Potato";
+	assert(orig.name == "Potato");
+	assert(clone.name == "Fredrick Fuchs");
+	
+END_TEST(10)
+
+BEGIN_TEST(test_primitives)
+	var foo = "Mr F";
+	var foo_clone = null;
+	
+	assert_noexc(foo_clone = foo.clone());
+	assert(foo == "Mr F");
+	assert(foo_clone == "Mr F");
+	
+	
+	foo = "Freddy Krueger";	
+	assert(foo == "Freddy Krueger");
+	assert(foo_clone == "Mr F");
+	
+	
+	foo_clone = null;
+	assert(foo == "Freddy Krueger");
+	assert(foo_clone == null);
+	
+	
+	var a = 123456;
+	var a_clone;
+	assert_noexc(a_clone = a.clone());	
+	assert(a == 123456);
+	assert(a_clone == 123456);
+	
+	a_clone = 666;
+	assert(a_clone == 666);
+	assert(a == 123456);
+	
+	a = true;
+	assert_noexc(a_clone = a.clone());
+	assert(a == true);
+	assert(a_clone == true);
+	
+	a = false;
+	assert(a == false);
+	assert(a_clone == true);
+	
+	a = null;
+	assert(a == null);
+	assert_noexc(a_clone = a.clone());
+	assert(a_clone == null);
+	
+END_TEST(20)
+
+val main = fun() => {
+	this.test_object();
+	this.test_primitives();
+}

@@ -1,0 +1,73 @@
+# var x = fun() => "tja";
+
+var main = fun() => {
+	# var y = 4;
+	# 	y = 88;
+	# 	y.print;
+	
+	# var x = object {
+	# 	var x = fun() => "hej";
+	# 	
+	# 	val setX = fun(newX) => {
+	# 		this.x = fun() => newX;
+	# 	};
+	# 	
+	# 	val getX = fun() => {
+	# 		this.x;
+	# 	};
+	# };
+
+	# x.getX.to_s.print;	
+	# x.setX(45);
+	# x.getX.to_s.print;
+	# var y = "hej";
+	# y.print;
+	# y = "bye";
+	# y.print;
+	# 
+	# this.x = "bo";
+	# this.x.print;
+	# this.x = "tja";
+	# this.x.print;
+	# "hej".print;
+	# 
+	# this.x.print;
+	
+
+	# var obj = object {
+	# 		var x = fun() => "tja";
+	# 		var y = fun() => this.x.print;
+	# 
+	# 		var set_x = fun(new_x) => {
+	# 			("Setting x to: " + new_x.to_s).print;
+	# 			
+	# 			this.x = fun() => "new_x";
+	# 		}
+	# 
+	# 	};
+	
+	# obj.y();
+	# obj.set_x("bo");
+	# obj.y();
+	
+	# var do = fun(arg1, arg2) => {(arg1.to_s + " " + arg2.to_s).print; };
+	# do(3);
+	
+	var class = object {
+		var to_s = fun() => {
+			return "TO_S: " + this.foo.to_s;
+		};
+	};
+	
+	var myobj = object {
+		var foo = fun() => "tjan";
+		
+		var delegate = class;
+	};
+	
+	myobj.to_s.print;
+}
+
+
+
+

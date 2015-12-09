@@ -1,0 +1,10 @@
+val main = fun() => {
+	val clos = fun(x) => {
+		while (true) {
+			x.to_s.puts;
+		}
+	}
+	
+	clos.spwn("hej");
+	clos.spwn("katt");
+}

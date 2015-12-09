@@ -1,0 +1,77 @@
+val main = fun() => {
+	# val socket = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+	# socket.connect(NET.getaddrinfo("www.google.com:80"));
+	# socket.puts("GET index.html");
+	# 
+	# val recvd = socket.gets;
+	# recvd.puts;	
+	# 
+	
+	# val socket = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+	# socket.listen(NET.getaddrinfo("0.0.0.0:12345"));
+	# 
+	# val client = socket.accept;
+	# ("Connected: " + client.peer_address.to_s).puts;
+	# ("Client says: " + client.gets).puts;
+
+	val server = spawn fun() => {
+		"Server started".puts;
+		val socket = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+		socket.listen(NET.getaddrinfo("0.0.0.0:12345"));
+		
+		var client;
+		while (client = socket.accept) {
+			("Someone connected: " + client.peer_address.to_s).puts;
+			
+			try {
+				var msg;
+			
+				while (msg = client.gets) {
+					("Server: " + msg).puts;
+				}
+			}
+			catch (e) {
+				("Server failure: " + e.to_s).puts;
+			}
+			
+		}
+	}
+	
+	val client = spawn fun() => {
+		"Client started".puts;
+		val socket = NET.socket(NET.AF_INET, NET.SOCK_STREAM, 0);
+		socket.connect(NET.getaddrinfo("127.0.0.1:12345"));
+		
+		var msg;
+		while (msg = this.read) {
+			socket.puts(msg);
+		}
+
+		"Closing client socket".puts;
+		socket.close;
+	}
+	
+	val user_input = spawn fun() => {
+		"UI started".puts;
+		var input;
+		while (input = IO.stdin.gets) {
+			if (input.size > 1) {
+				client ! input;				
+			}
+			else {
+				"UI sending null".puts;
+				client ! null;
+			}
+		}
+	}
+	
+	# val stream = IO.string_stream(socket);
+	# * men file då? de har ju puts och gets!
+	# file kanske är en filestream egentligen, och socket bara är socket
+	
+	# * hur ska blobs vara? eller ska det bara vara string?
+	# isf ska strings kunna hantera \0
+	
+	#socket.listen(NET.getaddrinfo("0.0.0.0", "12345"));
+	#val connection = socket.accept;
+}

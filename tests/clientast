@@ -1,0 +1,1 @@
+{"members":[{"name":"main","init":{"body":{"members":[{"args":[],"name":"class","target":{"name":"TEST","kind":"var"},"kind":"mcall"}],"kind":"block"},"formals":[],"kind":"closure"},"isval":true,"kind":"vardef"}],"kind":"unit"}

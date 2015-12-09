@@ -1,0 +1,2 @@
+#!/bin/bash
+../../src/ctc httpd.anita --L ../../libs/ --libs net/net io/io

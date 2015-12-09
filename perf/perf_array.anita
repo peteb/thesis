@@ -1,0 +1,15 @@
+val main = fun() => {
+	var array = [];
+
+	var i = 0;
+	while (i < 40000) {
+		array = array.append(i);
+		i = i + 1;
+	}
+	
+	# val new_array = array.map(fun(x) => x + 5);
+	# new_array.to_s.puts;
+	
+	# TODO: array.to_s failar här ibland; sigfault eller bus error
+	# array.inspect;
+}

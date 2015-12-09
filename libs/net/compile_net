@@ -1,0 +1,8 @@
+#!/bin/bash
+../../src/ctclib net.anita
+/Developer/usr/bin/clang -c net.c -o net.c.bc -emit-llvm -I ../../src/
+/Developer/usr/bin/clang -c address.c -o address.c.bc -emit-llvm -I ../../src/
+/Developer/usr/bin/clang -c socket.c -o socket.c.bc -emit-llvm -I ../../src/
+/Developer/usr/bin/clang -c err.c -o err.c.bc -emit-llvm -I ../../src/
+llvm-ld net.bc net.c.bc address.c.bc socket.c.bc err.c.bc -o libnet.bc
+mv libnet.bc.bc net.bc

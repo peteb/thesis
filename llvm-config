@@ -1,0 +1,16 @@
+#!/bin/bash
+
+LLVM=llvm-2.6
+BINS=Debug
+PREFIX=`dirname $0`
+dir="$PREFIX/$LLVM/$BINS/"
+
+if [ -d $dir ]; then
+ echo `$PREFIX/$LLVM/$BINS/bin/llvm-config $@`
+elif type -P llvm-config &> /dev/null; then
+ echo "warning: using global llvm ("`llvm-config --version`")" >&2
+ echo `llvm-config $@`
+else
+ echo "error: '$PREFIX/$LLVM/$BINS/' does not exist, nor is llvm installed on the system. Please compile $LLVM for $BINS" >&2
+ exit 1
+fi

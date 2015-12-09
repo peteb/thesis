@@ -1,0 +1,7 @@
+#!/bin/bash -x
+
+if [ `uname` == "Darwin" ]; then
+  g++ -g $@ `../../llvm-config --cxxflags --ldflags --libs core bitwriter` -arch i386
+else
+  g++ -g $@ `../../llvm-config --cxxflags --ldflags --libs core bitwriter`
+fi

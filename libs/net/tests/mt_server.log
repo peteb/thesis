@@ -1,0 +1,11 @@
+[tool entry: 0x1000105b4]
+Connected
+Got client 
+Welcome!: Welcome!
+simple_test: 0 assertion(-s)
+main: 0 assertion(-s)
+
+Memory stats:
+Heap size = 65536
+mem usage: 0, num allocs: 0
+# collections 2

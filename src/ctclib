@@ -1,0 +1,25 @@
+#!/bin/bash -x 
+# 1. compiles thorn core into llvm ll
+# 2. assembles llvm ll into bc
+# param 1: file
+
+ANITA=~/Repositories/anita/bin/anita
+DIRNAME=`dirname $0`
+TC=$DIRNAME/tlc
+LD=llvm-ld
+AS=llvm-as
+TC_FLAGS="--emit-ll --as-lib"
+LD_FLAGS="-native"
+# -lowerinvoke -enable-correct-eh-support"
+AS_FLAGS=-f
+LIBTHORN=$DIRNAME/libthorn/libthorn.bc
+LPIP="$LD $LD_FLAGS - $LIBTHORN"
+GPIP="llvm-link - $LIBTHORN | llc -regalloc=local"
+
+if [ $# -gt 2 ]; then
+	LIBS=${@:3}
+	FIXED_LIBS=${LIBS/%/.bc}
+fi
+
+$ANITA $1 | $TC - --mname=${1/.*/} $TC_FLAGS | $AS $AS_FLAGS > ${1/.*/}.bc
+

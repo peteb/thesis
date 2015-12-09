@@ -1,0 +1,15 @@
+#include "tunit.anita"
+
+BEGIN_TEST_ARGS(main, x, y, z, w)
+	args.to_s.puts;
+	assert(args.size == 3);
+	assert(x == "./a.out");
+	assert(y == "param1");
+	assert(z == "param2");
+	assert(args(0) == "./a.out");
+	assert(args(1) == "param1");
+	assert(args(2) == "param2");
+	assert(args(3) == null);
+	assert(w == null);	
+	assert(args.size == 3);
+END_TEST(10)

@@ -1,0 +1,30 @@
+#include "tunit.anita"
+
+BEGIN_TEST(simple_test)
+	# spawn server
+
+	spawn fun() => {
+		val server = NET.tcp_server(NET.address("0.0.0.0:12345"));
+		val client = server.accept;
+		
+		spawn fun() => {
+			"Got client ".puts;
+			client.puts("Welcome!");
+			client.close;
+		}
+	}
+	
+	val client = spawn fun() => {
+		val client = NET.tcp_socket;
+		client.connect(NET.address("127.0.0.1:12345"));
+		"Connected".puts;
+		("Welcome!: " + client.read(8).to_s).puts;
+	}
+	
+	client.wait;	# TODO: thread_get_state fails otherwise in pthread_exit in __t_exit
+	
+END_TEST(0)
+
+BEGIN_TEST(main)
+	this.simple_test();
+END_TEST(0)
