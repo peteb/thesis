@@ -5,7 +5,7 @@ AC_PREREQ(2.50)
 AC_INIT([thorn-llvm], [0.1], [pete-bac at dsv.su.se])
 AC_CONFIG_SRCDIR([src/main.cpp])
 AM_CONFIG_HEADER([config.h])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([subdir-objects])
 
 # Checks for programs.
 AC_PROG_CXX
