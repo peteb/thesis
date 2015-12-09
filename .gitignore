@@ -1,1 +1,11 @@
 gc-7.1
+*.o
+*.in
+Makefile
+.*
+config.log
+config.status
+compile
+autom4te.cache
+stamp-h1
+jsoncpp/*
