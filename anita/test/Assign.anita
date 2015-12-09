@@ -1,0 +1,5 @@
+
+val main = fun() => {
+    var x = object;
+    x.f = 42
+}

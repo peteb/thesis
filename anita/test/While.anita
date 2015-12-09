@@ -1,0 +1,10 @@
+
+var f = fun(x) => {
+    while (x) 1
+  };
+
+var f2 = fun(x) => {
+    while (x) {
+      f(true)
+    }
+  }

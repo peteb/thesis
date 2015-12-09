@@ -1,0 +1,7 @@
+
+var main = fun(x) => { return x + x + 4 }
+
+#var a = object {
+#    var f = 1;
+#    var g = fun(x) => { a.f(2) }
+#    }
