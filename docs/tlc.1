@@ -1,0 +1,48 @@
+.TH tlc 1 "February 7, 2010" "version 0.1" "USER COMMANDS"
+.SH NAME
+tlc \- Thorn Core-LLVM static compiler
+
+.SH SYNOPSIS
+.B tlc 
+.RI [ options ] 
+.RI [ filename
+.IR ... ]
+
+.SH DESCRIPTION
+The 
+.B tlc
+command compiles a Thorn Core Syntax Tree into LLVM bitcode.
+
+.SH OPTIONS
+If \fIfilename\fR is \- or omitted, 
+\fBtlc\fR reads Thorn Core Syntax Nodes from 
+standard input. Otherwise, it will read from \fIfilename\fR.
+
+.TP
+.IP "\fB\-h\fR [\fB\-\-help\fR]" 4
+produce help message
+.PP
+
+.IP "\fB\-i\fR [\fB\-\-input\fR]" 4
+input files
+.PP
+
+.IP "\fB\-o\fR [\fB\-\-output\fR] (=lobby.bc)" 4
+output file
+.PP
+
+.IP "\fB\-v\fR [\fB\-\-version\fR]" 4
+print version string
+.PP
+
+.IP "\fB\-\-ast\fR" 4
+print generated abstract syntax tree
+.PP
+
+.SH EXIT STATUS
+.B tlc
+returns 0 on sucess, Otherwise, if an error occurs, it will exit with a non-zero
+value.
+
+.SH AUTHOR
+Peter Backman (pete-bac (at) dsv.su.se).

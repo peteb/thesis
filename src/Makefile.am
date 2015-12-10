@@ -2,10 +2,11 @@ bin_PROGRAMS = tlc
 
 EXTRA_DIST = ast stdlib libthorn
 INCLUDES = -I$(top_srcdir)/jsoncpp/include
-AM_CXXFLAGS = -I`$(top_srcdir)/llvm-config --includedir` -D_DEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -O3 -std=c++11 -Wall -Wextra -Wno-unused-parameter \
+AM_CXXFLAGS = -I`$(top_srcdir)/llvm-config --includedir --cxxflags` -fexceptions -frtti -Wall -Wextra -Wno-unused-parameter \
 	      -Wno-overloaded-virtual
-LIBS = `$(top_srcdir)/llvm-config --ldflags \
-	    --libs backend core bitwriter asmparser`
+LIBS = `$(top_srcdir)/llvm-config --cxxflags --ldflags \
+	    --libs --system-libs` \
+	-ljson
 
 AM_LDFLAGS = -L/opt/local/lib
 

@@ -1,20 +1,26 @@
 Read INSTALL for help on building thorn-llvm!
 
 Directory listing:
-	/llvm-2.6/		-- full source code for llvm-2.6. 
-					   ./configure && make && make clean
-	/gc-7.1/		-- Boehm's garbage collector
-	
-	/experiments/	-- a playground for trying out fun things
-	/src/				-- base folder for thorn-llvm compiler code
-	/src/libthorn/  -- thorn runtime library
-	/libs/			-- external libraries
-	/tests/			-- stuff in here might or might not work
-	/utests/		-- unit tests. they should work.
-	
+        /llvm-2.6/		-- full source code for llvm-2.6.
+                                           ./configure && make && make clean
+                                   sorry, I've removed this. Too big. Just get LLVM
+                                   somewhere else and build it with exceptions.
+
+        /gc-7.1/		-- Boehm's garbage collector
+
+        /experiments/	-- a playground for trying out fun things
+        /src/				-- base folder for thorn-llvm compiler code
+        /src/libthorn/  -- thorn runtime library
+        /libs/			-- external libraries
+        /tests/			-- stuff in here might or might not work
+        /utests/		-- unit tests. they should work.
+        /jsoncpp/               -- json parser, build it using the old SCons version
+                                   and manually install the lib file built
+        /anita/                 -- anita parser, outputs ast as json
+
 To compile stuff using bundled llvm:
-	Examine compile script in /experiments/first/; it makes use of the
-	/llvm-config script which generates flags for gcc using currently available
-	llvm base, prefering local (/llvm-2.6) over global. 
-	
-	:: thorn-llvm is now using autotools, but it's not 100% yet.
+        Examine compile script in /experiments/first/; it makes use of the
+        /llvm-config script which generates flags for gcc using currently available
+        llvm base, prefering local (/llvm-2.6) over global.
+
+        :: thorn-llvm is now using autotools, but it's not 100% yet.
