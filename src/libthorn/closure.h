@@ -2,7 +2,7 @@
  * $Id: closure.h 1396 2010-05-07 16:01:18Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_CLOSURE_H_2O4Y2WKJ

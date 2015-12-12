@@ -2,7 +2,7 @@
  * $Id: float.c 1373 2010-05-06 15:50:47Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #include <stdio.h>

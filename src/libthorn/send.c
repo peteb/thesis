@@ -2,7 +2,7 @@
  * $Id: send.c 1458 2010-05-12 15:53:07Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #include <assert.h>

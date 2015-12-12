@@ -2,7 +2,7 @@
  * $Id: integer.h 1363 2010-05-06 12:57:24Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_INTEGER_H_QAJALF4B

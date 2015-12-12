@@ -2,7 +2,7 @@
  * $Id: ptr_tag.h 1457 2010-05-12 14:35:58Z ptr $
  * thorn-llvm
  * 
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_PTR_TAG_H_J3R4XRAH

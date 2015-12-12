@@ -2,7 +2,7 @@
  * $Id: object_proto.c 1919 2010-08-02 00:56:31Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #include <stdio.h>

@@ -2,7 +2,7 @@
  * $Id: data.c 1432 2010-05-10 14:08:19Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #include <pthread.h>

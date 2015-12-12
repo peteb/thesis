@@ -2,7 +2,7 @@
  * $Id: start.c 1393 2010-05-07 12:25:01Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved.
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved.
  */
 
 #define GC_THREADS

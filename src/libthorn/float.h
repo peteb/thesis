@@ -2,7 +2,7 @@
  * $Id: float.h 922 2010-04-06 14:10:59Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_FLOAT_H_WBSKOSOC

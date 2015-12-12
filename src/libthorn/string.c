@@ -2,7 +2,7 @@
  * $Id: string.c 1878 2010-07-07 14:34:47Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #include <stdlib.h>

@@ -2,7 +2,7 @@
  * $Id: msg_queue.c 1554 2010-05-20 21:09:56Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #define GC_DEBUG

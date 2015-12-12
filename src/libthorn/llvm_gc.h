@@ -2,7 +2,7 @@
  * $Id: llvm_gc.h 901 2010-04-03 00:01:03Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_LLVM_GC_H_1XYVY6NK

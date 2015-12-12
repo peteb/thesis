@@ -2,7 +2,7 @@
  * $Id: null.h 1433 2010-05-10 15:21:36Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_NULL_H_ZU2CR8CJ

@@ -2,7 +2,7 @@
  * $Id: msg_queue.h 1554 2010-05-20 21:09:56Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_MSG_QUEUE_H_89QXCFJ4

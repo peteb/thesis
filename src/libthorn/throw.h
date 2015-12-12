@@ -2,7 +2,7 @@
  * $Id: throw.h 862 2010-03-30 18:30:44Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_THROW_H_UB3XW7IE

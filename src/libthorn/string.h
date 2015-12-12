@@ -2,7 +2,7 @@
  * $Id: string.h 1030 2010-04-13 12:54:29Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_STRING_H_XASTRQ5

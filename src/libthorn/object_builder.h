@@ -2,7 +2,7 @@
  * $Id: object_builder.h 1925 2010-08-04 16:10:22Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_OBJECT_BUILDER_H_HRD12YRL

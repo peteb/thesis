@@ -2,7 +2,7 @@
  * $Id: throw.c 896 2010-04-01 16:01:37Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #include <stdlib.h>

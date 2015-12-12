@@ -2,7 +2,7 @@
  * $Id: future.h 865 2010-03-31 08:40:30Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_FUTURE_H_EUJUYBH6

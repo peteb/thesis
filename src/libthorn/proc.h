@@ -2,7 +2,7 @@
  * $Id: proc.h 1457 2010-05-12 14:35:58Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_PROC_H_NMSQK6DV

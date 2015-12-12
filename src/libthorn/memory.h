@@ -2,7 +2,7 @@
  * $Id: memory.h 921 2010-04-06 13:03:10Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
  */
 
 #ifndef LIBTHORN_MEMORY_H_FYMN6VC6
