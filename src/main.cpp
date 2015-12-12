@@ -6,11 +6,11 @@
  */
 
 #if HAVE_CONFIG_H
-        #include <config.h>
+  #include <config.h>
 #else
-        #ifndef VERSION
-                #define VERSION "n/a"
-        #endif
+  #ifndef VERSION
+    #define VERSION "n/a"
+  #endif
 #endif
 
 #include <iostream>
@@ -51,21 +51,21 @@ static std::string version_string();
 
 
 cl::opt<ExceptionHandling> EHandling("eh", cl::desc("Exception handling:"),
-    cl::values(
-        #ifdef EH_MRV
-        clEnumValN(MRVExceptions, "mrv", "Multiple return values"),
-        #endif
-        clEnumValN(NoExceptions, "none", "No exception handling"),
-        clEnumValEnd
-    )
+  cl::values(
+    #ifdef EH_MRV
+      clEnumValN(MRVExceptions, "mrv", "Multiple return values"),
+    #endif
+    clEnumValN(NoExceptions, "none", "No exception handling"),
+    clEnumValEnd
+  )
 );
 
 cl::opt<std::string> OutputFilename("o", cl::desc("Specify output filename"),
-    cl::value_desc("filename")
+  cl::value_desc("filename")
 );
 
 cl::opt<std::string> InputFilename(cl::Positional, cl::desc("<input file>"),
-    cl::init("-")
+  cl::init("-")
 );
 
 cl::list<std::string> Libraries("l", cl::desc("Library dependencies"), cl::Prefix);
@@ -74,111 +74,105 @@ cl::opt<std::string> ModuleName("mname", cl::desc("Override module name"));
 cl::opt<bool> EmitAst("emit-ast", cl::desc("Pretty-print AST to <stdout>"));
 cl::opt<bool> EmitLl("emit-ll", cl::desc("Print textual bitcode to <stdout>"));
 cl::opt<bool> DisableVerify("disable-verify", cl::Hidden,
-    cl::desc("Do not run verifier on input LLVM (dangerous!)")
+  cl::desc("Do not run verifier on input LLVM (dangerous!)")
 );
 cl::opt<bool> AsLib("as-lib", cl::desc("Generate dynamic library"));
 
 
 int main(int argc, char ** argv) {
-    int exitCode = EXIT_SUCCESS;
+  int exitCode = EXIT_SUCCESS;
 
-    sys::PrintStackTraceOnErrorSignal();
-    PrettyStackTraceProgram X(argc, argv);
-    llvm_shutdown_obj Y;
+  sys::PrintStackTraceOnErrorSignal();
+  PrettyStackTraceProgram X(argc, argv);
+  llvm_shutdown_obj Y;
 
-    cl::ParseCommandLineOptions(argc, argv,
-        "core ast -> .bc compiler\n"
-    );
+  cl::ParseCommandLineOptions(argc, argv,
+      "core ast -> .bc compiler\n"
+  );
 
-    typedef std::vector<std::string> argument_list;
+  typedef std::vector<std::string> argument_list;
 
-    try {
-        if (ModuleName.empty())
-            ModuleName = InputFilename;
+  if (ModuleName.empty()) {
+    ModuleName = InputFilename;
+  }
 
-        std::auto_ptr<AST::Unit> syntaxTree(parse_file(InputFilename));
+  std::auto_ptr<AST::Unit> syntaxTree(parse_file(InputFilename));
 
-        // EmitAst is for outputting the AST to stdout, if EmitLl is set
-        // it will prefix all lines with ; (semicolons are comments in .ll files)
-        if (EmitAst) {
-                        std::string astString;
-                        AST::TreePrinter printer(astString);
-                        syntaxTree->accept(printer);
+  // EmitAst is for outputting the AST to stdout, if EmitLl is set
+  // it will prefix all lines with ; (semicolons are comments in .ll files)
+  if (EmitAst) {
+    std::string astString;
+    AST::TreePrinter printer(astString);
+    syntaxTree->accept(printer);
 
-                        if (EmitLl) {
-                                string_commentize(astString);
-                        }
+    if (EmitLl) {
+      string_commentize(astString);
+    }
 
-                        outs() << astString;
-                }
+    outs() << astString;
+  }
 
-                // create llvm module
-                std::auto_ptr<llvm::Module> mod;
-                ModuleGen modgen;
-                modgen.setName(ModuleName);
-                modgen.setExceptionHandling(EHandling);
+  // create llvm module
+  std::auto_ptr<llvm::Module> mod;
+  ModuleGen modgen;
+  modgen.setName(ModuleName);
+  modgen.setExceptionHandling(EHandling);
 
-                for (unsigned i = 0; i < Libraries.size(); ++i) {
-                        std::string lib = Libraries[i];
-                        std::string::size_type lastSlash = lib.find_last_of("/");
+  for (unsigned i = 0; i < Libraries.size(); ++i) {
+    std::string lib = Libraries[i];
+    std::string::size_type lastSlash = lib.find_last_of("/");
 
-                        if (lastSlash != std::string::npos) {
-                                lib = lib.substr(lastSlash + 1);
-                        }
+    if (lastSlash != std::string::npos) {
+      lib = lib.substr(lastSlash + 1);
+    }
 
-                        modgen.addDependency(lib);
-                }
+    modgen.addDependency(lib);
+  }
 
-                if (AsLib)
-                        mod.reset(modgen.createLibrary(syntaxTree.get()));
-                else
-                        mod.reset(modgen.createTool(syntaxTree.get()));
+  if (AsLib) {
+    mod.reset(modgen.createLibrary(syntaxTree.get()));
+  }
+  else {
+    mod.reset(modgen.createTool(syntaxTree.get()));
+  }
 
-                assert(mod.get() && "no module created");
-                llvm::PassManager passes;
+  assert(mod.get() && "no module created");
+  llvm::PassManager passes;
 
-                // postprocess module, and print
-                if (!DisableVerify)
-                        llvm::verifyModule(*mod);
+  // postprocess module, and print
+  if (!DisableVerify) {
+    llvm::verifyModule(*mod);
+  }
 
-                if (EmitLl) {
-                        passes.add(llvm::createPrintModulePass(llvm::outs()));
-                }
+  if (EmitLl) {
+    passes.add(llvm::createPrintModulePass(llvm::outs()));
+  }
 
-                // output bitcode to file
-                std::error_code ec;
-                llvm::raw_fd_ostream outputFile("test.bc", ec, llvm::sys::fs::OpenFlags::F_RW);
+  // output bitcode to file
+  std::error_code ec;
+  llvm::raw_fd_ostream outputFile("test.bc", ec, llvm::sys::fs::OpenFlags::F_RW);
 
-                //std::ofstream outputFile(OutputFilename.c_str(), std::ios::binary);
-                passes.add(llvm::createBitcodeWriterPass(outputFile));
+  //std::ofstream outputFile(OutputFilename.c_str(), std::ios::binary);
+  passes.add(llvm::createBitcodeWriterPass(outputFile));
+  passes.run(*mod);
 
-                // run all passes
-                passes.run(*mod);
-    } catch (const std::string& msg) {
-        errs() << argv[0] << ": " << msg << "\n";
-        exitCode = EXIT_FAILURE;
-    } /*catch (...) {
-        errs() << argv[0] << ": Unexpected unknown exception occurred.\n";
-        exitCode = EXIT_FAILURE;
-        }*/
-
-    return exitCode;
+  return exitCode;
 }
 
 
 std::string version_string() {
-        std::stringstream ss;
-        ss << "thorn-llvm v. "
-                << VERSION
-                << " (built " <<  __DATE__
-                << " " << __TIME__ << ")"
-        ;
+  std::stringstream ss;
+  ss << "thorn-llvm v. "
+     << VERSION
+     << " (built " <<  __DATE__
+     << " " << __TIME__ << ")"
+    ;
 
-        #ifdef EH_MRV
-        ss << " eh: mrv";
-        #else
-        ss << " eh: none";
-        #endif
+  #ifdef EH_MRV
+    ss << " eh: mrv";
+  #else
+    ss << " eh: none";
+  #endif
 
-        return ss.str();
+  return ss.str();
 }
