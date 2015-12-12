@@ -13,6 +13,7 @@
 
 #include <llvm/IR/Module.h>
 #include <llvm/IR/IRBuilder.h>
+#include <llvm/Support/raw_ostream.h>
 
 using namespace llvm;
 
@@ -120,6 +121,9 @@ Value * AST::MethodCall::genCode(Builder & builder) const {
                 env = builder.getLexScope().getEntry("THIS")->genLoad(builder);
         else
                 env = Constant::getNullValue(objectTy);
+
+        //llvm::outs() << csite->getType() << val << env << arglist;
+        val->getType()->dump();
 
         builder.irb().CreateCall4(__t_callsite, csite, val, env, arglist);
 

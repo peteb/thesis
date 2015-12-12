@@ -13,6 +13,7 @@
 #include <llvm/AsmParser/Parser.h>
 #include <sstream>
 #include <stdexcept>
+#include <iostream>
 
 #include "modgen.h"
 #include "ast/object.h"
@@ -38,7 +39,8 @@ Module * ModuleGen::createTool(AST::Unit * unit) {
         executeDeclares(mod);
 
         // create entry code
-        Type * objectTy = mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(mod->getContext());
+        assert(objectTy && "Must find object type");
 
         // const Type * rettype = IntegerType::get(mod->getContext(), 32);
 
@@ -49,7 +51,7 @@ Module * ModuleGen::createTool(AST::Unit * unit) {
         Function * entryFunction = createFunction(
                 IntegerType::get(mod->getContext(), 32),
                 "main",
-                llvm::ArrayRef<Type *>(parameters),
+                parameters,
                 mod
         );
 
@@ -116,13 +118,13 @@ Module * ModuleGen::createLibrary(AST::Unit * cunit) {
         executeDeclares(mod);
 
         // create entry code
-        Type * objectTy = mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(mod->getContext());
 
 
         Function * entryFunction = createFunction(
                 objectTy,
                 "__lib_" + lcase(_name) + "_init",
-                llvm::ArrayRef<Type *>(),
+                std::vector<Type *>(),
                 mod
         );
 
@@ -203,7 +205,7 @@ void ModuleGen::setExceptionHandling(ExceptionHandling eh) {
 }
 
 LexScopeEntry * ModuleGen::createGlobalPoint(const std::string & sym, Module * mod) {
-        Type * objectTy = mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(mod->getContext());
         Constant * nullVal = Constant::getNullValue(objectTy);
 
         GlobalVariable * gv = new GlobalVariable(*mod,
@@ -220,7 +222,7 @@ void ModuleGen::initializeDependencies(Builder & builder) {
         Module * mod = builder.getModule();
         LexScope & scope = builder.getLexScope();
 
-        Type * objectTy = mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(mod->getContext());
         Constant * nullVal = Constant::getNullValue(objectTy);
 
         FunctionType * initFunction = FunctionType::get(
@@ -259,7 +261,7 @@ Function * ModuleGen::createFunction(Type * ret, const std::string & name,
 {
         FunctionType * type = FunctionType::get(
                 ret,
-                llvm::ArrayRef<Type *>(parameters),
+                parameters,
                 false
         );
 
@@ -281,24 +283,23 @@ void ModuleGen::executeDeclares(llvm::Module * mod) {
         std::vector<std::string> declares;
 
         declares.push_back("target datalayout = \"e-p:64:64:64-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128\"");
-
         declares.push_back("%object = type i8*");
 
         #ifdef EH_MRV
-        declares.push_back("%ret = type <{%object, %object}>");
+        declares.push_back("%ret = type {%object, %object}");
         #else
-        declares.push_back("%ret = type %object");
+        declares.push_back("%ret = type { %object }");
         #endif
 
         #ifdef SYM_ADDRESS
         declares.push_back("%sym = type i32*");
         #else
-        declares.push_back("%sym = type i8*");
+        declares.push_back("%sym = type { i8* }");
         #endif
 
         declares.push_back("%fptr = type %ret (%object, %object, %object)*");
         // declares.push_back("%callsite = type <{%object, %object, %object, %fptr, %sym}>");
-        declares.push_back("%callsite = type <{%sym, %object, %object, %object, %object, %object, %fptr}>");
+        declares.push_back("%callsite = type {%sym, %object, %object, %object, %object, %object, %fptr}");
 
         declares.push_back("declare %ret @object_exec(%object, %sym, %object)");
         declares.push_back("declare void @object_set_slot(%object, %sym, %object, i32)");
@@ -331,18 +332,23 @@ void ModuleGen::executeDeclares(llvm::Module * mod) {
         declares.push_back("declare void @__t_callsite(%callsite*, %sym, %object, %object)");
         declares.push_back("declare %ret @__t_call(%callsite*, %object)");
 
+        std::string joint;
         for (unsigned i = 0; i < declares.size(); ++i) {
-                SMDiagnostic err;
-                llvm::MemoryBufferRef buf(declares[i], "<string>");
-
-                if (!llvm::parseAssemblyInto(buf, *mod, err)) {
-                        // std::stringstream ss;
-                        // raw_os_ostream stream(ss);
-                        // err.Print("", stream);
-                        // stream.flush();
-                        throw std::runtime_error("failed to parse declare statement\n");
-                }
+                joint += declares[i] + "\n";
         }
+
+        SMDiagnostic err;
+        llvm::MemoryBufferRef buf(joint, "<string>");
+
+        if (llvm::parseAssemblyInto(buf, *mod, err)) {
+                 // std::stringstream ss;
+                 // raw_os_ostream stream(ss);
+                 // err.Print("", stream);
+                 // stream.flush();
+                 err.print("tlc", llvm::outs());
+                 throw std::runtime_error("failed to parse declare statement\n");
+        }
+        llvm::outs() << *mod;
 }
 
 ExceptionHandling ModuleGen::ParseEH(const std::string & str) {

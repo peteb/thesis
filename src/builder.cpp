@@ -62,7 +62,7 @@ llvm::Value * Builder::CreateStoreReturn(llvm::Value * ret, llvm::Value * exc) {
 llvm::Value * Builder::CreateStoreReturnMRV(llvm::Value * ret, llvm::Value * exc) {
         LexScopeEntry * retEntry = _scope.getEntry("__retval");
 
-        Type * objectTy = _mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(_mod->getContext());
         Constant * nullVal = Constant::getNullValue(objectTy);
 
         Value * retVal = (ret ? ret : nullVal);
@@ -79,7 +79,7 @@ llvm::Value * Builder::CreateStoreReturnMRV(llvm::Value * ret, llvm::Value * exc
 llvm::Value * Builder::CreateStoreReturnSimple(llvm::Value * ret) {
         LexScopeEntry * retEntry = _scope.getEntry("__retval");
 
-        Type * objectTy = _mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(_mod->getContext());
         Constant * nullVal = Constant::getNullValue(objectTy);
 
         Value * retVal = (ret ? ret : nullVal);
@@ -113,6 +113,9 @@ llvm::Value * Builder::CreateExcForwardMRV(llvm::Value * retvalAgg) {
         // retvalAgg = {i8*, i8*}, ret from a function call
         Value * retVal = _builder.CreateExtractValue(retvalAgg, 0, "retval");
         Value * excVal = _builder.CreateExtractValue(retvalAgg, 1, "excval");
+
+        retVal->getType()->dump();
+        excVal->getType()->dump();
 
         Value * excIsNull = irb().CreateIsNull(excVal);
 
@@ -213,7 +216,7 @@ llvm::Value * Builder::CreateLocalVariable(const std::string & name) {
         BasicBlock * previousBlock = 0;
         BasicBlock * cacheBlock = 0;
 
-        Type * objectTy = _mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(_mod->getContext());
         Value * stackvar = 0;
 
         if (_scope.hasEntry("__CACHE")) {
@@ -251,7 +254,7 @@ llvm::Value * Builder::CreateLong(long val) {
 }
 
 llvm::Value * Builder::CreatePtr(object_t ptr) {
-        Type * objectTy = _mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(_mod->getContext());
         llvm::Value * val = CreateLong((long)ptr);
         llvm::Value * casted = _builder.CreateIntToPtr(val, objectTy);
 
@@ -259,7 +262,7 @@ llvm::Value * Builder::CreatePtr(object_t ptr) {
 }
 
 llvm::Value * Builder::CreateReturnVar() {
-        Type * objectTy = _mod->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(_mod->getContext());
         Type * retTy = _mod->getTypeByName("ret");
 
         assert(objectTy);

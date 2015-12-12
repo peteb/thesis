@@ -201,6 +201,8 @@ llvm::Value * AST::Closure::genCode(Builder & builder) const {
                 obj = builder.irb().CreateCall2(closure_object, function, numSlots);
         }
         else {
+          closure_object_null->getType()->dump();
+          function->getType()->dump();
                 obj = builder.irb().CreateCall(closure_object_null, function);
         }
 
@@ -284,7 +286,7 @@ std::vector<AST::Closure::SlotBinding> AST::Closure::prepareUpvalues(
 FunctionType * AST::Closure::getFunctionType(Builder & builder) const {
         Module * module = builder.getModule();
 
-        Type * objectTy = module->getTypeByName("object");
+        Type * objectTy = Type::getInt8PtrTy(module->getContext());
         Type * retTy = module->getTypeByName("ret");
 
         assert(objectTy);
