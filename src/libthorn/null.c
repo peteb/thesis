@@ -2,7 +2,7 @@
  * $Id: null.c 1457 2010-05-12 14:35:58Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved.
  */
 
 #include <assert.h>
@@ -36,55 +36,55 @@ static object_t cached_null = 0;
 
 // -- constructors -------------------------------------------------------------------
 object_t null_object() {
-	return cached_null;
+  return cached_null;
 }
 
 object_t wrapped_null_object() {
-	static object_t cached_wrap = 0;
-	
-	BEGIN_MUTEX_CACHE(cached_wrap, wrapped_cache_m);
-		cached_wrap = closure_object(null_wrapped, 0);
-	END_MUTEX_CACHE(cached_wrap, wrapped_cache_m);
-	
-	return cached_wrap;
+  static object_t cached_wrap = 0;
+
+  BEGIN_MUTEX_CACHE(cached_wrap, wrapped_cache_m);
+  cached_wrap = closure_object(null_wrapped, 0);
+  END_MUTEX_CACHE(cached_wrap, wrapped_cache_m);
+
+  return cached_wrap;
 }
 
-void null_init() {	
-	BEGIN_MUTEX_CACHE(cached_null, null_cache_m);
-		cached_null = object_alloc(5, OBJ_NULL);
-		object_set_delegate(cached_null, object_prototype());
-		REG_METHOD(cached_null, null, to_s);
-		REG_METHOD(cached_null, null, class);
-		// REG_METHOD(cached_null, null, clone);
-		REG_METHOD(cached_null, null, neq);
-		REG_METHOD(cached_null, null, eq);
-		object_freeze(cached_null);
-	END_MUTEX_CACHE(cached_null, null_cache_m);
+void null_init() {
+  BEGIN_MUTEX_CACHE(cached_null, null_cache_m);
+  cached_null = object_alloc(5, OBJ_NULL);
+  object_set_delegate(cached_null, object_prototype());
+  REG_METHOD(cached_null, null, to_s);
+  REG_METHOD(cached_null, null, class);
+  // REG_METHOD(cached_null, null, clone);
+  REG_METHOD(cached_null, null, neq);
+  REG_METHOD(cached_null, null, eq);
+  object_freeze(cached_null);
+  END_MUTEX_CACHE(cached_null, null_cache_m);
 }
 
 // -- methods ------------------------------------------------------------------------
 METHOD(null, to_s) {
-	RET(string_object("null"));
+  RET(string_object("null"));
 }
 
 METHOD(null, wrapped) {
-	RET(null_object());
+  RET(null_object());
 }
 
 METHOD(null, class) {
-	RET(string_object("null"));
+  RET(string_object("null"));
 }
 
 METHOD(null, clone) {
-	RET(self);
+  RET(self);
 }
 
 METHOD(null, eq) {
-	object_t other = ARG(0);
-	RET(bool_object(self == other));
+  object_t other = ARG(0);
+  RET(bool_object(self == other));
 }
 
 METHOD(null, neq) {
-	object_t other = ARG(0);
-	RET(bool_object(self != other));
+  object_t other = ARG(0);
+  RET(bool_object(self != other));
 }

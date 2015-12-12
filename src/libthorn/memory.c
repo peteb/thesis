@@ -24,33 +24,28 @@
 #include "array.h"
 
 int mem_init() {
-	GC_INIT();
+  GC_INIT();
 
-	printf("size of long: %i\n", sizeof(long));
-	null_init();
-	bool_init();
-	closure_init();
-	int_init();
-	proc_init();
+  printf("size of long: %lu\n", sizeof(long));
+  null_init();
+  bool_init();
+  closure_init();
+  int_init();
+  proc_init();
 
-	// void * hej = GC_MALLOC(64);
-	// printf("%x\n", hej);
-
-	return 1;
+  return 1;
 }
 
 int mem_shutdown() {
-	// printf("FIRST COLLECT\n");
-	// GC_dump();
-	GC_gcollect();	// there's no need for this, really
-	// TODO: lös minnesläckan
+  // printf("FIRST COLLECT\n");
+  // GC_dump();
+  GC_gcollect();	// there's no need for this, really
 
-	printf("\nMemory stats:\n");
+  printf("\nMemory stats:\n");
+  printf("Heap size = %zu\n", GC_get_heap_size());
+  printf("# collections %lu\n", GC_gc_no);
 
-	printf("Heap size = %d\n", GC_get_heap_size());
-	printf("# collections %i\n", GC_gc_no);
-
-	return 1;
+  return 1;
 }
 
 #ifdef GC_DEBUG
@@ -66,25 +61,25 @@ int mem_shutdown() {
 #endif
 
 void * mem_alloc(size_t size, unsigned short flags, const char * file, int line) {
-	void * ret = 0;
-	// printf("Alloc %i %s:%i\n", size, file, line);
+  void * ret = 0;
+  // printf("Alloc %i %s:%i\n", size, file, line);
 
-	if (unlikely((flags & ALLOC_PERSISTENT) && (flags & ALLOC_BLOB)))
-		ret = SYS_MALLOC_ATOMIC_UNCOLLECTABLE(size, file, line);
-	else if (unlikely(flags & ALLOC_PERSISTENT))
-		ret = SYS_MALLOC_UNCOLLECTABLE(size, file, line);
-	else if (flags & ALLOC_BLOB)
-		ret = SYS_MALLOC_ATOMIC(size, file, line);
-	else
-		ret = SYS_MALLOC(size, file, line);
+  if (unlikely((flags & ALLOC_PERSISTENT) && (flags & ALLOC_BLOB)))
+    ret = SYS_MALLOC_ATOMIC_UNCOLLECTABLE(size, file, line);
+  else if (unlikely(flags & ALLOC_PERSISTENT))
+    ret = SYS_MALLOC_UNCOLLECTABLE(size, file, line);
+  else if (flags & ALLOC_BLOB)
+    ret = SYS_MALLOC_ATOMIC(size, file, line);
+  else
+    ret = SYS_MALLOC(size, file, line);
 
-	// printf("%p %p\n", GC_MALLOC(0), GC_MALLOC(0));
+  // printf("%p %p\n", GC_MALLOC(0), GC_MALLOC(0));
 
-	assert(ret && "failed to alloc space");
+  assert(ret && "failed to alloc space");
 
-	return ret;
+  return ret;
 }
 
 void mem_set_finalizer(void * obj, void * fn, void * cd) {
-	// GC_register_finalizer(obj, fn, cd, 0, 0);
+  // GC_register_finalizer(obj, fn, cd, 0, 0);
 }
