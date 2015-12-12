@@ -1,8 +1,8 @@
 
-CC = /Developer/usr/bin/clang
-LD = clang
-CFLAGS = #-emit-llvm
-LDFLAGS =  -lgc -emit-llvm
+CC = clang
+LD = llvm-link
+CFLAGS = -emit-llvm -Wno-ignored-attributes
+LDFLAGS =
 OBJS = object.o string.o null.o closure.o integer.o bool.o float.o array.o  \
        throw.o start.o memory.o object_proto.o proc.o spawn.o process.o 		\
        msg_queue.o range.o send.o future.o entries.o data.o callsite.o       \
