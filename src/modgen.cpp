@@ -282,7 +282,7 @@ Function * ModuleGen::createFunction(Type * ret, const std::string & name,
 void ModuleGen::executeDeclares(llvm::Module * mod) {
   std::vector<std::string> declares;
 
-  declares.push_back("target datalayout = \"e-p:64:64:64-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-v64:64:64-v128:128:128-a0:0:64-s0:64:64-f80:128:128\"");
+  declares.push_back("target datalayout = \"e-m:o-i64:64-f80:128-n8:16:32:64-S128\"");
   declares.push_back("%object = type i8*");
 
 #ifdef EH_MRV
@@ -348,6 +348,7 @@ void ModuleGen::executeDeclares(llvm::Module * mod) {
     err.print("tlc", llvm::outs());
     throw std::runtime_error("failed to parse declare statement\n");
   }
+
   llvm::outs() << *mod;
 }
 

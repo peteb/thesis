@@ -4,13 +4,17 @@ Directory listing:
         /llvm-2.6/		-- full source code for llvm-2.6.
                                            ./configure && make && make clean
                                    sorry, I've removed this. Too big. Just get LLVM
-                                   somewhere else and build it with exceptions.
+                                   somewhere else and build it with exceptions enabled.
 
         /gc-7.1/		-- Boehm's garbage collector
+                                   But you'll probably want to install a newer one, especially
+                                   for Mac OS X due to ASLR etc. 7.2 has been verified to work
+                                   with 10.10.5. You might need to configure like this:
+                                   ./configure CFLAGS=-D_XOPEN_SOURCE
 
-        /experiments/	-- a playground for trying out fun things
-        /src/				-- base folder for thorn-llvm compiler code
-        /src/libthorn/  -- thorn runtime library
+        /experiments/           -- a playground for trying out fun things
+        /src/			-- base folder for thorn-llvm compiler code
+        /src/libthorn/          -- thorn runtime library
         /libs/			-- external libraries
         /tests/			-- stuff in here might or might not work
         /utests/		-- unit tests. they should work.
@@ -23,4 +27,14 @@ To compile stuff using bundled llvm:
         /llvm-config script which generates flags for gcc using currently available
         llvm base, prefering local (/llvm-2.6) over global.
 
-        :: thorn-llvm is now using autotools, but it's not 100% yet.
+The phases of compiling an .anita file:
+  * Build the tlc compiler (`make` in root or /src)
+  * Build the standard library libthorn (`cd libthorn; make`)
+  * Parse .anita file into an AST (json)
+    `anita/bin/anita code.anita > code.json`
+  * Compile AST into LLVM BC
+    `./tlc code.json -o code.bc`
+  * Link with libthorn
+    `llvm-link code.bc libthorn/libthorn.o -o app.o`
+  * Compile to native and link with external dependencies
+    `clang -lgc app.o`

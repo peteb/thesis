@@ -1,0 +1,3 @@
+val main = fun() => {
+    "Hello world".puts;
+}

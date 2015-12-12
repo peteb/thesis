@@ -10,3 +10,11 @@ autom4te.cache
 stamp-h1
 jsoncpp/*
 src/tlc
+a.out
+*.ll
+*.s
+*.json
+COPYING
+NEWS
+*.bc
+
