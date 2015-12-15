@@ -1,17 +1,17 @@
 val main = fun() => {
-	val create_array = fun() => ARGS;
-	
+	val create_array = fun() => args;
+
 	create_array(3, 1, "hej").to_s.puts;
 	#=> [3, 1, hej]
-	
+
 	var array = create_array("ett", 4, 2, true, "foo", null, "bar");
 	array.inject("", fun(x, p) => p + x.to_s + ", ").puts;
 	#=> ett, 4, 2, true, foo, null, bar,
-	
+
 	array.inspect;
-	
+
 	array = array.append("en skokartong");
 	array.inject("", fun(x, p) => p + x.to_s + ", ").puts;
 	#=> ett, 4, 2, true, foo, null, bar, en skokartong,
-	
+
 };
