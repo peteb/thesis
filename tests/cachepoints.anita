@@ -2,7 +2,7 @@
 val main = fun() => {
 	"hej".puts;
 	(4).to_s.puts;
-	
+
 	var i = 0;
 	while (i < 100000) {
 		# i.to_s.puts;

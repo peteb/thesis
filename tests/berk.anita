@@ -1,15 +1,15 @@
 val main = fun() => {
-	val i = 1;
+	var i = 1;
 
 	val foo = fun() => {
 		val bar = fun() => {
 			i.to_s.puts;
 		}
-		
-		# i = 2;
+
+		i = 2;
 		bar();
 	};
-	
+
 	foo.inspect;
 	i.to_s.puts;
 	foo();

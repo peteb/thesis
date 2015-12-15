@@ -236,7 +236,7 @@ METHOD(array, apply) {
 
     // printf("Size: %i (%i - %i)\n", ABS(end - start), start, end);
 
-    if (start < 0 || start > size || end < 0 || end > size) {
+    if (start < 0 || start >= size || end < 0 || end > size) {
       RET(array_object(0));
     }
 

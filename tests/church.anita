@@ -1,0 +1,30 @@
+# Implementation of a pair/tuple
+
+val cons = fun(a, b) => {
+  fun(f) => f(a, b)
+};
+
+val car = fun(c) => c(fun(a, b) => a);
+val cdr = fun(c) => c(fun(a, b) => b);
+
+val list = fun(array) => {
+  if (array.size == 0) {
+    null;
+  }
+  else {
+    cons(array(0), self(array(1..-1)));
+  }
+};
+
+val main = fun() => {
+  "Testing cons:".puts;
+  val cell = cons(3, 4);
+  car(cell).to_s.puts;
+  cdr(cell).to_s.puts;
+
+  "Testing list:".puts;
+  val h = list([1, 4, 5]);
+  car(h).to_s.puts;
+  car(cdr(h)).to_s.puts;
+  car(cdr(cdr(h))).to_s.puts;
+};
