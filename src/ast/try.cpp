@@ -17,102 +17,102 @@
 using namespace llvm;
 
 AST::Try::Try() {
-        _body = _else = _formal = 0;
+  _body = _else = _formal = 0;
 }
 
 AST::Try::~Try() {
-        delete _body;
-        delete _else;
-        delete _formal;
+  delete _body;
+  delete _else;
+  delete _formal;
 }
 
 Value * AST::Try::genCode(Builder & builder) const {
-        assert(_body);
-        assert(_else);
+  assert(_body);
+  assert(_else);
 
-        IRBuilder<> & irb = builder.irb();
-        Module * module = builder.getModule();
+  IRBuilder<> & irb = builder.irb();
+  Module * module = builder.getModule();
 
-        Type * objectTy = module->getTypeByName("object");
-        Function * func = irb.GetInsertBlock()->getParent();
+  Type * objectTy = Builder::getObjectType(module);
+  Function * func = irb.GetInsertBlock()->getParent();
 
-        BasicBlock * tryBlock = BasicBlock::Create(module->getContext(), "try", func);
-        BasicBlock * catchBlock = BasicBlock::Create(module->getContext(), "catch", func);
-        BasicBlock * mergeBlock = BasicBlock::Create(module->getContext(), "merge", func);
+  BasicBlock * tryBlock = BasicBlock::Create(module->getContext(), "try", func);
+  BasicBlock * catchBlock = BasicBlock::Create(module->getContext(), "catch", func);
+  BasicBlock * mergeBlock = BasicBlock::Create(module->getContext(), "merge", func);
 
-        Value * catchParam = builder.CreateLocalVariable("catch_var");
-        // irb.CreateAlloca(voidptr, 0, "catchparam");
+  Value * catchParam = builder.CreateLocalVariable("catch_var");
+  // irb.CreateAlloca(voidptr, 0, "catchparam");
 
-        irb.CreateBr(tryBlock);
-        irb.SetInsertPoint(tryBlock);
+  irb.CreateBr(tryBlock);
+  irb.SetInsertPoint(tryBlock);
 
-        LexScope tryNs(builder.getLexScope());
+  LexScope tryNs(builder.getLexScope());
 
-        tryNs.setEntry("CATCH", new LexScopeEntry(catchBlock,
-                LexScopeImm))
-        ;
+  tryNs.setEntry("CATCH", new LexScopeEntry(catchBlock,
+                                            LexScopeImm))
+    ;
 
-        tryNs.setEntry("CATCH_PARAM", new LexScopeEntry(catchParam,
-                LexScopeLS|LexScopeMutable))
-        ;
+  tryNs.setEntry("CATCH_PARAM", new LexScopeEntry(catchParam,
+                                                  LexScopeLS|LexScopeMutable))
+    ;
 
-        Builder bodyBuilder(builder, tryNs, module);
-        Value * bodyVal = _body->genCode(bodyBuilder);
+  Builder bodyBuilder(builder, tryNs, module);
+  Value * bodyVal = _body->genCode(bodyBuilder);
 
-        tryBlock = irb.GetInsertBlock();
+  tryBlock = irb.GetInsertBlock();
 
-        irb.CreateBr(mergeBlock);
-        irb.SetInsertPoint(catchBlock);
+  irb.CreateBr(mergeBlock);
+  irb.SetInsertPoint(catchBlock);
 
 
 
-        LexScope catchNs(builder.getLexScope());
-        catchNs.setEntry(_formal->getName(), new LexScopeEntry(catchParam,
-                LexScopeLS))
-        ;
+  LexScope catchNs(builder.getLexScope());
+  catchNs.setEntry(_formal->getName(), new LexScopeEntry(catchParam,
+                                                         LexScopeLS))
+    ;
 
-        Builder catchBuilder(builder, catchNs, module);
-        Value * catchVal = _else->genCode(catchBuilder);
+  Builder catchBuilder(builder, catchNs, module);
+  Value * catchVal = _else->genCode(catchBuilder);
 
-        catchBlock = irb.GetInsertBlock();
+  catchBlock = irb.GetInsertBlock();
 
-        irb.CreateBr(mergeBlock);
-        irb.SetInsertPoint(mergeBlock);
+  irb.CreateBr(mergeBlock);
+  irb.SetInsertPoint(mergeBlock);
 
-        PHINode * pn = irb.CreatePHI(objectTy, 1, "trytmp");
-        pn->addIncoming(bodyVal, tryBlock);
-        pn->addIncoming(catchVal, catchBlock);
+  PHINode * pn = irb.CreatePHI(objectTy, 1, "trytmp");
+  pn->addIncoming(bodyVal, tryBlock);
+  pn->addIncoming(catchVal, catchBlock);
 
-        return pn;
+  return pn;
 }
 
 void AST::Try::setBody(AST::Expression * body) {
-        delete _body;
-        _body = body;
+  delete _body;
+  _body = body;
 }
 
 void AST::Try::setElse(AST::Expression * elseBlock) {
-        delete _else;
-        _else = elseBlock;
+  delete _else;
+  _else = elseBlock;
 }
 
 void AST::Try::setFormal(AST::Vardef * formal) {
-        delete _formal;
-        _formal = formal;
+  delete _formal;
+  _formal = formal;
 }
 
 void AST::Try::accept(AST::Visitor & visitor) {
-        visitor.visit(*this);
+  visitor.visit(*this);
 }
 
 AST::Expression * AST::Try::getBody() const {
-        return _body;
+  return _body;
 }
 
 AST::Expression * AST::Try::getCatch() const {
-        return _else;
+  return _else;
 }
 
 AST::Vardef * AST::Try::getCatchFormal() const {
-        return _formal;
+  return _formal;
 }

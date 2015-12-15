@@ -150,9 +150,7 @@ int main(int argc, char ** argv) {
 
   // output bitcode to file
   std::error_code ec;
-  llvm::raw_fd_ostream outputFile("test.bc", ec, llvm::sys::fs::OpenFlags::F_RW);
-
-  //std::ofstream outputFile(OutputFilename.c_str(), std::ios::binary);
+  llvm::raw_fd_ostream outputFile(OutputFilename.c_str(), ec, llvm::sys::fs::OpenFlags::F_RW);
   passes.add(llvm::createBitcodeWriterPass(outputFile));
   passes.run(*mod);
 

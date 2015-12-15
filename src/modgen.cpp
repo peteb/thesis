@@ -39,7 +39,7 @@ Module * ModuleGen::createTool(AST::Unit * unit) {
   executeDeclares(mod);
 
   // create entry code
-  Type * objectTy = Type::getInt8PtrTy(mod->getContext());
+  Type * objectTy = Builder::getObjectType(mod);
   assert(objectTy && "Must find object type");
 
   // const Type * rettype = IntegerType::get(mod->getContext(), 32);
@@ -118,7 +118,7 @@ Module * ModuleGen::createLibrary(AST::Unit * cunit) {
   executeDeclares(mod);
 
   // create entry code
-  Type * objectTy = Type::getInt8PtrTy(mod->getContext());
+  Type * objectTy = Builder::getObjectType(mod);
 
 
   Function * entryFunction = createFunction(
@@ -205,7 +205,7 @@ void ModuleGen::setExceptionHandling(ExceptionHandling eh) {
 }
 
 LexScopeEntry * ModuleGen::createGlobalPoint(const std::string & sym, Module * mod) {
-  Type * objectTy = Type::getInt8PtrTy(mod->getContext());
+  Type * objectTy = Builder::getObjectType(mod);
   Constant * nullVal = Constant::getNullValue(objectTy);
 
   GlobalVariable * gv = new GlobalVariable(*mod,
@@ -222,7 +222,7 @@ void ModuleGen::initializeDependencies(Builder & builder) {
   Module * mod = builder.getModule();
   LexScope & scope = builder.getLexScope();
 
-  Type * objectTy = Type::getInt8PtrTy(mod->getContext());
+  Type * objectTy = Builder::getObjectType(mod);
   Constant * nullVal = Constant::getNullValue(objectTy);
 
   FunctionType * initFunction = FunctionType::get(
@@ -348,8 +348,6 @@ void ModuleGen::executeDeclares(llvm::Module * mod) {
     err.print("tlc", llvm::outs());
     throw std::runtime_error("failed to parse declare statement\n");
   }
-
-  llvm::outs() << *mod;
 }
 
 ExceptionHandling ModuleGen::ParseEH(const std::string & str) {
