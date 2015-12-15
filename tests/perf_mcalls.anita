@@ -1,27 +1,27 @@
 val main = fun() => {
 	var x = 0;
 	while (x < 30000000) {
-		#var foo = fun(i) => i + 1;
-		
-		x = x + 1; #foo(x);
+		var foo = fun(i) => i + 1;
+
+		x = foo(x);
 	}
-	
+
 	x.to_s.print;
 }
 
 # $ time ./a.out
 # 200000
 # mem usage: 243202840, num allocs: 7600089
-# 
+#
 # real	0m0.983s
 # user	0m0.709s
 # sys	0m0.269s
 
-# efter bool delegate: 
+# efter bool delegate:
 # $ time ./a.out
 # 200000
 # mem usage: 204802872, num allocs: 6400090
-# 
+#
 # real	0m0.861s
 # user	0m0.629s
 # sys	0m0.231s
@@ -30,7 +30,7 @@ val main = fun() => {
 # $ time ./a.out
 # 200000
 # mem usage: 51202136, num allocs: 1600067
-# 
+#
 # real	0m0.295s
 # user	0m0.225s
 # sys	0m0.067s

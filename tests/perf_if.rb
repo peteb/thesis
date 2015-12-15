@@ -2,10 +2,10 @@
 def main
 	x = 0
 	y = 0
-	
-	while (x < 500000)
+
+	while (x < 20000000)
 		foo = lambda {x % 2}
-		
+
 		y = y + foo.call()
 		x = x + 1
 	end

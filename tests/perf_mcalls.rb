@@ -2,7 +2,7 @@
 def main
 	x = 0
 
-	while (x < 10000000)
+	while (x < 30000000)
 		foo = lambda {|x| x + 1}
 		x = foo.call(x)
 	end

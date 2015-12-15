@@ -322,6 +322,7 @@ void ModuleGen::executeDeclares(llvm::Module * mod) {
   declares.push_back("declare %object @array_set_elementC(%object, i32, %object)");
   declares.push_back("declare i32 @bool_get_value(%object) readnone");
   declares.push_back("declare %object @array_object(i32)");
+  declares.push_back("declare %object @array_inplace(%object*, i32)");
   declares.push_back("declare %ret @__t_throw(%object)");
   declares.push_back("declare i32 @__t_start(i32, %object, %object)");
   declares.push_back("declare void @__t_init()");

@@ -227,7 +227,6 @@ METHOD(string, puts) {
   assert(OBJ_TYPE(self) == OBJ_STRING);
   const char * str = (const char *)object_get_metadata(self);
   puts(str);
-
   RET(self); //null_object();
 }
 

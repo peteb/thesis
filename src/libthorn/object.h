@@ -2,7 +2,7 @@
  * $Id: object.h 1878 2010-07-07 14:34:47Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved.
  */
 
 #ifndef LIBTHORN_OBJECT_H_FB00QSX4
@@ -17,7 +17,7 @@
 // #define OBJ_CLASS				0x0200     //< methods are immutable, delegates are classes
 #define OBJ_PERSISTENT		0x0400     //< won't be checked by the garbage collector
 #define OBJ_IMMUTABLE		0x0800     //< object is immutable forever. fast clone!
- 
+
 #define OBJ_EMPTY				0x0000     //< no type
 #define OBJ_INTEGER			0x0001
 #define OBJ_CLOSURE			0x0002
@@ -91,6 +91,6 @@ void     object_set_delegate(object_t object, object_t delegate);
 object_t object_get_delegate(object_t object);
 
 void     object_freeze(object_t ptr);
-			
+
 #endif // !__cplusplus
 #endif /* end of include guard: LIBTHORN_OBJECT_H_FB00QSX4 */

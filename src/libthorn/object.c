@@ -181,11 +181,13 @@ void object_set_slot(object_t ptr, sym_t name, object_t value, unsigned flags) {
 }
 
 struct map_entry * object_get_map_entry(object_t ptr, sym_t name) {
+  assert(ptr && "requires a target");
   struct object_header * obj = ptr;
   unsigned idx;
 
   for (idx = 0; idx < obj->map->size; idx++) {
     struct map_entry * entry = &obj->map->entries[idx];
+
     if (entry->name && SYM_CMP(entry->name, name)) {
       return entry;
     }
@@ -195,6 +197,7 @@ struct map_entry * object_get_map_entry(object_t ptr, sym_t name) {
 }
 
 object_t object_get_slot(object_t ptr, sym_t name) {
+  assert(ptr && "requires an object to fetch slot from");
   object_t ret = 0;
 
   // TODO: optimize this case for inlined closures
@@ -210,6 +213,7 @@ object_t object_get_slot(object_t ptr, sym_t name) {
 
     if (tag != 0) {
       object_t receiver = ptr_tag_get_receiver(tag);
+      assert(receiver && "tag receiver is null");
       return object_get_slot(receiver, name);
     }
     else {

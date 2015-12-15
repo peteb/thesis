@@ -1,8 +1,8 @@
 /*
  * $Id: ptr_tag.h 1457 2010-05-12 14:35:58Z ptr $
  * thorn-llvm
- * 
- * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
+ *
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved.
  */
 
 #ifndef LIBTHORN_PTR_TAG_H_J3R4XRAH
@@ -18,6 +18,7 @@ typedef object_t(*ptr_unliner)(object_t);
 #define PTR_INT      OBJ_INTEGER
 #define PTR_CLOSURE  OBJ_CLOSURE
 #define PTR_BOOL     OBJ_BOOL
+#define PTR_ARRAY    OBJ_ARRAY
 
 // PTR_SYMBOL? OBJ_SYMBOL??
 
@@ -32,7 +33,13 @@ typedef object_t(*ptr_unliner)(object_t);
    (object_t)(((uintptr_t)(ptr) & ~PTR_TAG_BITS) | ((tag) & PTR_TAG_MAX))
 #define PTR_TAG_ZERO(ptr) (((uintptr_t)(ptr) & PTR_TAG_MAX) == 0L)
 #define PTR_UPPER_TAG(ptr)            \
-   ( (((long)(ptr)) >> ((sizeof(uintptr_t)*8) - PTR_TAG_BITS) ) & PTR_TAG_MAX) 
+   ( (((long)(ptr)) >> ((sizeof(uintptr_t)*8) - PTR_TAG_BITS) ) & PTR_TAG_MAX)
+
+#ifdef INLINE_OBJECTS
+#define CAN_INLINE(x) (PTR_UPPER_TAG(x) == 0L)
+#else
+#define CAN_INLINE(x) 0
+#endif
 
 void        ptr_tag_reg_receiver(ptr_tag_t t_id, object_t t_obj);
 object_t    ptr_tag_get_receiver(ptr_tag_t t_id);

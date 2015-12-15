@@ -22,6 +22,7 @@
 #include "sym.h"
 #include "range.h"
 #include "callsite.h"
+#include "ptr_tag.h"
 
 GLOBAL_SYM(at);
 GLOBAL_SYM(to_s);
@@ -61,6 +62,9 @@ static METHOD_Q(array, all);
 
 static object_t array_prototype();
 static object_t empty_array();
+static object_t array_unliner(object_t ptr);
+static object_t array_object_nocache(void *data);
+static void *array_value(object_t ptr);
 
 static object_t empty_c = 0;
 static object_t prototype_c = 0;
@@ -93,7 +97,34 @@ object_t array_prototype() {
   object_freeze(prototype);
   END_MUTEX_CACHE(prototype, array_cache_m);
 
+  ptr_tag_reg_receiver(PTR_ARRAY, prototype);
+  ptr_tag_reg_unliner(PTR_ARRAY, array_unliner);
+
   return prototype;
+}
+
+object_t array_unliner(object_t ptr) {
+  return array_object_nocache(array_value(ptr));
+}
+
+object_t array_object_nocache(void *data) {
+  object_t obj = object_alloc(0, OBJ_ARRAY|OBJ_METADATA);
+  object_set_metadata(obj, data);
+  object_set_delegate(obj, array_prototype());
+
+  return obj;
+}
+
+void *array_value(object_t ptr) {
+  void *ret;
+  ptr_tag_t tag = PTR_TAG(ptr);
+
+  if (likely(tag == OBJ_ARRAY))
+    ret = (void *)PTR_TAG_VAL_SHIFTED(ptr);
+  else
+    ret = object_get_metadata(ptr);
+
+  return ret;
 }
 
 // TODO: array.to_s som inte går buffer overflow
@@ -110,9 +141,7 @@ object_t array_object(int size) {
     void * data = MEM_ALLOC(sizeof(object_t) * (size + 1), 0);
     ((long *)data)[0] = size;
 
-    obj = object_alloc(0, OBJ_ARRAY|OBJ_METADATA);
-    object_set_metadata(obj, data);
-    object_set_delegate(obj, array_prototype());
+    obj = array_object_nocache(data);
     unsigned i;
 
     for (i = 0; i < size; ++i) {
@@ -121,6 +150,17 @@ object_t array_object(int size) {
   }
 
   return obj;
+}
+
+/*
+ * Constructs the array in given 4 bit aligned memory, and returns
+ * a tagged pointer.
+ */
+object_t array_inplace(void *data, int size) {
+  ((long *)data)[0] = size;
+
+  assert(CAN_INLINE(data) && "can't inline data, probably alignment issues");
+  return PTR_TAG_SHIFTED((uintptr_t)data, PTR_ARRAY);
 }
 
 object_t empty_array() {
@@ -138,7 +178,8 @@ object_t empty_array() {
 
 // -- accessors ----------------------------------------------------------------------
 object_t array_get_elementC(object_t self, int index) {
-  void * data = object_get_metadata(self);
+  assert(OBJ_TYPE(self) == OBJ_ARRAY);
+  void * data = array_value(self);
   // assert(data);
   long size = ((long *)data)[0];
 
@@ -152,12 +193,11 @@ object_t array_get_elementC(object_t self, int index) {
 }
 
 object_t array_set_elementC(object_t self, int index, object_t value) {
-  void * data = object_get_metadata(self);
+  void * data = array_value(self);
   assert(data);
 
   int size = ((int *)data)[0];
   assert(index >= 0 && index < size && "index out of bounds");
-
   ((object_t *)data)[index + 1] = value;
 
   return value;
@@ -166,7 +206,7 @@ object_t array_set_elementC(object_t self, int index, object_t value) {
 unsigned array_get_sizeC(object_t self) {
   // assert(OBJ_TYPE(self) == OBJ_ARRAY);
 
-  void * data = object_get_metadata(self);
+  void * data = array_value(self);
   // assert(data);
 
   return ((unsigned *)data)[0];

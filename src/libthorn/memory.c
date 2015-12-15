@@ -13,7 +13,7 @@
 #include "memory.h"
 
 #define GC_THREADS
-#define GC_DEBUG
+//#define GC_DEBUG
 #include <gc/gc.h>
 #include "integer.h"
 #include "closure.h"

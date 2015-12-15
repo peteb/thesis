@@ -11,6 +11,9 @@
 #include "builder.h"
 #include "visitor.h"
 
+#include "libthorn/config.h"
+#include "libthorn/ptr_tag.h"
+
 #include <llvm/IR/Module.h>
 #include <llvm/IR/IRBuilder.h>
 #include <llvm/Support/raw_ostream.h>
@@ -31,7 +34,6 @@ AST::MethodCall::~MethodCall() {
   for (unsigned i = 0; i < _arguments.size(); ++i)
     delete _arguments[i];
 }
-#include <iostream>
 
 Value * AST::MethodCall::genCode(Builder & builder) const {
   Value * target = _target->genCode(builder);
@@ -41,7 +43,7 @@ Value * AST::MethodCall::genCode(Builder & builder) const {
 
   // acquire handle to 'object_exec'
   Function * object_exec = module->getFunction("object_exec");
-  Function * array_object = module->getFunction("array_object");
+  Function * array_object = module->getFunction("array_inplace");
   Function * array_set_elementC = module->getFunction("array_set_elementC");
   // Function * object_lookup_method = module->getFunction("object_lookup_method");
 
@@ -82,12 +84,15 @@ Value * AST::MethodCall::genCode(Builder & builder) const {
   //builder.CreateGlobalStringPtr(_name.c_str());
   // builder.CreateConstGEP2_32(identifier, 0, 0);
   Value * numargs = builder.CreateInt32(_arguments.size());
+  Value * inplace_size = builder.CreateInt32(_arguments.size() + 1);
   Type * siteType = module->getTypeByName("callsite");
   Value * csite = builder.irb().CreateAlloca(siteType, 0, "cs_" + _name);
 
 
-  //	Value * exc = ns.getEntry("EXC")->genLoad(builder, module, ns);
-  Value * arglist = builder.irb().CreateCall(array_object, numargs, "args_" + _name);
+  AllocaInst * array_data = builder.irb().CreateAlloca(Builder::getObjectType(module), inplace_size, "inplace_data_" + _name);
+  array_data->setAlignment(4);
+
+  Value * arglist = builder.irb().CreateCall2(array_object, array_data, numargs, "args_" + _name);
 
   BasicBlock::iterator cacheInsert = builder.irb().GetInsertPoint();
 

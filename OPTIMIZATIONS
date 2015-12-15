@@ -1,0 +1,16 @@
+stack_array
+  Using the stack as backing memory for an array. Useful when invoking a
+  closure; for each callsite an array is created containing the arguments
+  passed to the closure. 90% of CPU time of "array_object" is spent in GC_malloc.
+  Optimizing this array makes the 'args' variable less dynamic; the array will
+  have to be immutable.
+  Negative: still an allocation for the OBJECT itself. This is still a big time sink.
+  The OBJECT is needed for:
+    - Reference to prototype
+    - Pointer to data
+  Usually this is fixed by tagging the pointer, but this can't be done on the stack. IT CAN!
+  A BIG WIN, properly inlining the array into the stack is very good.
+  Very common to allocate an array for the arguments so it's a good optimization.
+
+callsite_memoization
+  62% of a closure invokation is spent doing object_get_slot. This can vary though.
