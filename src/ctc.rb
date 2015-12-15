@@ -89,7 +89,7 @@ files.each do |file|
 
   tmp_file = `mktemp /tmp/tlc.XXXXX`.chomp;
 
-  exec = "#{exec_anita} | #{exec_tc} -o compiled.bc && llvm-link compiled.bc libthorn/libthorn.o -o linked.bc && clang -lgc linked.bc"
+  exec = "#{exec_anita} | #{exec_tc} -o compiled.bc && llvm-link compiled.bc '#{ROOT}/libthorn/libthorn.o' -o linked.bc && clang -lgc linked.bc" # && cat #{tmp_file} | #{exec_as} | #{exec_ld}"
   puts exec
   #	exec = "#{exec_anita} || #{exec_tc} || #{exec_as} || #{exec_ld}"
   exc_ret = system(exec)
