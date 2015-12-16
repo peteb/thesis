@@ -3,7 +3,7 @@
 BEGIN_TEST(test_simple)
 	assert_eq([].to_s, "[]");
 	# assert(["foo"].to_s == "[\"foo\"]");
-	
+
 	var array = [1, 2, true, "four"];
 
 	assert_eq(array(-1), "four");
@@ -12,19 +12,18 @@ BEGIN_TEST(test_simple)
 	assert_eq(array(2), true);
 	assert_eq(array(3), "four");
 	assert_eq(array(4), null);
-	
+
 	var ret = array.inject("", fun(x, p) => p + x.to_s);
 	assert_eq(ret, "12truefour");
-	
+
 	var new_array = array.append("last");
 	new_array = new_array.append(null);
-	
+
 	ret = array.inject("", fun(x, p) => p + x.to_s);
 	assert_eq(ret, "12truefour");
-	
+
 	ret = new_array.inject("", fun(x, p) => p + x.to_s);
 	assert_eq(ret, "12truefourlastnull");
-	
 END_TEST(10)
 
 BEGIN_TEST(test_eq)

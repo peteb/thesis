@@ -224,8 +224,33 @@ METHOD(array, at) {
 }
 
 METHOD(array, eq) {
-  // TODO
-  RET(bool_object(FALSE));
+  object_t other = array_get_elementC(args, 0);
+  if (OBJ_TYPE(other) != OBJ_ARRAY) {
+    RET(bool_object(FALSE));
+  }
+
+  size_t other_size = array_get_sizeC(other);
+  size_t self_size = array_get_sizeC(self);
+
+  if (other_size != self_size) {
+    RET(bool_object(FALSE));
+  }
+
+  object_t eq_params = array_object(1);
+
+  for (unsigned i = 0; i < self_size; ++i) {
+    // TODO: unclear whether this optimizes cleanly, maybe we should work on
+    //       pointers instead
+
+    array_set_elementC(eq_params, 0, array_get_elementC(other, i));
+    object_t eq_ret = CALL_METHOD(array_get_elementC(self, i), eq, eq_params);
+
+    if (!bool_get_value(eq_ret)) {
+      RET(bool_object(FALSE));
+    }
+  }
+
+  RET(bool_object(TRUE));
 }
 
 METHOD(array, to_s) {
