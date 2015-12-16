@@ -1,6 +1,5 @@
 #!/bin/bash
-../../src/ctclib io.anita
-/Developer/usr/bin/clang -c io.c -o io.c.bc -emit-llvm -I ../../src/
-/Developer/usr/bin/clang -c file.c -o file.c.bc -emit-llvm -I ../../src/
-llvm-ld io.bc io.c.bc file.c.bc -o libio.bc
-mv libio.bc.bc io.bc
+../../src/ctc --as_lib io.anita
+clang -Wno-ignored-attributes -c io.c -o io.c.bc -emit-llvm -I ../../src/
+clang -Wno-ignored-attributes -c file.c -o file.c.bc -emit-llvm -I ../../src/
+llvm-link compiled.bc io.c.bc file.c.bc -o libio.bc

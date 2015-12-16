@@ -75,7 +75,7 @@ end
 cflags << "--as-lib" if as_lib
 
 files.each do |file|
-  TC_FLAGS << ["--mname=" + file] unless has_mname
+  TC_FLAGS << ["--mname=" + file[/([^.]*)/]] unless has_mname
 
   an = [ANITA] + AN_FLAGS + [file]
   tc = [TC] + ["-"] + TC_FLAGS + cflags
@@ -89,7 +89,13 @@ files.each do |file|
 
   tmp_file = `mktemp /tmp/tlc.XXXXX`.chomp;
 
-  exec = "#{exec_anita} | #{exec_tc} -o compiled.bc && llvm-link compiled.bc '#{ROOT}/libthorn/libthorn.o' -o linked.bc && clang -O3 -lgc linked.bc" # && cat #{tmp_file} | #{exec_as} | #{exec_ld}"
+  lib_filenames = libs.map { |l| (lib_prefix[0] or "") + l + ".bc" }
+
+  exec = "#{exec_anita} | #{exec_tc} -o compiled.bc && llvm-link #{lib_filenames.join(' ')} compiled.bc '#{ROOT}/libthorn/libthorn.o' -o linked.bc"
+  unless as_lib
+    exec += " && clang -O3 -lgc linked.bc"
+  end
+
   puts exec
   #	exec = "#{exec_anita} || #{exec_tc} || #{exec_as} || #{exec_ld}"
   exc_ret = system(exec)

@@ -2,7 +2,7 @@
  * $Id: libthorn.h 929 2010-04-07 13:39:56Z ptr $
  * thorn-llvm
  *
- * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved. 
+ * (c) Copyright 2010 - 2015 Peter Backman. All Rights Reserved.
  */
 
 #ifndef LIBTHORN_LIBTHORN_H_HDKCVEK7
@@ -30,5 +30,6 @@
 #include "spawn.h"
 #include "string.h"
 #include "throw.h"
+#include "callsite.h"
 
 #endif /* end of include guard: LIBTHORN_LIBTHORN_H_HDKCVEK7 */
