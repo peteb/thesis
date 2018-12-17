@@ -1,4 +1,4 @@
-CC = clang
+CC = ~/Downloads/clang+llvm-3.6.0-x86_64-apple-darwin/bin/clang
 LD = llvm-link
 CFLAGS = -emit-llvm -Wno-ignored-attributes -Werror
 LDFLAGS =
