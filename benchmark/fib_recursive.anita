@@ -1,0 +1,24 @@
+val fib = fun(n) => {
+	if (n > 1) {
+		self(n - 1) + self(n - 2);
+	}
+	else {
+		n;
+	}
+};
+
+
+val main = fun() => {
+    var i = 0;
+    while (i < 5) {
+      val started_at = (0).add_now;
+      fib(35).to_s.puts;
+      val diff = (0).add_now - started_at;
+      ("Diff: " + diff.to_s).puts;
+
+      i = i + 1;
+    }
+
+    return 0;
+}
+

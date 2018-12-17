@@ -1,0 +1,45 @@
+Fib recursive
+
+Anita
+
+CANNOT INLINE -1130619929
+9227465
+CANNOT INLINE -1130617152
+Diff: 2777
+CANNOT INLINE -1130617152
+9227465
+CANNOT INLINE -1130614377
+Diff: 2775
+CANNOT INLINE -1130614377
+9227465
+CANNOT INLINE -1130611557
+Diff: 2820
+CANNOT INLINE -1130611557
+9227465
+CANNOT INLINE -1130608822
+Diff: 2735
+CANNOT INLINE -1130608822
+9227465
+CANNOT INLINE -1130606089
+Diff: 2733
+[tool return: 0x1 exception: 0x0]
+
+Memory stats:
+Heap size = 65536
+# collections 2
+./a.out  13.82s user 0.01s system 99% cpu 13.848 total
+
+
+Ruby
+% time ruby ../benchmark/fib_recursive.rb                                                                                                                                        146 ↵ ✹ ✭
+9227465
+1690
+9227465
+1613
+9227465
+1640
+9227465
+1653
+9227465
+1667
+ruby ../benchmark/fib_recursive.rb  8.27s user 0.02s system 99% cpu 8.307 total

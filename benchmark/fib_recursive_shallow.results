@@ -1,0 +1,22 @@
+Anita
+[tool entry: 0x107f5693c]
+Diff: 808
+Diff: 800
+Diff: 847
+Diff: 800
+Diff: 810
+[tool return: 0x1 exception: 0x0]
+
+Memory stats:
+Heap size = 65536
+# collections 2
+./a.out  4.05s user 0.01s system 99% cpu 4.074 total
+
+Ruby
+% time ruby ../benchmark/fib_recursive_shallow.rb                                                                                                                                146 ↵ ✹ ✭
+497
+496
+489
+500
+515
+ruby ../benchmark/fib_recursive_shallow.rb  2.51s user 0.01s system 99% cpu 2.539 total

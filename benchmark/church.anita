@@ -1,0 +1,28 @@
+val create_pair = fun(a, b) => {
+  fun(f) => f(a, b)
+};
+
+val first = fun(c) => c(fun(a, b) => a);
+val second = fun(c) => c(fun(a, b) => b);
+
+val main = fun() => {
+    var i = 0;
+    while (i < 5) {
+      val started_at = (0).add_now;
+
+      var a = 0;
+      while (a < 500_000) {
+        val b = create_pair(a, a + 1);
+        first(b);
+        second(b);
+        a = a + 1;
+      }
+      val diff = (0).add_now - started_at;
+      diff.to_s.puts;
+
+      i = i + 1;
+    }
+
+    return 0;
+}
+

@@ -9,6 +9,7 @@
 #include <assert.h>
 #include <pthread.h>
 #include <stdint.h>
+#include <sys/time.h>
 
 #include "integer.h"
 #include "string.h"
@@ -33,6 +34,7 @@ GLOBAL_SYM(mul);
 GLOBAL_SYM(div);
 GLOBAL_SYM(rem);
 GLOBAL_SYM(succ);
+GLOBAL_SYM(add_now);
 
 static METHOD(int, to_s);
 static METHOD(int, class);
@@ -49,6 +51,7 @@ static METHOD(int, mul);
 static METHOD(int, div);
 static METHOD(int, rem);
 static METHOD(int, succ);
+static METHOD(int, add_now);
 
 #define INT_OP(name, ret, exec) METHOD_OP(int, name, ret, exec)
 #define INT_BOOL_OP(name, exec) INT_OP(name, bool_object, exec)
@@ -67,7 +70,7 @@ object_t int_prototype() {
   static object_t prototype = 0;
 
   BEGIN_MUTEX_CACHE(prototype, int_cache_m);
-  prototype = object_alloc(15, 0);
+  prototype = object_alloc(20, 0);
   object_set_delegate(prototype, object_prototype());
 
   REG_METHOD(prototype, int, to_s);
@@ -85,6 +88,7 @@ object_t int_prototype() {
   REG_METHOD(prototype, int, div);
   REG_METHOD(prototype, int, rem);
   REG_METHOD(prototype, int, succ);
+  REG_METHOD(prototype, int, add_now);
   object_freeze(prototype);
   END_MUTEX_CACHE(prototype, int_cache_m);
 
@@ -158,6 +162,15 @@ METHOD(int, clone) {
 METHOD(int, succ) {
   long value = int_value(self);
   RET(int_object(value + 1));
+}
+
+METHOD(int, add_now) {
+  long base = int_value(self);
+  struct timeval now;
+  gettimeofday(&now, NULL);
+  int msec = now.tv_sec * 1000 + now.tv_usec / 1000;
+
+  RET(int_object(base + msec));
 }
 
 INT_BOOL_OP(lt, INT_META(self) < INT_META(other) );

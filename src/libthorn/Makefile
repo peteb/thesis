@@ -1,6 +1,6 @@
 CC = ~/Downloads/clang+llvm-3.6.0-x86_64-apple-darwin/bin/clang
 LD = llvm-link
-CFLAGS = -emit-llvm -Wno-ignored-attributes -Werror
+CFLAGS = -emit-llvm -Wno-ignored-attributes -Werror -O3
 LDFLAGS =
 OBJS = object.o string.o null.o closure.o integer.o bool.o float.o array.o  \
        throw.o start.o memory.o object_proto.o proc.o spawn.o process.o			\

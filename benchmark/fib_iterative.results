@@ -1,0 +1,35 @@
+Anita
+[tool entry: 0x10f66793c]
+CANNOT INLINE -1131981803
+CANNOT INLINE -1131980582
+Diff: 1221
+CANNOT INLINE -1131980582
+CANNOT INLINE -1131979367
+Diff: 1215
+CANNOT INLINE -1131979367
+CANNOT INLINE -1131978128
+Diff: 1239
+CANNOT INLINE -1131978128
+CANNOT INLINE -1131976915
+Diff: 1213
+CANNOT INLINE -1131976915
+CANNOT INLINE -1131975705
+Diff: 1210
+[tool return: 0x1 exception: 0x0]
+
+Memory stats:
+Heap size = 65536
+# collections 2
+./a.out  6.09s user 0.01s system 99% cpu 6.118 total
+
+
+Ruby
+time ruby ../benchmark/fib_iterative.rb                                                                                                                                        146 ↵ ✹ ✭
+2807
+2761
+2783
+2769
+2795
+ruby ../benchmark/fib_iterative.rb  13.93s user 0.02s system 99% cpu 13.959 total
+
+
